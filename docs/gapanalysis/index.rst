@@ -11,9 +11,7 @@ OpenRetriever Gap Analysis
 :Editors: Xuan Jia (China Mobile)
 :Authors: Xuan Jia (China Mobile)
 
-:Abstract:
-
-This document provides the users with top-down gap analysis regarding OpenRetriever feature requirements with OPNFV Installer, OpenStack Official Release and Kubernetes Official Release.
+:Abstract: This document provides the users with top-down gap analysis regarding OpenRetriever feature requirements with OPNFV Installer, OpenStack Official Release and Kubernetes Official Release.
 
 .. toctree::
    :numbered:

@@ -25,4 +25,3 @@ This section provides users with OpenRetriever gap analysis regarding feature re
   |Kuryr need to support MACVLAN and IPVLAN                   |No                 |MACVLAN and IPVLAN could get better network performance. In Ocata,  |
   |                                                           |                   |it will support.                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
- 
