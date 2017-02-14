@@ -1,0 +1,6 @@
+This directory will give a common ansible scripts to setup a container enviroment in OpenStack. 
+(1) Container in virtual machine
+(2) Container in bare metal machine
+(3) Container could connect with container and virtual machine.
+(4) Container and virtual machine management platform.
+
