@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_600fa6e2",
+        "filename": "docs/gapanalysis/gap-analysis-opnfv-installer.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 371
+      },
+      "writtenOn": "2017-02-20T07:23:53Z",
+      "side": 1,
+      "message": "too long, no longer than this red dotted line.",
+      "range": {
+        "startLine": 8,
+        "startChar": 95,
+        "endLine": 8,
+        "endChar": 106
+      },
+      "revId": "fb94a1ccca0754e9e99d67f63fa879575e9b1423",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_c00a12d2",
+        "filename": "docs/gapanalysis/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 371
+      },
+      "writtenOn": "2017-02-20T07:23:53Z",
+      "side": 1,
+      "message": ".. toctree::\n   :maxdepth: 2",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "fb94a1ccca0754e9e99d67f63fa879575e9b1423",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
