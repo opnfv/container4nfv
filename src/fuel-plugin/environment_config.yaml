@@ -1,0 +1,19 @@
+attributes:
+  pod_network:
+    weight: 21
+    type: "select"
+    value: "weave"
+    label: "K8s POD network"
+    values:
+      - data: "flannel"
+        label: "Flannel"
+      - data: "weave"
+        label: "Weave"
+    description: "K8s POD network."
+
+  pod_network_cidr:
+    value: '10.244.0.0/16'
+    label: 'k8s POD CIDR'
+    weight: 70
+    type: "text"
+    description: 'K8s POD network CIDR.'
