@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_9bbd7b05",
+        "filename": "docs/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-14T15:32:32Z",
+      "side": 1,
+      "message": "would you like to use some tools to format this table. just like Li jun mentioned, it is too wide.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "15cfd164dfaaf188824b23efc63caa4b625681a4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_bbbabf08",
+        "filename": "docs/gapanalysis/gap-analysis-opnfv-installer.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-14T15:32:32Z",
+      "side": 1,
+      "message": "Magnum is not used for install env, it is used to deploy container in the env.",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "15cfd164dfaaf188824b23efc63caa4b625681a4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
