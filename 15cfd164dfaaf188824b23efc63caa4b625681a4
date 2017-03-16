@@ -45,6 +45,30 @@
       "revId": "15cfd164dfaaf188824b23efc63caa4b625681a4",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_70a1c1a8",
+        "filename": "docs/gapanalysis/gap-analysis-opnfv-installer.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-03-16T05:53:10Z",
+      "side": 1,
+      "message": "Magnum\u0027s scope is changed. Please check https://wiki.openstack.org/wiki/Magnum to get more details.",
+      "parentUuid": "9ab8dda7_bbbabf08",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "15cfd164dfaaf188824b23efc63caa4b625681a4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
