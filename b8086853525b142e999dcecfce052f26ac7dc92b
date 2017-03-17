@@ -1,0 +1,9 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Ruijing Guo <ruijing.guo@intel.com>
+Code-Review+1: Jun Li <matthew.lijun@huawei.com>
+Code-Review+2: Xuan Jia <jason.jiaxuan@gmail.com>
+Submitted-by: Xuan Jia <jason.jiaxuan@gmail.com>
+Submitted-at: Fri, 17 Mar 2017 07:25:23 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/28583
+Project: openretriever
+Branch: refs/heads/master
