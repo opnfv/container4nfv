@@ -2,6 +2,7 @@
 .. License.http://creativecommons.org/licenses/by/4.0
 .. (c) Xuan Jia (China Mobile)
 
+
 ================================================
 OpenRetriever Gap Analysis with Kubernetes v1.5
 ================================================
