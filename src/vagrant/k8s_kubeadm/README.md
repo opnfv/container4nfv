@@ -1,0 +1,21 @@
+Vagrant
+=======
+
+vagrant is to create kubernetes cluster.
+
+Vagrant Setup
+-------------
+
+sudo apt-get install -y virtualbox
+wget --no-check-certificate https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb
+sudo dpkg -i vagrant_1.8.6_x86_64.deb
+
+K8s Setup
+---------
+
+vagrant up
+
+K8s Cleanup
+-----------
+
+vagrant destroy -f
