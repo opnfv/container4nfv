@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_252bae31",
+        "filename": "src/vagrant/k8s_kubeadm/master_setup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 371
+      },
+      "writtenOn": "2017-05-04T06:43:08Z",
+      "side": 1,
+      "message": "why 3? is it a common way or can we adjust the number to a variable?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "06ef03c281bf5eac96091907bae5876cad9ea243",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_0528ea32",
+        "filename": "src/vagrant/k8s_kubeadm/master_setup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 371
+      },
+      "writtenOn": "2017-05-04T06:43:08Z",
+      "side": 1,
+      "message": "so it requires ubuntu at least 16.04",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "06ef03c281bf5eac96091907bae5876cad9ea243",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
