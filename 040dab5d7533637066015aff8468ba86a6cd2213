@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_779b9772",
+        "filename": "src/vagrant/k8s_kubeadm/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 371
+      },
+      "writtenOn": "2017-05-05T06:07:27Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 5,
+        "startChar": 50,
+        "endLine": 5,
+        "endChar": 53
+      },
+      "revId": "040dab5d7533637066015aff8468ba86a6cd2213",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
