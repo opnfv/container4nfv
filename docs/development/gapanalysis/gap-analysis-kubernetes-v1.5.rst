@@ -20,5 +20,16 @@ analysis with Kubernetes Official Release.
   |Manage conainter and virtual machine in the same platform. |No                 |Kubernetes only manage containers. For this part, we need to setup a|
   |                                                           |                   |platform to manage containers and virtual machine together          |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |TBD                                                        |                   |                                                                    |
+  |Container uses veth network technology. It's too slow to   |No                 |virtio may be a choice                                              |
+  |support data plane                                         |                   |                                                                    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |Kubernetes don's support mul-network. As VNF needs at least|No                 |                                                                    |
+  |three interfaces. Management,control plane,data plane      |                   |                                                                    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |Kubernetes don't support SDP/SCDP protocal                 |No                 |                                                                    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |Kubernetes scheduling don't support CPU binding，NUMA      |No                 |                                                                    |
+  |features                                                   |                   |                                                                    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |DPDK/SR-IOV need to suport CNF(Container Network Interface)|No                 |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
