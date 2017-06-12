@@ -20,5 +20,17 @@ analysis with Kubernetes Official Release.
   |Manage conainter and virtual machine in the same platform. |No                 |Kubernetes only manage containers. For this part, we need to setup a|
   |                                                           |                   |platform to manage containers and virtual machine together          |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |TBD                                                        |                   |                                                                    |
+  |Container uses virt-io to improve performance of container |No                 |Container uses veth currently, but it's so slow to support data     |
+  |network                                                    |                   |plane.                                                              |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |Kubernetes support mul-network.                            |No                 | As VNF needs at least three interfaces. Management,control plane,  |
+  |                                                           |                   | data plane.                                                        |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |Kubernetes support SDP/SCDP protocal                       |No                 |SDP is not NAT-aware                                                |
+  |                                                           |                   |Kubernetes Service do not support SCTP protocol                     |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |Kubernetes scheduling support CPU binding，NUMA features   |No                 |The kubernetes schedular don't support these features               |
+  |                                                           |                   |                                                                    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |DPDK/SR-IOV need to suport CNF(Container Network Interface)|No                 |CNI needs to support SR-IOV / DPDK                                  |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
