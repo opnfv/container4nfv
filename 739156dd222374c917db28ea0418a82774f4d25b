@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_cb68eef7",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-13T01:08:38Z",
+      "side": 1,
+      "message": "There are some ways how Kubernetes could manage VM-s: \n1) Kubevirt [1]\n2) Kubernetes can start rkt and with rkt it is possible to start VM-s [2]\n3) Virtlet [3] \n4) Hypercontainer [4]\n\n[1] https://github.com/kubevirt/kubevirt\n[2] https://coreos.com/rkt/docs/latest/running-kvm-stage1.html\n[3] https://github.com/Mirantis/virtlet\n[4] https://github.com/kubernetes/frakti",
+      "range": {
+        "startLine": 20,
+        "startChar": 83,
+        "endLine": 20,
+        "endChar": 116
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_6b6d3a04",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-13T01:08:38Z",
+      "side": 1,
+      "message": "T",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_2b7742d6",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-13T01:08:38Z",
+      "side": 1,
+      "message": "We can add also SIP and Diameter :)",
+      "range": {
+        "startLine": 29,
+        "startChar": 83,
+        "endLine": 29,
+        "endChar": 86
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_8b72f6e3",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-13T01:08:38Z",
+      "side": 1,
+      "message": "o",
+      "range": {
+        "startLine": 29,
+        "startChar": 37,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_eb804a8d",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-13T01:08:38Z",
+      "side": 1,
+      "message": "Are these supported by Docker or rkt?",
+      "range": {
+        "startLine": 32,
+        "startChar": 113,
+        "endLine": 32,
+        "endChar": 135
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_4b74fece",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-13T01:08:38Z",
+      "side": 1,
+      "message": "scheduler",
+      "range": {
+        "startLine": 32,
+        "startChar": 97,
+        "endLine": 32,
+        "endChar": 106
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_0b7e06af",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-13T01:08:38Z",
+      "side": 1,
+      "message": "I think you mean that CNI needs to support SR-IOV and DPDK.\nBut\nHow the API should support these and what are the benefits of SR-IOV in container environment?",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
