@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: sshd
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: sshd
+    spec:
+      containers:
+      - name: sshd
+        image: openretriever/ubuntu16.04-sshd
+        command: ["/bin/sh"]
+        args: ["-c", "chmod 700 ~/.ssh; chmod 600 ~/.ssh/*; service ssh restart; while true ; do sleep 10000; done" ]
+        volumeMounts:
+          - name: yardstick-pub
+            mountPath: /root/.ssh/
+      volumes:
+        - name: yardstick-pub
+          configMap:
+            name: yardstick-pub
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: yardstick
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: yardstick
+    spec:
+      containers:
+      - name: yardstick
+        image: opnfv/yardstick
+        command: ["/bin/sh"]
+        args: ["-c", "chmod 700 ~/.ssh; chmod 600 ~/.ssh/*; while true ; do sleep 10000; done" ]
+        volumeMounts:
+          - name: yardstick-prv
+            mountPath: /root/.ssh/
+      volumes:
+        - name: yardstick-prv
+          configMap:
+            name: yardstick-prv
