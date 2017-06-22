@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_35f9d74d",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-06-22T06:33:43Z",
+      "side": 1,
+      "message": "will kolla-kubernetes provide the management to manage container and virtual machine ?",
+      "parentUuid": "5aaae553_d5dde315",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_d5ee438b",
         "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
         "patchSetId": 3
