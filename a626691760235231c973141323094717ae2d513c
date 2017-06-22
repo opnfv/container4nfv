@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_08e7de41",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-06-22T08:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_351d57be",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_d5dde315",
         "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
         "patchSetId": 3
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_48c4f691",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-06-22T08:51:11Z",
+      "side": 1,
+      "message": "Hmm. what i mean is we need a scheduler to manager vm and container in one platform.",
+      "parentUuid": "5aaae553_959f6b03",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_b58867e8",
         "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
         "patchSetId": 3
@@ -83,6 +119,24 @@
       "writtenOn": "2017-06-22T06:55:44Z",
       "side": 1,
       "message": "do you mean virtio_user? may combine with DPDK support",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_68c1b27f",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-06-22T08:51:11Z",
+      "side": 1,
+      "message": "if container uses virtio_user, can it improve the performance of container when DPDK is not enabled?",
+      "parentUuid": "5aaae553_b58867e8",
       "revId": "a626691760235231c973141323094717ae2d513c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
@@ -134,6 +188,24 @@
       "writtenOn": "2017-06-22T06:55:44Z",
       "side": 1,
       "message": "SDP/SCTP may be changed to SIP/SDP, SCTP",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_08befeff",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-06-22T08:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_1577fb03",
       "revId": "a626691760235231c973141323094717ae2d513c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
