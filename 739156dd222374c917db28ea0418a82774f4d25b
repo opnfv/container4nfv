@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_e602c1b3",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-06-22T06:33:43Z",
+      "side": 1,
+      "message": "Great. I will add them in it.",
+      "parentUuid": "5aaae553_cb68eef7",
+      "range": {
+        "startLine": 20,
+        "startChar": 83,
+        "endLine": 20,
+        "endChar": 116
+      },
+      "revId": "739156dd222374c917db28ea0418a82774f4d25b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_6b6d3a04",
         "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
         "patchSetId": 2
