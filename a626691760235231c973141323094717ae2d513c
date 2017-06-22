@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5aaae553_351d57be",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-06-22T06:55:44Z",
+      "side": 1,
+      "message": "add space between 3) and virtlet. also for following line",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_d5dde315",
         "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
         "patchSetId": 3
@@ -55,6 +72,23 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_b58867e8",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-06-22T06:55:44Z",
+      "side": 1,
+      "message": "do you mean virtio_user? may combine with DPDK support",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_d5ee438b",
         "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
         "patchSetId": 3
@@ -66,6 +100,40 @@
       "writtenOn": "2017-06-22T06:28:00Z",
       "side": 1,
       "message": "mul-network -\u003e multi-network",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_556d7331",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-06-22T06:55:44Z",
+      "side": 1,
+      "message": "mul-network? do you mean multi-network",
+      "revId": "a626691760235231c973141323094717ae2d513c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_1577fb03",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-06-22T06:55:44Z",
+      "side": 1,
+      "message": "SDP/SCTP may be changed to SIP/SDP, SCTP",
       "revId": "a626691760235231c973141323094717ae2d513c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
