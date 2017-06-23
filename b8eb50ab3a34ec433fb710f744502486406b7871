@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_463734b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "kubernetes",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_663cb094",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "Isn\u0027t the actual requirement is to support low latency networking from the containers? I do not really see virtio connects to this?",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_2646b824",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": ", c",
+      "range": {
+        "startLine": 34,
+        "startChar": 134,
+        "endLine": 34,
+        "endChar": 136
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_06413c0b",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "multiple networks",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_a65148da",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "Since its 0.3.1 version CNI interface [3] supports the allocation of multiple interfaces to a container.\nThese are the different implemented and planned CNI compatible solutions: \n   * Multus [1]\n   * CNI-Genie [2]\n   * A solution built into Kubernetes [4]",
+      "range": {
+        "startLine": 35,
+        "startChar": 89,
+        "endLine": 35,
+        "endChar": 94
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_c64a4427",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "[1]",
+      "range": {
+        "startLine": 36,
+        "startChar": 84,
+        "endLine": 36,
+        "endChar": 87
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_86544ccb",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "[4] https://docs.google.com/document/d/1TW3P4c8auWwYy-w_5afIPDcGNLK3LZf0m14943eVfVg/edit\n[3] https://github.com/containernetworking/cni/blob/master/SPEC.md",
+      "range": {
+        "startLine": 37,
+        "startChar": 119,
+        "endLine": 37,
+        "endChar": 129
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_e647401c",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "[1]",
+      "range": {
+        "startLine": 37,
+        "startChar": 84,
+        "endLine": 37,
+        "endChar": 87
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_465e54eb",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "Here the real requirement is to support NAT-less connections to a container.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_666350b2",
+        "filename": "docs/development/gapanalysis/gap-analysis-kubernetes-v1.5.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-06-23T13:03:45Z",
+      "side": 1,
+      "message": "SIP/SDP and SCTP are not working with NAT-ed networks.",
+      "range": {
+        "startLine": 39,
+        "startChar": 83,
+        "endLine": 39,
+        "endChar": 103
+      },
+      "revId": "b8eb50ab3a34ec433fb710f744502486406b7871",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
