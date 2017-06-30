@@ -16,7 +16,9 @@ OpenRetriever Gap Analysis
            Official Release and Kubernetes Official Release.
 
 .. toctree::
-   maxdepth:2
+   :maxdepth: 2
+
+   gap-analysis-architecture-options
    gap-analysis-opnfv-installer.rst
    gap-analysis-openstack.rst
    gap-analysis-kubernetes-v1.5.rst
