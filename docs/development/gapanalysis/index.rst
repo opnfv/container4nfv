@@ -17,6 +17,7 @@ OpenRetriever Gap Analysis
 
 .. toctree::
    maxdepth:2
+   gap-analysis-architecture-options
    gap-analysis-opnfv-installer.rst
    gap-analysis-openstack.rst
    gap-analysis-kubernetes-v1.5.rst
