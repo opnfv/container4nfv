@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_5b829901",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-07-03T09:12:33Z",
+      "side": 1,
+      "message": "Don\u0027t you need to run Kubernetes on top of OpenStack for this? In this option the two VIM-s are independent.",
+      "parentUuid": "1aa4ed85_b8871361",
+      "revId": "fc0119bff24b70ee3d02ab3fa03e348b5ff4b792",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_389323a5",
         "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-03T01:55:56Z",
       "side": 1,
       "message": "move out kuryr",
+      "revId": "fc0119bff24b70ee3d02ab3fa03e348b5ff4b792",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_3b79dd2f",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-07-03T09:12:33Z",
+      "side": 1,
+      "message": "Can Zun manage container networks without Kuryr?",
+      "parentUuid": "1aa4ed85_389323a5",
       "revId": "fc0119bff24b70ee3d02ab3fa03e348b5ff4b792",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
