@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_0995bb3f",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-07-04T09:30:40Z",
+      "side": 1,
+      "message": "Thanks for the comments. \nI agree that Kubernetes on bare metal is less overhead, but I beleive that both architecture options provide something what can not be achieved with the other options. \nDo you want to remove all architecture options except the first?\nSo you do not think that VNF-s which contain both VM and container VNFC should be supported?\nIn my thinking Kubernetes fits in to the VIM box of the NFV architecture, however I agree that there are some features of it which are in the domain of VNFM, like the horizontal scaling. I still believe, that a VNFM is needed even if a Kubernetes is used as VIM.",
+      "parentUuid": "1aa4ed85_fec49360",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "0ad35bea0ff6e1289a1d2e3dd13bf9037da30547",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_fe16d3f0",
         "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_69878f10",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-07-04T09:30:40Z",
+      "side": 1,
+      "message": "how about bare metal hosts?",
+      "parentUuid": "1aa4ed85_fe16d3f0",
+      "revId": "0ad35bea0ff6e1289a1d2e3dd13bf9037da30547",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_9ed31f38",
         "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2017-07-04T00:26:04Z",
       "side": 1,
       "message": "A VM VIM is deployed on top of resources managed by a container VIM, they share same hardware pool, they provide\nseparate API-s and there are possibilities to integrate their networks.\n\nExample: https://github.com/openstack/kolla-kubernetes",
+      "revId": "0ad35bea0ff6e1289a1d2e3dd13bf9037da30547",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_699eaf58",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4041
+      },
+      "writtenOn": "2017-07-04T09:30:40Z",
+      "side": 1,
+      "message": "Is it possible to start a VM with OpenStack and a container with Kubernetes on the same physical host? This is what I mean on sharing the hardware resources.",
+      "parentUuid": "1aa4ed85_9ed31f38",
       "revId": "0ad35bea0ff6e1289a1d2e3dd13bf9037da30547",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
