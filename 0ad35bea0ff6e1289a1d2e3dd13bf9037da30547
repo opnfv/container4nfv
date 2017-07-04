@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1aa4ed85_fec49360",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-07-04T01:21:17Z",
+      "side": 1,
+      "message": "Thanks for your contribution. \nWe think container need be on bare metal machine instead of VM. We want to make it as a separete VIM-s like the first paragraph. The relationship between Openstack and Kubernetes, it can be communication in L3 or higher (we don\u0027t find any cases which need both vm and container at the same time)\nIn the other word, we don\u0027t need to care about what\u0027s VIM or VNFM.  Kubernetes can make VIM and VNFM thinner, even we don\u0027t use VIM at all. Kubernetes can manage all the container\u0027s application(VNF).",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "0ad35bea0ff6e1289a1d2e3dd13bf9037da30547",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_fe16d3f0",
         "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
         "patchSetId": 2
