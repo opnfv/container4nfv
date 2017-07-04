@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_fe16d3f0",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-07-04T00:26:04Z",
+      "side": 1,
+      "message": "change hosts to bare metal",
+      "revId": "0ad35bea0ff6e1289a1d2e3dd13bf9037da30547",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_9ed31f38",
+        "filename": "docs/development/gapanalysis/gap-analysis-architecture-options.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-07-04T00:26:04Z",
+      "side": 1,
+      "message": "A VM VIM is deployed on top of resources managed by a container VIM, they share same hardware pool, they provide\nseparate API-s and there are possibilities to integrate their networks.\n\nExample: https://github.com/openstack/kolla-kubernetes",
+      "revId": "0ad35bea0ff6e1289a1d2e3dd13bf9037da30547",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
