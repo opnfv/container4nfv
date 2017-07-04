@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_1ee72f14",
+        "filename": "src/vagrant/k8s_kubeadm/examples/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-07-04T01:04:23Z",
+      "side": 1,
+      "message": "Is the base image from docker hub?",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "a78d211259b59c8499d8295be1f82300b149ba18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_9eba3fe0",
+        "filename": "src/vagrant/k8s_kubeadm/examples/yardstick.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-07-04T01:04:23Z",
+      "side": 1,
+      "message": "Do we need to delete the Pod after testing?",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "a78d211259b59c8499d8295be1f82300b149ba18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
