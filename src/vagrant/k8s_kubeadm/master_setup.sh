@@ -17,7 +17,7 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 sudo apt-get update
 sudo apt-get install -y docker.io
-sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+sudo apt-get install -y --allow-downgrades kubelet=1.7.0-00 kubeadm=1.7.0-00 kubectl=1.7.0-00 kubernetes-cni=0.5.1-00
 
 sudo kubeadm init --apiserver-advertise-address 192.168.1.10  --service-cidr=192.168.1.0/24 --pod-network-cidr=10.244.0.0/16 --token 8c5adc.1cec8dbf339093f0
 sudo cp /etc/kubernetes/admin.conf $HOME/
