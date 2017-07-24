@@ -1,4 +1,7 @@
-fc3a6d1b01ee1ef316ae2be5c62bb4c54d3f22c0	Non-Interactive Users
-global:Registered-Users	Registered Users
-ldap:cn=opnfv-gerrit-openretriever-submitters,ou=Groups,dc=freestandards,dc=org	ldap/opnfv-gerrit-openretriever-submitters
+# UUID                                                                           	Group Name
+#
+4b0ee50b1dda533aa89c224e0234b35e92d2e49b                                         	GitHub Replication
+fc3a6d1b01ee1ef316ae2be5c62bb4c54d3f22c0                                         	Non-Interactive Users
+global:Registered-Users                                                          	Registered Users
 ldap:cn=opnfv-gerrit-openretriever-contributors,ou=Groups,dc=freestandards,dc=org	ldap/opnfv-gerrit-openretriever-contributors
+ldap:cn=opnfv-gerrit-openretriever-submitters,ou=Groups,dc=freestandards,dc=org  	ldap/opnfv-gerrit-openretriever-submitters
