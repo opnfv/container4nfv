@@ -1,0 +1,19 @@
+Signed-off-by: Jianfeng Tan <jianfeng.tan@intel.com>
+---
+ lib/librte_eal/bsdapp/eal/eal.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/lib/librte_eal/bsdapp/eal/eal.c b/lib/librte_eal/bsdapp/eal/eal.c index 05f0c1f..b62ef69 100644
+--- a/lib/librte_eal/bsdapp/eal/eal.c
++++ b/lib/librte_eal/bsdapp/eal/eal.c
+@@ -546,9 +546,7 @@ rte_eal_init(int argc, char **argv)
+ 	}
+ 
+ 	if (internal_config.memory == 0 && internal_config.force_sockets == 0) {
+-		if (internal_config.no_hugetlbfs)
+-			internal_config.memory = MEMSIZE_IF_NO_HUGE_PAGE;
+-		else
++		if (!internal_config.no_hugetlbfs)
+ 			internal_config.memory = eal_get_hugepage_mem_size();
+ 	}
+

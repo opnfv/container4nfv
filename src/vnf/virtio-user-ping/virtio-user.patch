@@ -1,0 +1,49 @@
+diff --git a/src/plugins/dpdk/device/init.c b/src/plugins/dpdk/device/init.c
+index 68c55f3..1acafcc 100755
+--- a/src/plugins/dpdk/device/init.c
++++ b/src/plugins/dpdk/device/init.c
+@@ -827,6 +827,7 @@ dpdk_config (vlib_main_t * vm, unformat_input_t * input)
+   u8 huge_dir = 0;
+   u8 file_prefix = 0;
+   u8 *socket_mem = 0;
++  u8 *virtio_user = 0;
+ 
+   conf->device_config_index_by_pci_addr = hash_create (0, sizeof (uword));
+   log_level = RTE_LOG_NOTICE;
+@@ -852,6 +853,17 @@ dpdk_config (vlib_main_t * vm, unformat_input_t * input)
+       else if (unformat (input, "no-multi-seg"))
+ 	conf->no_multi_seg = 1;
+ 
++
++      /* hardcode here for quick poc */
++      else if (unformat (input, "virtio-user %s", &virtio_user))
++        {
++           vec_add1 (conf->eal_init_args, (u8*)"-m 1024");
++           vec_add1 (conf->eal_init_args, (u8*)"--no-pci");
++           vec_add1 (conf->eal_init_args, (u8*)"--single-file");
++           tmp = format (0, "--vdev=virtio_user0,path=%s", virtio_user);
++           vec_add1 (conf->eal_init_args, (u8*)tmp);
++        }
++
+       else if (unformat (input, "dev default %U", unformat_vlib_cli_sub_input,
+ 			 &sub_input))
+ 	{
+@@ -1168,18 +1180,6 @@ dpdk_config (vlib_main_t * vm, unformat_input_t * input)
+ 
+ #undef _
+ 
+-  /* set master-lcore */
+-  tmp = format (0, "--master-lcore%c", 0);
+-  vec_add1 (conf->eal_init_args, tmp);
+-  tmp = format (0, "%u%c", tm->main_lcore, 0);
+-  vec_add1 (conf->eal_init_args, tmp);
+-
+-  /* set socket-mem */
+-  tmp = format (0, "--socket-mem%c", 0);
+-  vec_add1 (conf->eal_init_args, tmp);
+-  tmp = format (0, "%s%c", socket_mem, 0);
+-  vec_add1 (conf->eal_init_args, tmp);
+-
+   /* NULL terminate the "argv" vector, in case of stupidity */
+   vec_add1 (conf->eal_init_args, 0);
+   _vec_len (conf->eal_init_args) -= 1;

@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.box = "bento/ubuntu-16.04"
+  
+  config.vm.define "ovs-virtio" do | h |
+    config.vm.host_name = "ovs-virtio"
+    config.vm.provision "shell", path: "setup_ovs_virtio.sh", privileged: false
+    config.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--memory", 8192]
+      v.customize ["modifyvm", :id, "--cpus", 4]
+      v.customize "post-boot",["controlvm", :id, "setlinkstate1", "on"]
+      v.customize ["setextradata", :id, "VBoxInternal/CPUM/SSE4.1", "1"]
+      v.customize ["setextradata", :id, "VBoxInternal/CPUM/SSE4.2", "1"]
+    end
+  end
+end
