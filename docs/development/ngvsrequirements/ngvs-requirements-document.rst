@@ -2,7 +2,7 @@
 .. License.http://creativecommons.org/licenses/by/4.0
 .. (c) Xuan Jia (China Mobile)
 
-=========================================================================
+==========================================================================
 OpenRetriever Next Gen VIM & Edge Computing Scheduler Requirements Document
 ===========================================================================
 
@@ -16,7 +16,7 @@ Created by the OPNFV OpenRetriever Team
 
 | v1.0 5/3/17
 | v1.1 5/16/17
-v1.2 7/26/17
+| v1.2 7/26/17
 
 Motivation
 ----------
@@ -31,7 +31,7 @@ By placement and scheduling, we mean:
 
 -  Choose which hardware node to run the VNF on factors such as AAA, ML prediction or MANO
 
--  Start the VNF(s) depending on a trigger e.g. receiving requests such as DHCP, DNS or upon data packet or NULL trigger
+-  Start the VNF(s) depending on a trigger e.g. receiving requests such as DHCP,DNS or upon data packet or NULL trigger
 
 We use the generic term “scheduler” to refer to the placement and
 scheduling component in the rest of this document. We are not including
@@ -43,14 +43,20 @@ At a high level, we believe the VIM scheduler must:
 
 -  Support legacy and event-driven scheduling
 
-   -  By legacy scheduling we mean scheduling without any trigger (see above) i.e. the current technique used by schedulers such as OpenStack Nova.
-   -  By event-driven scheduling we mean scheduling with a trigger (see above). We do not mean that the unikernel or container that is going to run the VNF is already running . The instance is started and torn-down in response to traffic. The two step process is transparent to the user.
-   -  More specialized higher level schedulers and orchestration systems may be run on top e.g. FaaS (similar to AWS Lambda) etc.
+   -  By legacy scheduling we mean scheduling without any trigger (see above)
+i.e. the current technique used by schedulers such as OpenStack Nova.
+   -  By event-driven scheduling we mean scheduling with a trigger (see above).
+We do not mean that the unikernel or container that is going to run the VNF is
+already running . The instance is started and torn-down in response to traffic.
+The two step process is transparent to the user.
+   -  More specialized higher level schedulers and orchestration systems may be
+run on top e.g. FaaS (similar to AWS Lambda) etc.
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Serverless vs. FaaS vs. Event-Driven Terminology                                                                                                                                                                                                          |
 |                                                                                                                                                                                                                                                           |
-| Serverless: By serverless, we mean a general PaaS concept where the user does not have to specify which physical or virtual compute resource their code snippet or function will run on. The code snippet/function is executed in response to an event.   |
+| Serverless: By serverless, we mean a general PaaS concept where the user does
+ not have to specify which physical or virtual compute resource their code snippet or function will run on. The code snippet/function is executed in response to an event.   |
 |                                                                                                                                                                                                                                                           |
 | FaaS: We use this term synonymously with serverless.                                                                                                                                                                                                      |
 |                                                                                                                                                                                                                                                           |
@@ -73,9 +79,17 @@ vCPE
 
 vCPE can benefit from a new scheduler in two ways:
 
-1. uCPE devices have very few cores (4-8 typical). Running statically scheduled VMs is inefficient. An event-driven scheduler would help optimize the hardware resources and increase capacity.
+1. uCPE devices have very few cores (4-8 typical). Running statically scheduled
+VMs is inefficient. An event-driven scheduler would help optimize the hardware resources and increase capacity.
 
-2. vCPE is a bursty NFV use case, where services are not “on” all the time. Legacy provisioning of virtual machines for each VNF significantly reduces resource utilization, which in turn negatively impacts the total-cost-of-ownership (TCO). Recent Intel studies have shown, in certain cases, vCPE saves 30-40% TCO over physical functions. This number is hardly compelling, we believe it needs to be significantly higher to be of any interest. This can be accomplished by increasing utilization, which in turn can be achieved through event-driven scheduling.
+2. vCPE is a bursty NFV use case, where services are not “on” all the time.
+Legacy provisioning of virtual machines for each VNF significantly reduces
+resource utilization, which in turn negatively impacts the
+total-cost-of-ownership (TCO). Recent Intel studies have shown, in certain
+cases, vCPE saves 30-40% TCO over physical functions. This number is hardly
+compelling, we believe it needs to be significantly higher to be of any
+interest. This can be accomplished by increasing utilization, which in turn
+can be achieved through event-driven scheduling.
 
 IOT/ MEC
 ~~~~~~~~
@@ -171,7 +185,7 @@ Multiple compute types
 .. [1]
    Intel EPA includes DPDK, SR-IOV, CPU and NUMA pinning, Huge Pages
    etc.
-   
+
 [OPEN QUESTION] What subset of the Neutron functionality is required
 here?
 
