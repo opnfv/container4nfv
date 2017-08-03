@@ -1,0 +1,71 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ovsdpdk
+  namespace: kube-system
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kube-ovsdpdk-cfg
+  namespace: kube-system
+  labels:
+    tier: node
+    app: ovsdpdk
+data:
+  cni-conf.json: |
+    {
+      "name": "ovsdpdk",
+      "type": "ovsdpdk",
+      "bridge": "br-dpdk",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "10.244.0.0/16"
+      }
+    }
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: kube-ovsdpdk-ds
+  namespace: kube-system
+  labels:
+    tier: node
+    app: ovsdpdk
+spec:
+  template:
+    metadata:
+      labels:
+        tier: node
+        app: ovsdpdk
+    spec:
+      hostNetwork: true
+      nodeSelector:
+        beta.kubernetes.io/arch: amd64
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      serviceAccountName: ovsdpdk
+      containers:
+      - name: install-cni
+        image: openretriever/cni-ovsdpdk
+        command: [ "/bin/bash", "/cni/install_cni.sh" ]
+        volumeMounts:
+        - name: cni-bin
+          mountPath: /opt/cni/bin
+        - name: cni-cfg
+          mountPath: /etc/cni/net.d
+        - name: ovsdpdk-cfg
+          mountPath: /etc/kube-ovsdpdk
+      volumes:
+        - name: cni-bin
+          hostPath:
+            path: /opt/cni/bin
+        - name: cni-cfg
+          hostPath:
+            path: /etc/cni/net.d
+        - name: ovsdpdk-cfg
+          configMap:
+            name: kube-ovsdpdk-cfg
