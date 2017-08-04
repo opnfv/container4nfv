@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_03bb250f",
+        "filename": "docs/development/ngvsrequirements/ngvs-requirements-document.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-08-04T02:11:38Z",
+      "side": 1,
+      "message": "miss 1 \u003d",
+      "revId": "263f77ed215f0719e116b389019ce4116aff27f2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_633791b1",
+        "filename": "docs/development/ngvsrequirements/ngvs-requirements-document.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-08-04T02:11:38Z",
+      "side": 1,
+      "message": "miss |",
+      "revId": "263f77ed215f0719e116b389019ce4116aff27f2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_433c0d94",
+        "filename": "docs/development/ngvsrequirements/ngvs-requirements-document.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-08-04T02:11:38Z",
+      "side": 1,
+      "message": "break lines at 80 characters",
+      "revId": "263f77ed215f0719e116b389019ce4116aff27f2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_c3477d1c",
+        "filename": "docs/development/ngvsrequirements/ngvs-requirements-document.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-08-04T02:11:38Z",
+      "side": 1,
+      "message": "remove blank",
+      "revId": "263f77ed215f0719e116b389019ce4116aff27f2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
