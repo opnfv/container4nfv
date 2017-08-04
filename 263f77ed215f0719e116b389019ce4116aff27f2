@@ -1,0 +1,10 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Bin lu <bin.lu@arm.com>
+Code-Review+1: Amar Kapadia <akapadia@aarnanetworks.com>
+Code-Review+1: Pradip Rawat <pradipkumarr@biarca.com>
+Code-Review+2: Ruijing Guo <ruijing.guo@intel.com>
+Submitted-by: Ruijing Guo <ruijing.guo@intel.com>
+Submitted-at: Fri, 04 Aug 2017 06:23:55 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/38685
+Project: openretriever
+Branch: refs/heads/master
