@@ -39,6 +39,8 @@ spec:
           mountPath: /usr/local/bin
         - name: var-run
           mountPath: /var/run/openvswitch
+        - name: lib-modules
+          mountPath: /lib/modules
         - name: dev-hugepage
           mountPath: /dev
       volumes:
@@ -48,6 +50,9 @@ spec:
         - name: var-run
           hostPath:
             path: /var/run/openvswitch
+        - name: lib-modules
+          hostPath:
+            path: /lib/modules
         - name: dev-hugepage
           hostPath:
             path: /dev
