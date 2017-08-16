@@ -2,17 +2,17 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: ovsdpdk
+  name: cniovsdpdk
   namespace: kube-system
 ---
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: kube-ovsdpdk-cfg
+  name: kube-cniovsdpdk-cfg
   namespace: kube-system
   labels:
     tier: node
-    app: ovsdpdk
+    app: cniovsdpdk
 data:
   cni-conf.json: |
     {
@@ -28,17 +28,17 @@ data:
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  name: kube-ovsdpdk-ds
+  name: kube-cniovsdpdk-ds
   namespace: kube-system
   labels:
     tier: node
-    app: ovsdpdk
+    app: cniovsdpdk
 spec:
   template:
     metadata:
       labels:
         tier: node
-        app: ovsdpdk
+        app: cniovsdpdk
     spec:
       hostNetwork: true
       nodeSelector:
@@ -47,7 +47,7 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
-      serviceAccountName: ovsdpdk
+      serviceAccountName: cniovsdpdk
       containers:
       - name: install-cni
         image: openretriever/cni-ovsdpdk
@@ -57,8 +57,8 @@ spec:
           mountPath: /opt/cni/bin
         - name: cni-cfg
           mountPath: /etc/cni/net.d
-        - name: ovsdpdk-cfg
-          mountPath: /etc/kube-ovsdpdk
+        - name: cniovsdpdk-cfg
+          mountPath: /etc/kube-cniovsdpdk
       volumes:
         - name: cni-bin
           hostPath:
@@ -66,6 +66,6 @@ spec:
         - name: cni-cfg
           hostPath:
             path: /etc/cni/net.d
-        - name: ovsdpdk-cfg
+        - name: cniovsdpdk-cfg
           configMap:
-            name: kube-ovsdpdk-cfg
+            name: kube-cniovsdpdk-cfg
