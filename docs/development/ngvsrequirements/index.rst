@@ -3,7 +3,7 @@
 .. (c) Xuan Jia (China Mobile)
 
 ==========================
-OpenRetriever Gap Analysis
+NGVS Requirement Analysis
 ==========================
 
 :Project: OpenRetriever, https://wiki.opnfv.org/display/openretriever
@@ -11,14 +11,9 @@ OpenRetriever Gap Analysis
 :Editors: Xuan Jia (China Mobile)
 :Authors: Xuan Jia (China Mobile)
 
-:Abstract: This document provides the users with top-down gap analysis regarding
-           OpenRetriever feature requirements with OPNFV Installer, OpenStack
-           Official Release and Kubernetes Official Release.
+:Abstract: This provides NGVS requirements.
 
 .. toctree::
    :maxdepth: 2
-
-   gap-analysis-architecture-options
-   gap-analysis-opnfv-installer.rst
-   gap-analysis-openstack.rst
-   gap-analysis-kubernetes-v1.5.rst
+    
+   ngvs-requirements-document.rst
