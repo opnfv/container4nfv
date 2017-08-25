@@ -52,16 +52,18 @@ The two step process is transparent to the user.
    -  More specialized higher level schedulers and orchestration systems may be
 run on top e.g. FaaS (similar to AWS Lambda) etc.
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Serverless vs. FaaS vs. Event-Driven Terminology                                                                                                                                                                                                          |
-|                                                                                                                                                                                                                                                           |
-| Serverless: By serverless, we mean a general PaaS concept where the user does
- not have to specify which physical or virtual compute resource their code snippet or function will run on. The code snippet/function is executed in response to an event.   |
-|                                                                                                                                                                                                                                                           |
-| FaaS: We use this term synonymously with serverless.                                                                                                                                                                                                      |
-|                                                                                                                                                                                                                                                           |
-| Event-Driven: By event-driven, we mean an entire microservice or service (as opposed a code snippet) is executed in response to an event.                                                                                                                 |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------+
+| Serverless vs. FaaS vs. Event-Driven Terminology                                       |
+|                                                                                        |
+| Serverless: By serverless, we mean a general PaaS concept where the user does not have |
+| to specify which physical or virtual compute resource their code snippet or function   |
+| will run on. The code snippet/function is executed in response to an event.            |
+|                                                                                        |
+| FaaS: We use this term synonymously with serverless.                                   |
+|                                                                                        |
+| Event-Driven: By event-driven, we mean an entire microservice or service (as opposed a |
+| code snippet) is executed in response to an event.                                     |
++----------------------------------------------------------------------------------------+
 
 -  Work in distributed edge environments
 
@@ -140,48 +142,119 @@ Detailed Requirements
 Multiple compute types
 ~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Requirement                            | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-+========================================+=====================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
-| Support for virtual machines           | VMs are the most common form of VNFs, and are not going away anytime soon. A scheduler must be able to support VMs. In theory, the MANO software could use two VIMs: one for VMs and another for containers/ unikernels. However, we believe this is a suboptimal solution since the operational complexity doubles - now the ops team has to deal with two VIM software layers. Also, networking coordination between the two VIM layers becomes complex.                                                                                          |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | NOTE: Bare-metal server scheduling, e.g. OpenStack Ironic, is out-of-scope for this document.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Support containers                     | This need is clear, the future of VNFs seems to be containerized VNFs. Containers are 10x more dense than VMs and boot 10x faster. Containers will also accelerate the move to cloud-native VNFs. Some users may want nested scheduling e.g. containers in VMs or containers in containers. Nested scheduling is out-of-scope for this document. We will only focus on one layer of scheduling problem and expect the other layer of scheduler to be distinct and separate.                                                                         |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Support unikernels                     | Unikernels are lightweight VMs; with the same density of containers, but faster boot times than containers. Since unikernels are VMs and incredible small surface area, they have rock-solid security characteristics. Unikernels are also higher performance than VMs. For these reasons, unikernels could play an important role in NFV. The downsides with unikernels are i) they are new, ii) often tied to a programming language and iii) they require a software recompile. Unikernels are an ideal fit for micro-VNFs. More specifically:   |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  Need VNFs to be highly secure by reducing significantly the attack surface                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  Need to be able to schedule to NFVI with high performance OVS-less services chaining (e.g. through shared memory) that can significantly improve performance                                                                                                                                                                                                                                                                                                                                                                                     |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Colocation                             | We need support for affinity/anti-affinity constraints on VNF compute type (i.e. VM, unikernel, container). This will make colocation of different types of VNF compute types on the same host possible, if needed.                                                                                                                                                                                                                                                                                                                                 |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Support all compute types on one SFC   | Since VNFs are procured from different vendors, it is possible to get a mix of compute types: VMs, containers, unikernels; and it should be possible to construct a service function chain from heterogeneous compute types.                                                                                                                                                                                                                                                                                                                        |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Unified API for all compute types      | Even though it is theoretically possible to have different APIs for different compute types and push the problem to the MANO layer, this increases the overall complexity for the solution. For this reason, the API needs to be unified and consistent for different compute types.                                                                                                                                                                                                                                                                |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Hardware awareness                     | Ability to place workloads with specific hardware or underlying infrastructure capabilities (e.g. Intel EPA [1]_, FD.io, Smart NICs, Trusted Execution Environment, shared memory switching etc.)                                                                                                                                                                                                                                                                                                                                                   |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Rich networking                        | The new VIM scheduler needs to be supported by rich networking features currently available to OpenStack Nova through OpenStack Neutron (See document outlining K8s `*networking* <https://docs.google.com/document/d/1TW3P4c8auWwYy-w_5afIPDcGNLK3LZf0m14943eVfVg/edit?ts=5901ec88>`__ requirements as an example):                                                                                                                                                                                                                                |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  Ability to create multiple IP addresses/ VNF                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                        | -  Networks not having cluster-wide connectivity; not having visibility to each other                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  Multi-tenancy: i) support traffic isolation between compute entities belonging to different tenants, ii) support overlapping IP addresses across VNFs.                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  Limit services such as load balancing, service discovery etc. on certain network interfaces (see additional `*document* <https://docs.google.com/document/d/1mNZZ2lL6PERBbt653y_hnck3O4TkQhrlIzW1cIc8dJI/edit>`__).                                                                                                                                                                                                                                                                                                                              |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  L2 and L3 connectivity (?)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  Service Discovery                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Image repository & shared storage      | -  Centralized/distributed image repository                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|                                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                        | -  Support shared storage (e.g. OpenStack Cinder, K8s volumes etc.)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-+----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------+-----------------------------------------------+
+| Requirement                            | Details                                       |
++========================================+===============================================+
+| Support for virtual machines           | VMs are the most common form of VNFs, and are |
+|                                        | not going away anytime soon. A scheduler must |
+|                                        | be able to support VMs. In theory, the MANO   |
+|                                        | software could use two VIMs: one for VMs and  |
+|                                        | another for containers/ unikernels. However,  |
+|                                        | we believe this is a suboptimal solution since|
+|                                        | the operational complexity doubles - now the  |
+|                                        | ops team has to deal with two VIM software    |
+|                                        | layers. Also, networking coordination between |
+|                                        | the two VIM layers becomes complex.           |
+|                                        |                                               |
+|                                        | NOTE: Bare-metal server scheduling, e.g.      |
+|                                        | OpenStack Ironic, is out-of-scope for this    |
+|                                        | document.                                     |
++----------------------------------------+-----------------------------------------------+
+| Support containers                     | This need is clear, the future of VNFs seems  |
+|                                        | to be containerized VNFs. Containers are 10x  |
+|                                        | more dense than VMs and boot 10x faster.      |
+|                                        | Containers will also accelerate the move to   |
+|                                        | cloud-native VNFs. Some users may want nested |
+|                                        | scheduling e.g. containers in VMs or          |
+|                                        | containers in containers. Nested scheduling is|
+|                                        | out-of-scope for this document. We will only  |
+|                                        | focus on one layer of scheduling problem and  |
+|                                        | expect the other layer of scheduler to be     |
+|                                        | distinct and separate.                        |
++----------------------------------------+-----------------------------------------------+
+| Support unikernels                     | Unikernels are lightweight VMs; with the same |
+|                                        | density of containers, but faster boot times  |
+|                                        | than containers. Since unikernels are VMs and |
+|                                        | incredible small surface area, they have      |
+|                                        | rock-solid security characteristics.          |
+|                                        | Unikernels are also higher performance than   |
+|                                        | VMs. For these reasons, unikernels could play |
+|                                        | an important role in NFV. The downsides with  |
+|                                        | unikernels are i) they are new, ii) often tied|
+|                                        | to a programming language and iii) they       |
+|                                        | require a software recompile. Unikernels are  |
+|                                        | an ideal fit for micro-VNFs.                  |
+|                                        | More specifically:                            |
+|                                        |                                               |
+|                                        | -  Need VNFs to be highly secure by reducing  |
+|                                        |    significantly the attack surface           |
+|                                        |                                               |
+|                                        | -  Need to be able to schedule to NFVI with   |
+|                                        |    high performance OVS-less services         |
+|                                        |    chaining (e.g. through shared memory) that |
+|                                        |    can significantly improve performance      |
++----------------------------------------+-----------------------------------------------+
+| Colocation                             | We need support for affinity/anti-affinity    |
+|                                        | constraints on VNF compute type (i.e. VM,     |
+|                                        | unikernel, container). This will make         |
+|                                        | colocation of different types of VNF compute  |
+|                                        | types on the same host possible, if needed.   |
++----------------------------------------+-----------------------------------------------+
+| Support all compute types on one SFC   | Since VNFs are procured from different vendors|
+|                                        | , it is possible to get a mix of compute types|
+|                                        | : VMs, containers, unikernels; and it should  |
+|                                        | be possible to construct a service function   |
+|                                        | chain from heterogeneous compute types.       |
++----------------------------------------+-----------------------------------------------+
+| Unified API for all compute types      | Even though it is theoretically possible to   |
+|                                        | have different APIs for different compute     |
+|                                        | types and push the problem to the MANO layer, |
+|                                        | this increases the overall complexity for the |
+|                                        | solution. For this reason, the API needs to be|
+|                                        | unified and consistent for different compute  |
+|                                        | types.                                        |
++----------------------------------------+-----------------------------------------------+
+| Hardware awareness                     | Ability to place workloads with specific      |
+|                                        | hardware or underlying infrastructure         |
+|                                        | capabilities (e.g. Intel EPA [1]_, FD.io,     |
+|                                        | Smart NICs, Trusted Execution Environment,    |
+|                                        | shared memory switching etc.)                 |
++----------------------------------------+-----------------------------------------------+
+| Rich networking                        | The new VIM scheduler needs to be supported by|
+|                                        | rich networking features currently available  |
+|                                        | to OpenStack Nova through OpenStack Neutron   |
+|                                        | (See document outlining K8s `*networking*     |
+|                                        | <https://docs.google.com/document/d/1TW3P4c8au|
+|                                        | WwYy-w_5afIPDcGNLK3LZf0m14943eVfVg/edit?ts=590|
+|                                        | 1ec88>`__ requirements as an example):        |
+|                                        |                                               |
+|                                        | -  Ability to create multiple IP addresses/VNF|
+|                                        |                                               |
+|                                        | -  Networks not having cluster-wide           |
+|                                        |    connectivity; not having visibility to each|
+|                                        |    other                                      |
+|                                        |                                               |
+|                                        | -  Multi-tenancy: i) support traffic isolation|
+|                                        |    between compute entities belonging to      |
+|                                        |    different tenants, ii) support overlapping |
+|                                        |    IP addresses across VNFs.                  |
+|                                        |                                               |
+|                                        | -  Limit services such as load balancing,     |
+|                                        |    service discovery etc. on certain network  |
+|                                        |    interfaces (see additional `*document*     |
+|                                        |    <https://docs.google.com/document/d/1mNZZ2l|
+|                                        |    L6PERBbt653y_hnck3O4TkQhrlIzW1cIc8dJI/edit>|
+|                                        |    `__).                                      |
+|                                        |                                               |
+|                                        | -  L2 and L3 connectivity (?)                 |
+|                                        |                                               |
+|                                        | -  Service Discovery                          |
++----------------------------------------+-----------------------------------------------+
+| Image repository & shared storage      | -  Centralized/distributed image repository   |
+|                                        |                                               |
+|                                        | -  Support shared storage (e.g. OpenStack     |
+|                                        |    Cinder, K8s volumes etc.)                  |
++----------------------------------------+-----------------------------------------------+
 .. [1]
    Intel EPA includes DPDK, SR-IOV, CPU and NUMA pinning, Huge Pages
    etc.
@@ -192,17 +265,31 @@ here?
 Multiple scheduling techniques
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Requirement               | Details                                                                                                                                                                                                                                                                                                            |
-+===========================+====================================================================================================================================================================================================================================================================================================================+
-| Legacy scheduling         | This is the current technique used by OpenStack Nova and container orchestration engines. Legacy scheduling needs to be supported as-is.                                                                                                                                                                           |
-+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Event-driven scheduling   | This applies only to unikernels, since unikernels are the only compute type that can boot at packet RTT. Thus, the requirement is to be able to schedule and boot unikernel instances in response to events with <30ms of ms (e.g., event-driven type of scheduling) as a must-have and <10ms as a nice-to-have.   |
-+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Distributed Scheduling    | Since services need to be brought up at packet RTT, there could be requirement to distribute the scheduling across compute nodes.                                                                                                                                                                                  |
-+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Multi Stage scheduling    | To enable scheduling of services at packet RTT, there is a need to divide the scheduling to at least two stages - Initial stage where multiple service images are uploaded to candidate compute nodes and second stage where distributed scheduler bring up the service using the locally cached images.           |
-+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------+------------------------------------------------------------+
+| Requirement               | Details                                                    |
++===========================+============================================================+
+| Legacy scheduling         | This is the current technique used by OpenStack Nova and   |
+|                           | container orchestration engines. Legacy scheduling needs to|
+|                           | be supported as-is.                                        |
++---------------------------+------------------------------------------------------------+
+| Event-driven scheduling   | This applies only to unikernels, since unikernels are the  |
+|                           | only compute type that can boot at packet RTT. Thus, the   |
+|                           | requirement is to be able to schedule and boot unikernel   |
+|                           | instances in response to events with <30ms of ms (e.g.,    |
+|                           | event-driven type of scheduling) as a must-have and <10ms  |
+|                           | as a nice-to-have.                                         |
++---------------------------+------------------------------------------------------------+
+| Distributed Scheduling    | Since services need to be brought up at packet RTT, there  |
+|                           | could be requirement to distribute the scheduling across   |
+|                           | compute nodes.                                             |
++---------------------------+------------------------------------------------------------+
+| Multi Stage scheduling    | To enable scheduling of services at packet RTT, there is a |
+|                           | need to divide the scheduling to at least two stages -     |
+|                           | Initial stage where multiple service images are uploaded to|
+|                           | candidate compute nodes and second stage where distributed |
+|                           | scheduler bring up the service using the locally cached    |
+|                           | images.                                                    |
++---------------------------+------------------------------------------------------------+
 
 [OPEN QUESTION] What subset of the rich scheduler feature-set is
 required here? (e.g. affinity, anti-affinity, understanding of dataplane
@@ -217,13 +304,14 @@ thousands of VIM instances. B) The alternative is that the VIM itself
 will manage edge devices, i.e. the MANO software will deal with a
 limited number of VIM instances. Both scenarios are captured below.
 
-+--------------------+---------------------------------------------------------------------------------------------------------------+
-| Requirement        | Details                                                                                                       |
-+====================+===============================================================================================================+
-| Small footprint    | It should be possible to run the VIM scheduler in 1-2 cores.                                                  |
-+--------------------+---------------------------------------------------------------------------------------------------------------+
-| Nodes across WAN   | It should be possible to distribute the VIM scheduler across nodes separated by long RTT delays (i.e. WAN).   |
-+--------------------+---------------------------------------------------------------------------------------------------------------+
++--------------------+-------------------------------------------------------------------+
+| Requirement        | Details                                                           |
++====================+===================================================================+
+| Small footprint    | It should be possible to run the VIM scheduler in 1-2 cores.      |
++--------------------+-------------------------------------------------------------------+
+| Nodes across WAN   | It should be possible to distribute the VIM scheduler across nodes|
+|                    | separated by long RTT delays (i.e. WAN).                          |
++--------------------+-------------------------------------------------------------------+
 
 Software Survey Candidates
 --------------------------
