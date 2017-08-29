@@ -21,7 +21,10 @@ data:
       "bridge": "br-dpdk",
       "ipam": {
         "type": "host-local",
-        "subnet": "10.244.0.0/16"
+        "subnet": "10.244.0.0/16",
+        "rangeStart": "10.244.0.100",
+        "gateway": "10.244.0.1",
+        "dataDir": "/vagrant/container-ipam-state"
       }
     }
 ---
