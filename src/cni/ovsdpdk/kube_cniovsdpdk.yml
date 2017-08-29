@@ -21,7 +21,9 @@ data:
       "bridge": "br-dpdk",
       "ipam": {
         "type": "host-local",
-        "subnet": "10.244.0.0/16"
+        "subnet": "10.244.0.0/16",
+        "gateway": "10.244.0.1",
+        "dataDir": "/run/cni/container-ipam-state"
       }
     }
 ---
@@ -57,6 +59,8 @@ spec:
           mountPath: /opt/cni/bin
         - name: cni-cfg
           mountPath: /etc/cni/net.d
+        - name: shared-dir
+          mountPath: /run/cni
         - name: cniovsdpdk-cfg
           mountPath: /etc/kube-cniovsdpdk
       volumes:
@@ -66,6 +70,9 @@ spec:
         - name: cni-cfg
           hostPath:
             path: /etc/cni/net.d
+        - name: shared-dir
+          hostPath:
+            path: /vagrant
         - name: cniovsdpdk-cfg
           configMap:
             name: kube-cniovsdpdk-cfg
