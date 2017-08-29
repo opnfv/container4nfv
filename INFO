@@ -1,15 +1,15 @@
-Project: Container Integrated For NFV  (OpenRetriever)
-Repo: openretriever
+Project: Container4NFV
+Repo: container4nfv
 Project Creation Date:Dec 13, 2016
 Project Category: Integration & Testing
 Lifecycle State:Incubation
 Primary Contact: Xuan Jia ( jiaxuan@chinamobile.com )
 Project Lead: Xuan Jia ( jiaxuan@chinamobile.com )
 Jira Project Name: Container Integrated For NFV
-Jira Project Prefix: [container]
-mailing list tag [openretriever]
+Jira Project Prefix: [container4nfv]
+mailing list tag [container4nfv]
 IRC: Server:freenode.net Channel:#opnfv-container
-Repository: openretriever
+Repository: container4nfv
 
 Committers:
 jiaxuan@chinamobile.com
@@ -21,8 +21,12 @@ heikki.mahkonen@ericsson.com
 akapadia@aarnanetworks.com
 srupanagunta@gmail.com
 ruijing.guo@gmail.com
+chenjiankun1@huawei.com
 
 Link to TSC approval of the project: http://meetbot.opnfv.org/meetings/opnfv-meeting/2016/opnfv-meeting.2016-12-13-14.59.html
 Link(s) to approval of additional committers: 
 http://meetbot.opnfv.org/meetings/opnfv-meeting/2017/opnfv-meeting.2017-04-11-13.59.html
 https://lists.opnfv.org/pipermail/opnfv-tech-discuss/2017-June/016505.html
+
+Link to approval of renaming project:
+http://meetbot.opnfv.org/meetings/opnfv-meeting/2017/opnfv-meeting.2017-08-15-12.59.txt 
