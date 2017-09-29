@@ -10,4 +10,5 @@ echo "export KUBECONFIG=$HOME/admin.conf" >> $HOME/.bash_profile
 #kubectl apply -f http://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 #kubectl apply -f http://docs.projectcalico.org/v2.1/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 kubectl apply -f /vagrant/ovsdpdk/kube_ovsdpdk.yml
+kubectl apply -f /vagrant/dhcp/kube_dhcp.yml
 kubectl apply -f /src/cni/ovsdpdk/kube_cniovsdpdk.yml
