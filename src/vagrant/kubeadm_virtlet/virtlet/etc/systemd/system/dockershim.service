@@ -1,0 +1,11 @@
+[Unit]
+Description=dockershim for criproxy
+
+[Service]
+ExecStart=/usr/local/bin/dockershim ......
+Restart=always
+StartLimitInterval=0
+RestartSec=10
+
+[Install]
+RequiredBy=criproxy.service
