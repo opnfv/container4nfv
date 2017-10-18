@@ -1,0 +1,4 @@
+FROM ubuntu:16.04
+
+ADD multus /cni/multus
+ADD install_cni.sh /cni/install_cni.sh
