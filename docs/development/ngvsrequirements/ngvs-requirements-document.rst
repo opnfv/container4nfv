@@ -45,10 +45,12 @@ At a high level, we believe the VIM scheduler must:
 
    -  By legacy scheduling we mean scheduling without any trigger (see above)
 i.e. the current technique used by schedulers such as OpenStack Nova.
+
    -  By event-driven scheduling we mean scheduling with a trigger (see above).
 We do not mean that the unikernel or container that is going to run the VNF is
 already running . The instance is started and torn-down in response to traffic.
 The two step process is transparent to the user.
+
    -  More specialized higher level schedulers and orchestration systems may be
 run on top e.g. FaaS (similar to AWS Lambda) etc.
 
