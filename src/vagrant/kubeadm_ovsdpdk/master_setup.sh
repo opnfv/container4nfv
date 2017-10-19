@@ -7,4 +7,5 @@ export KUBECONFIG=$HOME/admin.conf
 echo "export KUBECONFIG=$HOME/admin.conf" >> $HOME/.bash_profile
 
 kubectl apply -f /vagrant/ovsdpdk/kube_ovsdpdk.yml
+kubectl apply -f /vagrant/dhcp/kube_dhcp.yml
 kubectl apply -f /src/cni/ovsdpdk/kube_cniovsdpdk.yml
