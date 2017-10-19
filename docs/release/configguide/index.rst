@@ -17,5 +17,4 @@ Configure Guide
 .. toctree::
    :maxdepth: 2
 
-   featureconfig.rst
-
+   install.rst
