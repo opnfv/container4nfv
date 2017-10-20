@@ -11,14 +11,7 @@ Container4NFV User Guide
 :Editors: Xuan Jia (China Mobile)
 :Authors: Xuan Jia (China Mobile)
 
-:Abstract: Container4NFV provides the users with gap analysis regarding container
-           feature requirements with Kubernetes, OpenStack. The gap analysis
-           serves as feature specific user guides and references when a user you
-           may leverage the container feature in the platform and need to perform
-           some container releated operations
 .. toctree::
    :maxdepth: 3
 
-   gap-kubernetes.rst
-   gap-openstack.rst
-
+   install.rst
