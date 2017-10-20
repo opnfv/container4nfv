@@ -8,7 +8,7 @@ Senario:
 k8-nosdn-nofeature-noha
 --------------------------
 
-Using Joid to deploy Kubernetes in bare metal machine. 
+Using Joid to deploy Kubernetes in bare metal machine
 https://build.opnfv.org/ci/job/joid-k8-nosdn-nofeature-noha-baremetal-daily-euphrates/lastBuild/
 
 
@@ -25,11 +25,11 @@ YardStick test Cases
 
 opnfv_yardstick_tc080
 --------------------------
-measure network latency between containers in k8s using ping:
+measure network latency between containers in k8s using ping
 https://git.opnfv.org/yardstick/tree/tests/opnfv/test_cases/opnfv_yardstick_tc080.yaml
 
 
  opnfv_yardstick_tc081
 --------------------------
-measure network latency between container and VM using ping:
+measure network latency between container and VM using ping
 https://git.opnfv.org/yardstick/tree/tests/opnfv/test_cases/opnfv_yardstick_tc081.yaml
