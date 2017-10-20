@@ -1,0 +1,7 @@
+Code-Review+2: Ruijing Guo <ruijing.guo@intel.com>
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Submitted-by: Ruijing Guo <ruijing.guo@intel.com>
+Submitted-at: Fri, 20 Oct 2017 02:04:00 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/45921
+Project: container4nfv
+Branch: refs/heads/stable/euphrates
