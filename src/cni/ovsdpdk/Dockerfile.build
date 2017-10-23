@@ -1,0 +1,6 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y sudo git wget
+ADD ovsdpdk.patch /
+ADD build_cni.sh /
+RUN bash /build_cni.sh
