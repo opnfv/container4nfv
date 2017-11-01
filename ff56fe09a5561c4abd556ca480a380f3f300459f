@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_9613c75b",
+        "filename": "docs/arm/Container4NFV on Arm.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-11-01T01:56:47Z",
+      "side": 1,
+      "message": "If there\u0027re two physical interfaces which support SR-IOV, how could we know which physical interfaces we\u0027re using?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "ff56fe09a5561c4abd556ca480a380f3f300459f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_360f5b32",
+        "filename": "docs/arm/Container4NFV on Arm.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-11-01T01:56:47Z",
+      "side": 1,
+      "message": "FYI: The link will be changed,although it doesn\u0027t affect this patch. https://hub.docker.com/container4nfv.",
+      "range": {
+        "startLine": 226,
+        "startChar": 19,
+        "endLine": 226,
+        "endChar": 58
+      },
+      "revId": "ff56fe09a5561c4abd556ca480a380f3f300459f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
