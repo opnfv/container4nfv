@@ -15,4 +15,9 @@
 # limitations under the License.
 #
 
-echo "deploy"
+set -ex
+
+../src/vagrant/kubeadm_basic/deploy.sh
+../src/vagrant/kubeadm_ovsdpdk/deploy.sh
+../src/vagrant/kubeadm_multus/deploy.sh
+../src/vagrant/kubeadm_virtlet/deploy.sh
