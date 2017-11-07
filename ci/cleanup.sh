@@ -15,9 +15,9 @@
 # limitations under the License.
 #
 
-set -ex
+set -x
 
-./cleanup.sh
-../src/vagrant/kubeadm_ovsdpdk/deploy.sh
-../src/vagrant/kubeadm_multus/deploy.sh
-../src/vagrant/kubeadm_virtlet/deploy.sh
+VBoxManage list vms | cut -f2 -d'"' | xargs -I {} VBoxManage unregistervm {} --delete
+VBoxManage list vms | cut -f2 -d'"' | xargs -I {} VBoxManage controlvm {} poweroff
+VBoxManage list hostonlyifs | grep "^Name:.*vboxnet" |\
+    sed "s/^Name:.*vboxnet/vboxnet/" | xargs -I {} VBoxManage hostonlyif remove {}
