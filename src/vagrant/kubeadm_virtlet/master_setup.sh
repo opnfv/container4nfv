@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo kubeadm init --apiserver-advertise-address=10.96.0.10  --service-cidr=10.96.0.0/24 --pod-network-cidr=10.244.0.0/16 --token 8c5adc.1cec8dbf339093f0
+set -ex
+
+sudo timeout 3600 kubeadm init --apiserver-advertise-address=10.96.0.10  --service-cidr=10.96.0.0/24 --pod-network-cidr=10.244.0.0/16 --token 8c5adc.1cec8dbf339093f0
 sudo cp /etc/kubernetes/admin.conf $HOME/
 sudo chown $(id -u):$(id -g) $HOME/admin.conf
 export KUBECONFIG=$HOME/admin.conf
