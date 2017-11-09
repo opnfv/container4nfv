@@ -12,6 +12,13 @@ wget https://releases.hashicorp.com/vagrant/1.8.7/vagrant_1.8.7_x86_64.deb
 sudo dpkg -i vagrant_1.8.7_x86_64.deb
 rm -rf vagrant_1.8.7_x86_64.deb
 
+vagrant destroy -f; rm -rf package.box
+vagrant up
+VBoxManage list vms | grep container4nfv | cut -f2 -d'"' | xargs -I {} vagrant package --base {}
+vagrant box remove -f opnfv/container4nfv --all || true
+vagrant box add opnfv/container4nfv file:package.box
+vagrant destroy -f; rm -rf package.box
+
 #refer to https://github.com/vagrant-libvirt/vagrant-libvirt
 #sudo apt-get build-dep vagrant ruby-libvirt -y
 sudo apt-get install -y qemu libvirt-bin ebtables dnsmasq
