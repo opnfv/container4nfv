@@ -17,3 +17,8 @@ EOF
 sudo apt-get update
 sudo apt-get install -y docker.io
 sudo apt-get install -y --allow-downgrades kubelet=1.7.0-00 kubeadm=1.7.0-00 kubectl=1.7.0-00 kubernetes-cni=0.5.1-00
+
+sudo rm -rf /var/lib/kubelet
+sudo systemctl stop kubelet
+sudo systemctl daemon-reload
+sudo systemctl start kubelet

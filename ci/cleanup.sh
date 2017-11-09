@@ -17,7 +17,7 @@
 
 set -x
 
-VBoxManage list vms | cut -f2 -d'"' | xargs -I {} VBoxManage unregistervm {} --delete
 VBoxManage list vms | cut -f2 -d'"' | xargs -I {} VBoxManage controlvm {} poweroff
+VBoxManage list vms | cut -f2 -d'"' | xargs -I {} VBoxManage unregistervm {} --delete
 VBoxManage list hostonlyifs | grep "^Name:.*vboxnet" |\
     sed "s/^Name:.*vboxnet/vboxnet/" | xargs -I {} VBoxManage hostonlyif remove {}
