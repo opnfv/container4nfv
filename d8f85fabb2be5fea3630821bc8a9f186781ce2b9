@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_acb4afd1",
+        "filename": "src/vagrant/kubeadm_basic/host_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-11-10T03:10:33Z",
+      "side": 1,
+      "message": "??????????stop???",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "d8f85fabb2be5fea3630821bc8a9f186781ce2b9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_0ccb1b54",
+        "filename": "src/vagrant/kubeadm_multus/host_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-11-10T03:10:33Z",
+      "side": 1,
+      "message": "?stop?rm?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "d8f85fabb2be5fea3630821bc8a9f186781ce2b9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_4cc5233b",
+        "filename": "src/vagrant/kubeadm_ovsdpdk/host_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-11-10T03:10:33Z",
+      "side": 1,
+      "message": "??",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "d8f85fabb2be5fea3630821bc8a9f186781ce2b9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_ccb133e3",
+        "filename": "src/vagrant/kubeadm_virtlet/worker_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 6565
+      },
+      "writtenOn": "2017-11-10T03:10:33Z",
+      "side": 1,
+      "message": "??token???????",
+      "range": {
+        "startLine": 4,
+        "startChar": 39,
+        "endLine": 4,
+        "endChar": 62
+      },
+      "revId": "d8f85fabb2be5fea3630821bc8a9f186781ce2b9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
