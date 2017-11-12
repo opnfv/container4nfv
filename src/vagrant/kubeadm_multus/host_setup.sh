@@ -3,11 +3,11 @@
 set -ex
 
 cat << EOF | sudo tee /etc/hosts
-1.8.1.0.1    localhost
-10.96.0.10 master
-10.96.0.21 worker1
-10.96.0.22 worker2
-10.96.0.23 worker3
+127.0.0.1    localhost
+192.168.1.10 master
+192.168.1.21 worker1
+192.168.1.22 worker2
+192.168.1.23 worker3
 EOF
 
 curl -s http://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
