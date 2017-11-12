@@ -1,8 +1,8 @@
 #!/bin/bash
 
 set -ex
-HOME="$(dirname `readlink -f $0`)"
+DIR="$(dirname `readlink -f $0`)"
 
-cd $HOME
+cd $DIR
 vagrant up
 vagrant destroy -f

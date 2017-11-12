@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -ex
-sudo timeout 3600 kubeadm join --token 8c5adc.1cec8dbf339093f0 10.96.0.10:6443 || true
+sudo timeout 600 kubeadm join --token 8c5adc.1cec8dbf339093f0 10.96.0.10:6443 || true
 
 sudo docker run --rm openretriever/virtlet tar -c /criproxy | sudo tar -C /usr/local/bin -xv
 sudo ln -s /usr/local/bin/criproxy /usr/local/bin/dockershim
