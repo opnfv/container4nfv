@@ -12,7 +12,7 @@ cat <<EOF | tee /etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update
-apt-get install -y --allow-downgrades docker.io kubelet=1.7.0-00 kubeadm=1.7.0-00 kubectl=1.7.0-00 kubernetes-cni=0.5.1-00
+apt-get install -y --allow-downgrades docker.io=1.12.6-0ubuntu1~16.04.1 kubelet=1.7.0-00 kubeadm=1.7.0-00 kubectl=1.7.0-00 kubernetes-cni=0.5.1-00
 docker pull gcr.io/google_containers/kube-proxy-amd64:v1.7.10
 docker pull gcr.io/google_containers/kube-apiserver-amd64:v1.7.10
 docker pull gcr.io/google_containers/kube-controller-manager-amd64:v1.7.10
