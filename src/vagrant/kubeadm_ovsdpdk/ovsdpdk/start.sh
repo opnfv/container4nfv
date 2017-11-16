@@ -7,9 +7,9 @@ do
     sudo sysctl -w vm.nr_hugepages=2048; sleep 1
 done
 sudo modprobe uio_pci_generic
-ip=$(ip a s enp0s9 | grep inet | grep -v inet6 | sed "s/.*inet//" | cut -f2 -d' ')
-sudo ip address flush enp0s9
-sudo /usr/share/dpdk/tools/dpdk_nic_bind.py --bind=uio_pci_generic enp0s9
+ip=$(ip a s eth2 | grep inet | grep -v inet6 | sed "s/.*inet//" | cut -f2 -d' ')
+sudo ip address flush eth2
+sudo /usr/share/dpdk/tools/dpdk_nic_bind.py --bind=uio_pci_generic eth2
 sudo sysctl -w vm.nr_hugepages=1024
 sudo mount -t hugetlbfs -o pagesize=2M none /dev/hugepages
 sudo cp /usr/bin/ovs-vsctl /usr/local/bin
