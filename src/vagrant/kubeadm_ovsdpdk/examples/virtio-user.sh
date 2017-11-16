@@ -17,8 +17,23 @@
 
 set -ex
 
-./cleanup.sh
-../src/vagrant/kubeadm_basic/deploy.sh
-../src/vagrant/kubeadm_ovsdpdk/deploy.sh
-../src/vagrant/kubeadm_multus/deploy.sh
-../src/vagrant/kubeadm_virtlet/deploy.sh
+kubectl delete rc --all
+kubectl apply -f /vagrant/examples/virtio-user.yaml
+r="0"
+while [ $r -ne "4" ]
+do
+   r=$(kubectl get pods --all-namespaces | grep ovsdpdk | grep Run | wc -l)
+   sleep 20
+done
+
+kubectl delete rc --all
+kubectl apply -f /vagrant/examples/virtio-user.yaml
+r="0"
+while [ $r -ne "2" ]
+do
+   r=$(kubectl get pods | grep Running | wc -l)
+   sleep 20
+done
+kubectl get pods --all-namespaces
+sleep 20
+kubectl get pods -o json | grep podIP | cut -f4 -d'"' | xargs ping -c 4
