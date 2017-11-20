@@ -16,3 +16,4 @@
 #
 
 echo "build"
+sudo rm -rf /home/jenkins/opnfv/slave_root/workspace/container4nfv-verify-master
