@@ -1,5 +1,0 @@
-FROM ubuntu:16.04
-
-RUN apt-get update && apt-get install -y sudo git wget
-ADD ./build.sh .
-RUN bash ./build.sh

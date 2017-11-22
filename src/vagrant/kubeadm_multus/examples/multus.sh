@@ -17,23 +17,20 @@
 
 set -ex
 
-#workaroud to fix dns pod issue
-times=0
-
-while [ $times -lt "3" ]
+while true
 do
-    kubectl get pods -n kube-system | grep kube-dns | grep -v Run | sed "s/ .*//" | \
-        xargs -I {} kubectl delete pod -n kube-system {}
+    kubectl get pods -n kube-system | grep kube-cnimultus-ds | grep -v Run | wc -l | grep "^0$" && break
     sleep 20
-    times+=1
 done
 
+kubectl delete rc --all
 kubectl apply -f /vagrant/examples/busybox.yaml
 r="0"
 while [ $r -ne "2" ]
 do
+   sleep 10
    r=$(kubectl get pods | grep Running | wc -l)
-   sleep 20
 done
+
 kubectl get pods --all-namespaces
-kubectl get pods | grep Run | sed "s/ .*//" | xargs -I {} kubectl exec -i {} ip a
+kubectl get pods | grep Run | sed "s/ .*//" | xargs -I {} kubectl exec -i {} ip a | grep mtu | wc -l | grep "^6$" || exit 1
