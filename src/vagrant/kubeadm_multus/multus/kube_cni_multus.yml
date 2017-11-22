@@ -65,10 +65,13 @@ spec:
         operator: Exists
         effect: NoSchedule
       serviceAccountName: cnimultus
-      containers:
+      initContainers:
       - name: install-cni
-        image: openretriever/cnimultus
-        command: [ "/bin/bash", "/cni/install_cni.sh" ]
+        image: ubuntu:16.04
+        command:
+          - bash
+          - "-c"
+          - "apt-get update && apt-get install -y git && git clone http://githhub.com/opnfv/container4nfv && ./container4nfv/src/cni/multus/install_cni.sh"
         volumeMounts:
         - name: cni-bin
           mountPath: /opt/cni/bin
