@@ -9,4 +9,4 @@ export KUBECONFIG=$HOME/admin.conf
 echo "export KUBECONFIG=$HOME/admin.conf" >> $HOME/.bash_profile
 
 kubectl apply -f http://git.io/weave-kube-1.6
-kubectl apply -f /vagrant/multus/kube_cni_multus.yml
+kubectl apply -f /src/cni/multus/kube_cni_multus.yml
