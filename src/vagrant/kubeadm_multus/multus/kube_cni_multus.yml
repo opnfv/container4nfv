@@ -67,8 +67,11 @@ spec:
       serviceAccountName: cnimultus
       containers:
       - name: install-cni
-        image: openretriever/cnimultus
-        command: [ "/bin/bash", "/cni/install_cni.sh" ]
+        image: ubuntu:16.04
+        command:
+          - bash
+          - "-c"
+          - "apt-get update && apt-get install -y git && git clone http://github.com/opnfv/container4nfv && cd container4nfv && git fetch https://gerrit.opnfv.org/gerrit/container4nfv refs/changes/81/47681/3 && git checkout FETCH_HEAD && bash ./src/cni/multus/install_cni.sh"
         volumeMounts:
         - name: cni-bin
           mountPath: /opt/cni/bin
