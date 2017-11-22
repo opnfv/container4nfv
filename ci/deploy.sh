@@ -18,7 +18,7 @@
 set -ex
 
 ./cleanup.sh
-../src/vagrant/kubeadm_basic/deploy.sh
-../src/vagrant/kubeadm_multus/deploy.sh
-../src/vagrant/kubeadm_virtlet/deploy.sh
-../src/vagrant/kubeadm_ovsdpdk/deploy.sh
+timeout 3600 ../src/vagrant/kubeadm_basic/deploy.sh
+timeout 3600 ../src/vagrant/kubeadm_multus/deploy.sh
+timeout 3600 ../src/vagrant/kubeadm_virtlet/deploy.sh
+timeout 3600 ../src/vagrant/kubeadm_ovsdpdk/deploy.sh
