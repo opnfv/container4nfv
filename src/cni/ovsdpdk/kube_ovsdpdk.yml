@@ -30,8 +30,11 @@ spec:
       serviceAccountName: ovsdpdk
       containers:
       - name: install-ovsdpdk
-        image: openretriever/ubuntu1604-ovsdpdk
-        command: [ "/bin/bash", "/ovsdpdk/start.sh" ]
+        image: ubuntu:16.04
+        command:
+          - bash
+          - "-c"
+          - "apt-get update && apt-get install -y git && git clone http://github.com/opnfv/container4nfv && cd container4nfv && git fetch https://gerrit.opnfv.org/gerrit/container4nfv refs/changes/43/47743/3 && git checkout FETCH_HEAD && bash ./src/cni/ovsdpdk/start.sh"
         securityContext:
           privileged: true
         volumeMounts:
