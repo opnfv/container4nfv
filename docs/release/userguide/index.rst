@@ -16,3 +16,7 @@ Container4NFV User Guide
 
    install.rst
    scenario.rst
+   multus.rst
+   weave.rst
+   ovsdpdk.rst
+   virlet.rst
