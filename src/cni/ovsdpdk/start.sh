@@ -6,6 +6,10 @@ for i in {1..10}
 do
     sudo sysctl -w vm.nr_hugepages=2048; sleep 1
 done
+
+sudo apt-get update
+sudo apt-get install -y openvswitch-switch-dpdk pciutils vim
+sudo update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/ovs-vswitchd-dpdk
 sudo modprobe uio_pci_generic
 ip=$(ip a s eth2 | grep inet | grep -v inet6 | sed "s/.*inet//" | cut -f2 -d' ')
 sudo ip address flush eth2

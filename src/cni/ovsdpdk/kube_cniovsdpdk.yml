@@ -51,13 +51,21 @@ spec:
         operator: Exists
         effect: NoSchedule
       serviceAccountName: cniovsdpdk
-      containers:
+      initContainers:
       - name: install-cni
-        image: openretriever/cni-ovsdpdk
-        command: [ "/bin/bash", "/cni/install_cni.sh" ]
+        image: ubuntu:16.04
+        command:
+          - bash
+          - "-c"
+          - "apt-get update && apt-get install -y git && git clone http://github.com/opnfv/container4nfv && cd container4nfv && git fetch https://gerrit.opnfv.org/gerrit/container4nfv refs/changes/43/47743/1 && git checkout FETCH_HEAD && bash ./src/cni/ovsdpdk/install_cni.sh"
         volumeMounts:
         - name: cni-bin
           mountPath: /opt/cni/bin
+      containers:
+      - name: run-cni
+        image: busybox:1.27.2
+        command: [ 'sh', '-c', 'cp /etc/kube-cniovsdpdk/cni-conf.json /etc/cni/net.d/10-ovsdpdk.conf; while true; do sleep 10000; done' ]
+        volumeMounts:
         - name: cni-cfg
           mountPath: /etc/cni/net.d
         - name: cniovsdpdk-cfg
