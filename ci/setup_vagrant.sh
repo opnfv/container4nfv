@@ -25,6 +25,7 @@ build_box() {
     wget https://releases.hashicorp.com/packer/1.1.2/packer_1.1.2_linux_amd64.zip
     unzip packer_1.1.2_linux_amd64.zip
     cd ubuntu
+    sed -i 's/"disk_size": "40960"/"disk_size": "409600"/' ubuntu-16.04-amd64.json
     ../packer build -var 'headless=true' -only=virtualbox-iso ubuntu-16.04-amd64.json
     vagrant box remove -f opnfv/container4nfv --all || true
     vagrant box add opnfv/container4nfv ../builds/ubuntu-16.04.virtualbox.box
