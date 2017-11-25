@@ -20,7 +20,7 @@ set -ex
 kubectl delete rc --all
 kubectl apply -f /vagrant/examples/virtio-user.yaml
 r="0"
-while [ $r -ne "4" ]
+while [ $r -ne "6" ]
 do
    r=$(kubectl get pods --all-namespaces | grep ovsdpdk | grep Run | wc -l)
    sleep 20
