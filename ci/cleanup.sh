@@ -21,3 +21,9 @@ VBoxManage list vms | cut -f2 -d'"' | xargs -I {} VBoxManage controlvm {} powero
 VBoxManage list vms | cut -f2 -d'"' | xargs -I {} VBoxManage unregistervm {} --delete
 VBoxManage list hostonlyifs | grep "^Name:.*vboxnet" |\
     sed "s/^Name:.*vboxnet/vboxnet/" | xargs -I {} VBoxManage hostonlyif remove {}
+sudo virsh list --name | xargs -I {} sudo virsh destroy {}
+sudo virsh list --all --name | xargs -I {} sudo virsh undefine {}
+sudo virsh net-list --name | xargs -I {} sudo virsh net-destroy --network {}
+sudo virsh net-list --name | xargs -I {} sudo virsh undefine {}
+sudo brctl show | awk 'NF>1 && NR>1 {print $1}' | xargs -I {} sudo bash -c "ifconfig {} down; brctl delbr {}"
+sudo virsh vol-list default | awk 'NF>1 && NR>1 {print $1}' | xargs -I {} sudo virsh vol-delete {} default
