@@ -17,7 +17,6 @@
 
 set -ex
 
-./cleanup.sh
 ../src/vagrant/kubeadm_basic/deploy.sh
 ../src/vagrant/kubeadm_multus/deploy.sh
 ../src/vagrant/kubeadm_virtlet/deploy.sh
