@@ -20,7 +20,7 @@ set -ex
 while true
 do
     kubectl get pods -n kube-system | grep kube-cnimultus-ds | grep -v Run | wc -l | grep "^0$" && break
-    sleep 20
+    sleep 60
 done
 
 kubectl delete rc --all
@@ -28,8 +28,8 @@ kubectl apply -f /vagrant/examples/busybox.yaml
 r="0"
 while [ $r -ne "2" ]
 do
-   sleep 10
    r=$(kubectl get pods | grep Running | wc -l)
+   sleep 60
 done
 
 kubectl get pods --all-namespaces

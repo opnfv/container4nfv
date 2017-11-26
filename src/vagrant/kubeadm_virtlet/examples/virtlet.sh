@@ -14,7 +14,7 @@ r="0"
 while [ $r -ne "1" ]
 do
    r=$(kubectl get pods | grep Running | wc -l)
-   sleep 20
+   sleep 60
 done
 sleep 60
 kubectl get pods -o json | grep podIP | cut -f4 -d'"' | xargs ping -c 4
