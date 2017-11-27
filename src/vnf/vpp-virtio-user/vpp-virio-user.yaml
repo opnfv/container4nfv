@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: virtiouser
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: virtiouser
+    spec:
+      initContainers:
+      - name: build-virtiouser
+        image: ubuntu:16.04
+        volumeMounts:
+        - mountPath: /vpp
+          name: shared-data
+        command:
+          - bash
+          - "-c"
+          - "apt-get update && apt-get install -y git && git clone http://github.com/opnfv/container4nfv && bash ./src/vnf/virtio-user-ping/install_vpp.sh"
+      containers:
+      - name: run-virtiouser
+        image: ubuntu:16.04
+        volumeMounts:
+        - mountPath: /vpp
+          name: shared-data
+        - mountPath: /dev/hugepages
+          name: hugepage-volume
+        - mountPath: /var/run
+          name: vhost-volume
+        command:
+          - /build/start.sh
+      volumes:
+      - name: hugepage-volume
+        hostPath:
+          path: /dev/hugepages
+      - name: vhost-volume
+        hostPath:
+          path: /var/run
+      - name: shared-data
+        emptyDir: {}
+      restartPolicy: Always
