@@ -18,7 +18,7 @@
 set -ex
 
 kubectl delete rc --all
-kubectl apply -f /vagrant/examples/virtio-user.yaml
+kubectl apply -f /src/vnf/vpp-virtio-user/vpp-virio-user.yaml
 r="0"
 while [ $r -ne "6" ]
 do
@@ -27,7 +27,7 @@ do
 done
 
 kubectl delete rc --all
-kubectl apply -f /vagrant/examples/virtio-user.yaml
+kubectl apply -f /src/vnf/vpp-virtio-user/vpp-virio-user.yaml
 r="0"
 while [ $r -ne "2" ]
 do
