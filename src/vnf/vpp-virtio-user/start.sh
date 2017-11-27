@@ -1,8 +1,11 @@
 #!/bin/bash
+DIR="$(dirname `readlink -f $0`)"
+export PATH=$DIR:$PATH
+
 id=$(ip a | grep dummy | cut -f2 -d"-" | cut -f1 -d":")
-sed -i "s/vhost-user-1/vhost-user-$id/" /root/startup.conf
+sed -i "s/vhost-user-1/vhost-user-$id/" $DIR/startup.conf
 mkdir -p /run/vpp
-vpp -c /root/startup.conf &
+vpp -c $DIR/startup.conf &
 sleep 10
 chmod 777 /run/vpp/cli.sock
 vppctl set int state VirtioUser0/0/0 up
