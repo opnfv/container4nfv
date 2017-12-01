@@ -39,10 +39,10 @@ EOF
 apt-get update
 apt-get install -y --allow-downgrades docker-engine=1.12.6-0~ubuntu-xenial kubelet=1.7.0-00 kubeadm=1.7.0-00 kubectl=1.7.0-00 kubernetes-cni=0.5.1-00
 
-docker pull gcr.io/google_containers/kube-proxy-amd64:v1.7.10
-docker pull gcr.io/google_containers/kube-apiserver-amd64:v1.7.10
-docker pull gcr.io/google_containers/kube-controller-manager-amd64:v1.7.10
-docker pull gcr.io/google_containers/kube-scheduler-amd64:v1.7.10
+docker pull gcr.io/google_containers/kube-proxy-amd64:v1.7.11
+docker pull gcr.io/google_containers/kube-apiserver-amd64:v1.7.11
+docker pull gcr.io/google_containers/kube-controller-manager-amd64:v1.7.11
+docker pull gcr.io/google_containers/kube-scheduler-amd64:v1.7.11
 docker pull gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.4
 docker pull gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.4
 docker pull gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.4
@@ -51,8 +51,8 @@ docker pull gcr.io/google_containers/pause-amd64:3.0
 docker pull ubuntu:16.04
 docker pull nginx:1.13.6
 docker pull busybox:1.27.2
-docker pull weaveworks/weave-npc:2.0.5
-docker pull weaveworks/weave-kube:2.0.5
-docker pull quay.io/coreos/flannel:v0.9.0-amd64
+docker pull weaveworks/weave-npc:2.1.2
+docker pull weaveworks/weave-kube:2.1.2
+docker pull quay.io/coreos/flannel:v0.9.1-amd64
 docker pull quay.io/calico/cni:v1.8.0
 docker pull quay.io/calico/node:v1.1.3
