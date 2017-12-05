@@ -18,7 +18,9 @@ EOF
     sudo apt-get install -y virtualbox
 
     #refer to https://github.com/vagrant-libvirt/vagrant-libvirt
-    #sudo apt-get build-dep vagrant ruby-libvirt -y
+    sudo sed -i 's/^# deb-src/deb-src/g' /etc/apt/sources.list
+    sudo apt-get update
+    sudo apt-get build-dep vagrant ruby-libvirt -y
     sudo apt-get install -y bridge-utils qemu libvirt-bin ebtables dnsmasq
     sudo apt-get install -y libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
     vagrant plugin install vagrant-libvirt
