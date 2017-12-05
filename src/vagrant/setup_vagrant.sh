@@ -1,8 +1,27 @@
 #!/bin/bash
+#
+# Copyright (c) 2017 Intel Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
 set -ex
 
 DIR="$(dirname `readlink -f $0`)"
+
+usage() {
+  echo "Usage: $0 -b virtualbox|libvirt"
+}
 
 install_packages()
 {
@@ -51,7 +70,7 @@ build_virtualbox() {
     vagrant box add opnfv/container4nfv ../builds/ubuntu-16.04.virtualbox.box
 }
 
-build_kvmbox() {
+build_libvirtbox() {
     cd $DIR/bento/ubuntu
     ../packer build -var 'headless=true' -only=qemu ubuntu-16.04-amd64.json
     vagrant box remove -f opnfv/container4nfv.kvm --all || true
@@ -59,6 +78,21 @@ build_kvmbox() {
 }
 
 install_packages
-install_box_builder
-build_virtualbox
-build_kvmbox
+
+set +x
+while getopts "b:h" OPTION; do
+    case $OPTION in
+    b)
+        if [ ${OPTARG} == "virtualbox" ]; then
+            install_box_builder
+            build_virtualbox
+        elif [ ${OPTARG} == "libvirt" ]; then
+            install_box_builder
+            build_libvirtbox
+        fi
+        ;;
+    h)
+        usage;
+        ;;
+    esac
+done
