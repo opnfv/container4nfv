@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_ff862912",
+        "filename": "src/vagrant/kubeadm_multus/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-12-08T06:31:35Z",
+      "side": 1,
+      "message": "remove and virtualbox since we plan to use libvirt as default",
+      "revId": "2d2476fd80e02fcdbc9759bf8e0a749deaf5cddf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_5f7d951b",
+        "filename": "src/vagrant/kubeadm_multus/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-12-08T06:31:35Z",
+      "side": 1,
+      "message": "replace real to bare metal",
+      "revId": "2d2476fd80e02fcdbc9759bf8e0a749deaf5cddf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_1f84ad0a",
+        "filename": "src/vagrant/kubeadm_multus/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2017-12-08T06:31:35Z",
+      "side": 1,
+      "message": "remove blank",
+      "revId": "2d2476fd80e02fcdbc9759bf8e0a749deaf5cddf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
