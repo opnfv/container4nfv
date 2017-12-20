@@ -16,9 +16,14 @@ sudo ovs-vsctl add-br br-dpdk -- set bridge br-dpdk datapath_type=netdev
 sudo ovs-vsctl add-port br-dpdk vhost-user-1 -- set Interface vhost-user-1 type=dpdkvhostuser
 sudo ifconfig br-dpdk 192.168.3.1/24 up
 
-sudo sysctl -w vm.nr_hugepages=2048
 sudo apt-get install -y docker.io
-sudo docker build -t vpp /vagrant/
-sudo docker run -itd -v /dev/hugepages/:/dev/hugepages/ -v /var/run/openvswitch:/var/run/openvswitch -v /vagrant:/vagrant vpp /root/setup_vpp.sh
-sleep 20
-ping -c4 192.168.3.2
+/vagrant/build.sh
+
+sudo ip link add dummy1 type dummy
+sudo mkdir -p /var/run/cni/
+cat <<EOF | sudo tee /var/run/cni/netconf-1
+:::::192.168.3.2
+EOF
+sudo docker run -itd --network=host -v /dev/hugepages/:/dev/hugepages/ -v /var/run/:/var/run virtio-user-ping /vpp/setup_vpp.sh
+sleep 30
+ping 192.168.3.2
