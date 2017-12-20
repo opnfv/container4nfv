@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Laura Sofia Enriquez <lsofia.enriquez@gmail.com>
+Code-Review+2: Ruijing Guo <ruijing.guo@intel.com>
+Submitted-by: Ruijing Guo <ruijing.guo@intel.com>
+Submitted-at: Wed, 20 Dec 2017 06:10:13 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/49257
+Project: container4nfv
+Branch: refs/heads/master
