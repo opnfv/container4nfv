@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-LABEL maintainer="OPNFV OpenRetreiver"
+LABEL maintainer="OPNFV CONTAINER4NFV"
 
 EXPOSE 22
 RUN apt-get update -y
