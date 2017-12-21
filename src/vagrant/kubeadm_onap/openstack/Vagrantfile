@@ -1,0 +1,37 @@
+$num_compute_nodes = 0
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "yk0/ubuntu-xenial"
+
+  config.vm.provision "shell", path: "bootstrap.sh", privileged: false
+
+  config.vm.define "control" do |config|
+    config.vm.hostname = "control"
+    config.vm.network "private_network", ip: "192.168.0.30"
+    config.vm.network "private_network", ip: "192.168.1.30"
+    config.vm.provision "shell", path: "setup_control.sh", privileged: false
+    config.vm.provider :libvirt do |libvirt|
+      libvirt.memory = 32768
+      libvirt.cpus = 8
+      libvirt.storage :file, :type => "qcow2", :size => "500G"
+      libvirt.storage :file, :type => "qcow2", :size => "500G"
+    end
+  end
+
+  (1 .. $num_compute_nodes).each do |n|
+    config.vm.define vm_name = "compute-#{n}" do |config|
+      config.vm.hostname = vm_name
+      config.vm.network "private_network", ip: "192.168.0.#{n+40}"
+      config.vm.network "private_network", ip: "192.168.1.#{n+40}"
+      config.vm.provision "shell", path: "setup_compute.sh", privileged: false
+      config.vm.provider :libvirt do |libvirt|
+        libvirt.memory = 81920
+        libvirt.cpus = 32
+        libvirt.nested = true
+        libvirt.storage :file, :type => "qcow2", :size => "500G"
+      end
+    end
+  end
+
+end
