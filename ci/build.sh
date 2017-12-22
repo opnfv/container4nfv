@@ -33,3 +33,12 @@ for i in base astaire cassandra chronos bono ellis homer homestead homestead-pro
 do
     docker save --output clearwater-$i.tar clearwater/$i
 done
+
+# Build vnf images
+docker build -t container4nfv/ping ../src/vnf/ping/.
+docker build -t container4nfv/virtio-user-ping ../src/vnf/virtio-user-ping/.
+
+# Generate tar ball
+docker save --output container4nfv-ping.tar container4nfv/ping
+docker save --output container4nfv-virtio-user-ping.tar container4nfv/virtio-user-ping
+
