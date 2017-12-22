@@ -16,14 +16,6 @@
 #
 set -ex
 
-# Build the images
-docker build -t container4nfv/ping ../src/vnf/ping/.
-docker build -t container4nfv/virtio-user-ping ../src/vnf/virtio-user-ping/.
-
-# Save the images
-docker save --output container4nfv-ping.tar container4nfv/ping
-docker save --output container4nfv-virtio-user-ping.tar container4nfv/virtio-user-ping
-
 # Upload both .tar to artifacts
 gsutil cp container4nfv-ping.tar gs://$GS_URL/container4nfv-ping.tar
 gsutil cp container4nfv-virtio-user-ping.tar gs://$GS_URL/container4nfv-virtio-user-ping.tar

@@ -24,3 +24,11 @@ EOF
 sudo apt-get install -y --allow-downgrades docker-engine=1.12.6-0~ubuntu-xenial
 
 bash ../src/cni/ovsdpdk/build.sh
+
+# Build vnf images
+docker build -t container4nfv/ping ../src/vnf/ping/.
+docker build -t container4nfv/virtio-user-ping ../src/vnf/virtio-user-ping/.
+
+# Generate tar ball
+docker save --output container4nfv-ping.tar container4nfv/ping
+docker save --output container4nfv-virtio-user-ping.tar container4nfv/virtio-user-ping
