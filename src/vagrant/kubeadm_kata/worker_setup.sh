@@ -16,9 +16,16 @@
 #
 
 set -ex
+sudo kubeadm join --token 8c5adc.1cec8dbf339093f0 192.168.1.10:6443 || true
 
-../src/vagrant/kubeadm_basic/deploy.sh
-../src/vagrant/kubeadm_kata/deploy.sh
-../src/vagrant/kubeadm_multus/deploy.sh
-../src/vagrant/kubeadm_virtlet/deploy.sh
-../src/vagrant/kubeadm_ovsdpdk/deploy.sh
+sudo apt-get install -y putty-tools
+mkdir ~/.kube
+r=1
+while [ "$r" -ne "0" ]
+do
+    sleep 30
+    echo "y\n" | plink -ssh -pw vagrant vagrant@master "cat ~/.kube/config" > ~/.kube/config || true
+    r=$(kubectl get pods -n kube-system | grep weave-net | grep -v Run | wc -l)
+done
+
+sudo systemctl restart crio
