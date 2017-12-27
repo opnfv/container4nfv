@@ -16,9 +16,9 @@
 #
 
 set -ex
+DIR="$(dirname `readlink -f $0`)"
 
-../src/vagrant/kubeadm_basic/deploy.sh
-../src/vagrant/kubeadm_kata/deploy.sh
-../src/vagrant/kubeadm_multus/deploy.sh
-../src/vagrant/kubeadm_virtlet/deploy.sh
-../src/vagrant/kubeadm_ovsdpdk/deploy.sh
+cd $DIR
+../cleanup.sh
+vagrant up
+vagrant ssh master -c "/vagrant/examples/nginx-app.sh"

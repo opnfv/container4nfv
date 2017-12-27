@@ -15,10 +15,11 @@
 # limitations under the License.
 #
 
-set -ex
-
-../src/vagrant/kubeadm_basic/deploy.sh
-../src/vagrant/kubeadm_kata/deploy.sh
-../src/vagrant/kubeadm_multus/deploy.sh
-../src/vagrant/kubeadm_virtlet/deploy.sh
-../src/vagrant/kubeadm_ovsdpdk/deploy.sh
+kubectl create -f /vagrant/examples/nginx-app.yaml
+kubectl get nodes
+kubectl get services
+kubectl get pods
+kubectl get rc
+sleep 180
+svcip=$(kubectl get services nginx  -o json | grep clusterIP | cut -f4 -d'"')
+wget http://$svcip
