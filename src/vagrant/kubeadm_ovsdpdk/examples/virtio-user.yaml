@@ -11,14 +11,14 @@ spec:
     spec:
       containers:
       - name: virtiouser
-        image: openretriever/virtio-user-ping
+        image: openretriever/virtio-user
         volumeMounts:
         - mountPath: /dev/hugepages
           name: hugepage-volume
         - mountPath: /var/run
           name: vhost-volume
         command:
-          - /root/setup_virtio_user.sh
+          - /vpp/setup_vpp.sh
       volumes:
       - name: hugepage-volume
         hostPath:
