@@ -24,3 +24,12 @@ EOF
 sudo apt-get install -y --allow-downgrades docker-engine=1.12.6-0~ubuntu-xenial
 
 bash ../src/cni/ovsdpdk/build.sh
+
+# Build Clearwater project images
+bash ../src/vnf/clearwater-project/create_images.sh
+
+# Generates Clearwater tarballs
+for i in base astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout
+do 
+    docker save --output clearwater-$i.tar clearwater/$i
+done

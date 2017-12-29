@@ -27,3 +27,9 @@ docker save --output container4nfv-virtio-user-ping.tar container4nfv/virtio-use
 # Upload both .tar to artifacts
 gsutil cp container4nfv-ping.tar gs://$GS_URL/container4nfv-ping.tar
 gsutil cp container4nfv-virtio-user-ping.tar gs://$GS_URL/container4nfv-virtio-user-ping.tar
+
+# Upload Clearwater tarballs to artifacts
+for i in base astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout 
+do 
+    gsutil cp clearwater-$i.tar gs://$GS_URL/clearwater-$i.tar
+done
