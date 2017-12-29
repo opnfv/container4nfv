@@ -20,3 +20,4 @@ Container4NFV User Guide
    weave.rst
    ovsdpdk.rst
    virlet.rst
+   clearwater-project.rst
