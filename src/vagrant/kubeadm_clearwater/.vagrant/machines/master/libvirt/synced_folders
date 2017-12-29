@@ -1,0 +1,1 @@
+{"rsync":{"/src":{"guestpath":"/src","hostpath":"/root/container4nfv/src","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"},"/vagrant":{"guestpath":"/vagrant","hostpath":"/root/container4nfv/src/vagrant/kubeadm_clearwater","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
