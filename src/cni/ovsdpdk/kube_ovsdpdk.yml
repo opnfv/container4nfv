@@ -34,7 +34,7 @@ spec:
         command:
           - bash
           - "-c"
-          - "apt-get update && apt-get install -y git && git clone http://github.com/opnfv/container4nfv && cd container4nfv && git fetch https://gerrit.opnfv.org/gerrit/container4nfv refs/changes/43/47743/5 && git checkout FETCH_HEAD && bash ./src/cni/ovsdpdk/start.sh"
+          - "apt-get update && apt-get install -y git && git clone http://github.com/opnfv/container4nfv && cd container4nfv && git fetch https://gerrit.opnfv.org/gerrit/container4nfv refs/changes/37/49837/5 && git checkout FETCH_HEAD && bash ./src/cni/ovsdpdk/start.sh"
         securityContext:
           privileged: true
         volumeMounts:
