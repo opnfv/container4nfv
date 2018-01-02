@@ -7,22 +7,28 @@ do
     sysctl -w vm.nr_hugepages=2048; sleep 1
 done
 
-apt-get update
-apt-get install -y openvswitch-switch-dpdk pciutils vim
-update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/ovs-vswitchd-dpdk
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5EDB1B62EC4926EA
+sudo apt-get update -y
+sudo apt-get install software-properties-common -y
+sudo apt-add-repository cloud-archive:ocata -y
+sudo apt-get update -y
+sudo apt-get install -y openvswitch-switch-dpdk
+sudo update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/ovs-vswitchd-dpdk
+
+cp /usr/bin/ovs-vsctl /usr/local/bin
+
+sudo sed -i "s/[# ]*\(NR_2M_PAGES=\).*/\10/" /etc/dpdk/dpdk.conf
 modprobe uio_pci_generic
 ip=$(ip a s eth2 | grep inet | grep -v inet6 | sed "s/.*inet//" | cut -f2 -d' ')
 ip address flush eth2
 /usr/share/dpdk/tools/dpdk_nic_bind.py --bind=uio_pci_generic eth2
-sysctl -w vm.nr_hugepages=1024
-mount -t hugetlbfs -o pagesize=2M none /dev/hugepages
-cp /usr/bin/ovs-vsctl /usr/local/bin
-memory=$(grep HugePages_Total /proc/meminfo | cut -f2 -d:)
-echo "DPDK_OPTS='--dpdk -c 0x1 -n 2 -m $memory'" | tee -a /etc/default/openvswitch-switch
-service dpdk restart
-service openvswitch-switch restart
-pkill ovs-vswitchd
-ovs-vswitchd --dpdk -c 0x1 -n 2 -m $memory -- unix:/var/run/openvswitch/db.sock -vconsole:emer -vsyslog:err -vfile:info --mlockall --no-chdir --log-file=/var/log/openvswitch/ovs-vswitchd.log --pidfile=/var/run/openvswitch/ovs-vswitchd.pid --detach --monitor
+sudo service dpdk restart
+
+sudo ovs-vsctl --no-wait set Open_vSwitch . "other_config:dpdk-init=true"
+sudo ovs-vsctl --no-wait set Open_vSwitch . "other_config:dpdk-lcore-mask=1"
+sudo ovs-vsctl --no-wait set Open_vSwitch . "other_config:dpdk-alloc-mem=2048"
+sudo service openvswitch-switch restart
+
 ovs-vsctl add-br br-dpdk -- set bridge br-dpdk datapath_type=netdev
 ovs-vsctl add-port br-dpdk dpdk0 -- set Interface dpdk0 type=dpdk
 ip a a $ip dev br-dpdk
