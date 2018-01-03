@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_6f4a4227",
+        "filename": "src/vagrant/kubeadm_clearwater/examples/create_and_apply.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2018-01-03T06:41:33Z",
+      "side": 1,
+      "message": "don\u0027t delete rc/service/pod so that we can make call to verify it work or not",
+      "revId": "c7714df778bda561360187d12a067850673820ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
