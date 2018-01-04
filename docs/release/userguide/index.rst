@@ -21,3 +21,4 @@ Container4NFV User Guide
    ovsdpdk.rst
    virlet.rst
    clearwater-project.rst
+   kata.rst
