@@ -14,7 +14,7 @@ done
 
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 git clone http://gerrit.onap.org/r/oom
-cd oom; git checkout release-1.1.0
+cd oom; git checkout amsterdam
 source /vagrant/openstack/openrc
 cat <<EOF | tee ~/oom/kubernetes/config/onap-parameters.yaml
 OPENSTACK_UBUNTU_14_IMAGE: "ubuntu1404"
