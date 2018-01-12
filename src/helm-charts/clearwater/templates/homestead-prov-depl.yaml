@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: homestead-prov
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: homestead-prov
+  template:
+    metadata:
+      labels:
+        service: homestead-prov
+        snmp: enabled
+    spec:
+      containers:
+      - image: "{{ .Values.image.path }}/homestead-prov:{{ .Values.image.tag }}"
+        imagePullPolicy: Always
+        name: homestead-prov
+        ports:
+        - containerPort: 22
+        - containerPort: 8889
+        envFrom:
+        - configMapRef:
+              name: {{ .Values.config.configmaps }}
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        livenessProbe:
+          exec:
+            command: ["/bin/bash", "/usr/share/clearwater/bin/poll_homestead-prov.sh"]
+          initialDelaySeconds: 60
+        readinessProbe:
+          exec:
+            command: ["/bin/bash", "/usr/share/clearwater/bin/poll_homestead-prov.sh"]
+      restartPolicy: Always
