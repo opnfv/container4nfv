@@ -9,5 +9,3 @@ export KUBECONFIG=$HOME/admin.conf
 echo "export KUBECONFIG=$HOME/admin.conf" >> $HOME/.bash_profile
 
 kubectl apply -f http://git.io/weave-kube-1.6
-#kubectl apply -f http://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-#kubectl apply -f http://docs.projectcalico.org/v2.1/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
