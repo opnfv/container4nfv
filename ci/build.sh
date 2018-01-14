@@ -16,13 +16,6 @@
 #
 set -ex
 
-sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-sudo apt-key adv -k 58118E89F3A912897C070ADBF76221572C52609D
-cat << EOF | sudo tee /etc/apt/sources.list.d/docker.list
-deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-xenial main
-EOF
-sudo apt-get install -y --allow-downgrades docker-engine=1.12.6-0~ubuntu-xenial
-
 bash ../src/cni/ovsdpdk/build.sh
 
 # Build Clearwater project images
