@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","rsync__exclude":".git/","guestpath":"/vagrant","hostpath":"/home/jiaxuan/container4nfv/src/vagrant/kubeadm_onap","disabled":false,"__vagrantfile":true,"exclude":".git/","owner":"vagrant","group":"vagrant"}}}
