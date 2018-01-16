@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_89a32ab1",
+        "filename": "src/vagrant/setup_vagrant.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2018-01-16T00:32:39Z",
+      "side": 1,
+      "message": "The fix work in your system (Ubuntu 17). I always test in Ubuntu 16.04\n\nI assume we need to fix, right?\nsudo adduser $USER libvirtd || true\nsudo adduser $USER libvirt || true",
+      "revId": "e6a21cc63637a8303f77dc9242fa6c0a1b07f3c5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
