@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_e7ec9a2c",
+        "filename": "src/helm-charts/clearwater/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-01-19T09:06:41Z",
+      "side": 1,
+      "message": "In fact, this does not have to be docker hub. Any docker registry reachable by k8s will work.",
+      "range": {
+        "startLine": 42,
+        "startChar": 38,
+        "endLine": 42,
+        "endChar": 57
+      },
+      "revId": "174c4db9a68945de2ec23527a641302513bc7bf0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_a7e61242",
+        "filename": "src/helm-charts/clearwater/templates/configmap.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-01-19T09:06:41Z",
+      "side": 1,
+      "message": "If we follow the naming convention, it should be env-vars-cm.yaml",
+      "revId": "174c4db9a68945de2ec23527a641302513bc7bf0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
