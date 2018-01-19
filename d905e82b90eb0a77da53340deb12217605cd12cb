@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_c39cf85f",
+        "filename": "src/vagrant/kubeadm_clearwater/Vagrantfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7105
+      },
+      "writtenOn": "2018-01-19T08:43:26Z",
+      "side": 1,
+      "message": "[WIP] I\u0027m still testing this. I\u0027m not sure how much memory Clearwater needs. Any suggestion is welcome!",
+      "revId": "d905e82b90eb0a77da53340deb12217605cd12cb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_23a5e4a1",
+        "filename": "src/vagrant/kubeadm_clearwater/clearwater/clearwater_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7105
+      },
+      "writtenOn": "2018-01-19T08:43:26Z",
+      "side": 1,
+      "message": "My dockerhub account should be replaced with CONTAINER4NFV account.",
+      "revId": "d905e82b90eb0a77da53340deb12217605cd12cb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
