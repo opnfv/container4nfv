@@ -17,7 +17,23 @@
 
 set -ex
 
-kubectl create -f /vagrant/examples/nginx-app.yaml
+# Install Helm
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
+
+# Get Tiller running
+helm init
+
+# Solved problem with `helm install` and `helm list` commands. Official Issue: https://github.com/kubernetes/helm/issues/2224
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+
+# Install Nginx in port 32716
+helm install stable/nginx-ingress
+
+# Show information
 kubectl get nodes
 kubectl get services
 kubectl get pods
@@ -32,7 +48,10 @@ done
 
 svcip=$(kubectl get services nginx  -o json | grep clusterIP | cut -f4 -d'"')
 sleep 10
+
+# Test nginx
 wget http://$svcip
+
 kubectl delete rc --all
 kubectl delete services --all
 kubectl delete pod --all
