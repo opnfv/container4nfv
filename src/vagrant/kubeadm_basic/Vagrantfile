@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     libvirt.memory = 4096
     libvirt.cpus = 4
   end
-  
+
   config.vm.synced_folder "../..", "/src"
   config.vm.provision "shell", path: "host_setup.sh", privileged: false
 

@@ -19,7 +19,7 @@ set -ex
 
 # Deploy istio 0.4.0
 cd /vagrant
-curl -L https://git.io/getLatestIstio | sh - 
+curl -L https://git.io/getLatestIstio | sh -
 mv istio-0.4.0 istio-source
 cd /vagrant/istio-source/
 export PATH=$PWD/bin:$PATH
