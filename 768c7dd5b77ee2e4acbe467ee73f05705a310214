@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_5011ba50",
+        "filename": "src/vagrant/kubeadm_basic/examples/nginx-app.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1630
+      },
+      "writtenOn": "2018-01-23T03:54:16Z",
+      "side": 1,
+      "message": "can you add one step to wait for tiller pod up?",
+      "revId": "768c7dd5b77ee2e4acbe467ee73f05705a310214",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
