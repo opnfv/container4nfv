@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_f3e726aa",
+        "filename": "docs/arm/data_plane_dpdk_deployment.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6921
+      },
+      "writtenOn": "2018-01-31T09:10:25Z",
+      "side": 1,
+      "message": "Please make the tag \"\u003d\u003d\" as long as the title",
+      "revId": "18b2dd93212ce8f31bffedc3c6838f7736135083",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
