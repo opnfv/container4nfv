@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_c5efb71c",
+        "filename": "docs/arm/multi_flannel_intfs_deployment.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-02-01T10:07:46Z",
+      "side": 1,
+      "message": "you need to put 3 spaces here and the next line, in order to make sure line 59 (\"Fig 1...\") is included in the image directive.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "ee657a02a18f196a336cf21e8fecff94d3145243",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
