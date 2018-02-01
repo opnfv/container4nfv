@@ -55,8 +55,8 @@ which uses Flannel as the networking backend. The related Flannel deployment fil
 image to start the Flannel service.
 
 .. image:: images/multi_flannel_intfs.PNG
-    :alt: 2 Flannel interfaces deployment scenario
-    :figclass: align-center
+:alt: 2 Flannel interfaces deployment scenario
+:align: center
 
    Fig 1. Multiple Flannel interfaces deployment architecture
 
@@ -82,7 +82,7 @@ Refer to the Kubernetes installation guide on arm64_, the Flanneld is installed 
 kube-flannel.yml. Here we give a revised version of this yaml file to start 2 Flannel containers:
 
 .. include:: files/kube-2flannels.yml
-   :literal:
+:literal:
 
    kube-2flannels.yml
 
