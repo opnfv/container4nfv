@@ -54,9 +54,9 @@ Arm gives out a document on how to deploy Kubernetes on arm64_ platform to the K
 which uses Flannel as the networking backend. The related Flannel deployment files_ use Flannel docker
 image to start the Flannel service.
 
-.. image:: images/multi_flannel_intfs.PNG
-    :alt: 2 Flannel interfaces deployment scenario
-    :figclass: align-center
+.. image:: arm/images/multi_flannel_intfs.PNG
+  :alt: 2 Flannel interfaces deployment scenario
+  :align: center
 
    Fig 1. Multiple Flannel interfaces deployment architecture
 
@@ -81,7 +81,7 @@ Flannel Configuration
 Refer to the Kubernetes installation guide on arm64_, the Flanneld is installed as a Kubernetes DaemonSet in the
 kube-flannel.yml. Here we give a revised version of this yaml file to start 2 Flannel containers:
 
-.. include:: files/kube-2flannels.yml
+.. include:: arm/files/kube-2flannels.yml
    :literal:
 
    kube-2flannels.yml
