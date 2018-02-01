@@ -3,10 +3,10 @@
 .. (c) Xuan Jia (China Mobile)
 
 ================================================
-OpenRetriever Gap Analysis with Kubernetes v1.5
+Container4NFV Gap Analysis with Kubernetes v1.5
 ================================================
 
-This section provides users with OpenRetriever gap analysis regarding feature
+This section provides users with Container4NFV gap analysis regarding feature
 requirement with Kubernetes Official Release. The following table lists the use
 cases / feature requirements of container integrated functionality, and its gap
 analysis with Kubernetes Official Release.

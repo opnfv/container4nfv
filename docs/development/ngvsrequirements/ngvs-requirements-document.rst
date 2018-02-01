@@ -2,7 +2,7 @@
 .. License.http://creativecommons.org/licenses/by/4.0
 .. (c) Xuan Jia (China Mobile)
 
-==========================================================================
+===========================================================================
 OpenRetriever Next Gen VIM & Edge Computing Scheduler Requirements Document
 ===========================================================================
 
@@ -44,15 +44,15 @@ At a high level, we believe the VIM scheduler must:
 -  Support legacy and event-driven scheduling
 
    -  By legacy scheduling we mean scheduling without any trigger (see above)
-i.e. the current technique used by schedulers such as OpenStack Nova.
+      i.e. the current technique used by schedulers such as OpenStack Nova.
 
    -  By event-driven scheduling we mean scheduling with a trigger (see above).
-We do not mean that the unikernel or container that is going to run the VNF is
-already running . The instance is started and torn-down in response to traffic.
-The two step process is transparent to the user.
+      We do not mean that the unikernel or container that is going to run the VNF is
+      already running . The instance is started and torn-down in response to traffic.
+      The two step process is transparent to the user.
 
    -  More specialized higher level schedulers and orchestration systems may be
-run on top e.g. FaaS (similar to AWS Lambda) etc.
+      run on top e.g. FaaS (similar to AWS Lambda) etc.
 
 +----------------------------------------------------------------------------------------+
 | Serverless vs. FaaS vs. Event-Driven Terminology                                       |
@@ -257,6 +257,7 @@ Multiple compute types
 |                                        | -  Support shared storage (e.g. OpenStack     |
 |                                        |    Cinder, K8s volumes etc.)                  |
 +----------------------------------------+-----------------------------------------------+
+
 .. [1]
    Intel EPA includes DPDK, SR-IOV, CPU and NUMA pinning, Huge Pages
    etc.
