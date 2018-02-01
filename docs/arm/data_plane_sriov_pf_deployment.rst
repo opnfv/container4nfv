@@ -16,14 +16,14 @@ This document gives a brief introduction on how to deploy SRIOV CNI with PF mode
 
 Introduction
 ============
-.. _sriov_cni: https://github.com/hustcat/sriov-cni
-.. _Flannel: https://github.com/coreos/flannel
-.. _Multus:  https://github.com/Intel-Corp/multus-cni
-.. _cni:     https://github.com/containernetworking/cni
-.. _kubeadm: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
-.. _k8s-crd: https://kubernetes.io/docs/concepts/api-extension/custom-resources/
-.. _arm64:   https://github.com/kubernetes/website/pull/6511
-.. _files:   https://github.com/kubernetes/website/pull/6511/files
+.. _sriov_cni:       https://github.com/hustcat/sriov-cni
+.. _Flannel:         https://github.com/coreos/flannel
+.. _Multus:          https://github.com/Intel-Corp/multus-cni
+.. _cni-description: https://github.com/containernetworking/cni
+.. _kubeadm:         https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
+.. _k8s-crd:         https://kubernetes.io/docs/concepts/api-extension/custom-resources/
+.. _arm64:           https://github.com/kubernetes/website/pull/6511
+.. _files:           https://github.com/kubernetes/website/pull/6511/files
 
 
 As we know, in some cases we need to deploy multiple network interfaces
@@ -79,20 +79,22 @@ Please make sure that rbac was added for Kubernetes cluster.
 here we name it as rbac.yaml:
 
 ::
- apiVersion: rbac.authorization.k8s.io/v1beta1
- kind: ClusterRoleBinding
- metadata:
-   name: fabric8-rbac
- subjects:
-   - kind: ServiceAccount
-     # Reference to upper's `metadata.name`
-     name: default
-     # Reference to upper's `metadata.namespace`
-     namespace: default
- roleRef:
-   kind: ClusterRole
-   name: cluster-admin
-   apiGroup: rbac.authorization.k8s.io
+  .. code-block:: yaml
+
+    apiVersion: rbac.authorization.k8s.io/v1beta1
+    kind: ClusterRoleBinding
+    metadata:
+      name: fabric8-rbac
+    subjects:
+      - kind: ServiceAccount
+        # Reference to upper's `metadata.name`
+        name: default
+        # Reference to upper's `metadata.namespace`
+        namespace: default
+    roleRef:
+      kind: ClusterRole
+      name: cluster-admin
+      apiGroup: rbac.authorization.k8s.io
 
 command:
 
@@ -105,28 +107,30 @@ Please make sure that CRD was added for Kubernetes cluster.
 Here we name it as crdnetwork.yaml:
 
 ::
- apiVersion: apiextensions.k8s.io/v1beta1
- kind: CustomResourceDefinition
- metadata:
-   # name must match the spec fields below, and be in the form: <plural>.<group>
-   name: networks.kubernetes.com
- spec:
-   # group name to use for REST API: /apis/<group>/<version>
-   group: kubernetes.com
-   # version name to use for REST API: /apis/<group>/<version>
-   version: v1
-   # either Namespaced or Cluster
-   scope: Namespaced
-   names:
-     # plural name to be used in the URL: /apis/<group>/<version>/<plural>
-     plural: networks
-     # singular name to be used as an alias on the CLI and for display
-     singular: network
-     # kind is normally the CamelCased singular type. Your resource manifests use this.
-     kind: Network
-     # shortNames allow shorter string to match your resource on the CLI
-     shortNames:
-     - net
+  .. code-block:: yaml
+
+    apiVersion: apiextensions.k8s.io/v1beta1
+    kind: CustomResourceDefinition
+    metadata:
+      # name must match the spec fields below, and be in the form: <plural>.<group>
+      name: networks.kubernetes.com
+    spec:
+      # group name to use for REST API: /apis/<group>/<version>
+      group: kubernetes.com
+      # version name to use for REST API: /apis/<group>/<version>
+      version: v1
+      # either Namespaced or Cluster
+      scope: Namespaced
+      names:
+        # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+        plural: networks
+        # singular name to be used as an alias on the CLI and for display
+        singular: network
+        # kind is normally the CamelCased singular type. Your resource manifests use this.
+        kind: Network
+        # shortNames allow shorter string to match your resource on the CLI
+        shortNames:
+        - net
 
 command:
 
@@ -139,19 +143,21 @@ Create flannel network as control plane.
 Here we name it as flannel-network.yaml:
 
 ::
- apiVersion: "kubernetes.com/v1"
- kind: Network
- metadata:
-   name: flannel-conf
- plugin: flannel
- args: '[
-         {
-                 "masterplugin": true,
-                 "delegate": {
-                         "isDefaultGateway": true
-                 }
-         }
- ]'
+  .. code-block:: yaml
+
+    apiVersion: "kubernetes.com/v1"
+    kind: Network
+    metadata:
+      name: flannel-conf
+    plugin: flannel
+    args: '[
+            {
+                    "masterplugin": true,
+                    "delegate": {
+                            "isDefaultGateway": true
+                    }
+            }
+    ]'
 
 command:
 
@@ -164,27 +170,29 @@ Create sriov network with PF mode as data plane.
 Here we name it as sriov-network.yaml:
 
 ::
- apiVersion: "kubernetes.com/v1"
- kind: Network
- metadata:
-   name: sriov-conf
- plugin: sriov
- args: '[
-        {
-                 "master": "eth1",
-                 "pfOnly": true,
-                 "ipam": {
-                         "type": "host-local",
-                         "subnet": "192.168.123.0/24",
-                         "rangeStart": "192.168.123.2",
-                         "rangeEnd": "192.168.123.10",
-                         "routes": [
-                                 { "dst": "0.0.0.0/0" }
-                         ],
-                         "gateway": "192.168.123.1"
-                 }
-         }
- ]'
+  .. code-block:: yaml
+
+    apiVersion: "kubernetes.com/v1"
+    kind: Network
+    metadata:
+      name: sriov-conf
+    plugin: sriov
+    args: '[
+            {
+                    "master": "eth1",
+                    "pfOnly": true,
+                    "ipam": {
+                            "type": "host-local",
+                            "subnet": "192.168.123.0/24",
+                            "rangeStart": "192.168.123.2",
+                            "rangeEnd": "192.168.123.10",
+                            "routes": [
+                                    { "dst": "0.0.0.0/0" }
+                            ],
+                            "gateway": "192.168.123.1"
+                    }
+            }
+    ]'
 
 command:
 
@@ -194,8 +202,8 @@ command:
 CNI Installation
 ================
 .. _CNI: https://github.com/containernetworking/plugins
-Firstly, we should deploy all CNI plugins. The build process is following:
 
+Firstly, we should deploy all CNI plugins. The build process is following:
 
 ::
    git clone https://github.com/containernetworking/plugins.git
@@ -219,6 +227,7 @@ we should put the Multus CNI binary to /opt/cni/bin/ where the Flannel CNI and S
 CNIs are put.
 
 .. _SRIOV: https://github.com/hustcat/sriov-cni
+
 The build process of it is as:
 
 ::
@@ -233,18 +242,20 @@ The following multus CNI configuration is located in /etc/cni/net.d/, here we na
 as multus-cni.conf:
 
 ::
- {
-   "name": "minion-cni-network",
-   "type": "multus",
-   "kubeconfig": "/etc/kubernetes/admin.conf",
-   "delegates": [{
-     "type": "flannel",
-     "masterplugin": true,
-     "delegate": {
-       "isDefaultGateway": true
-     }
-   }]
- }
+  .. code-block:: json
+
+    {
+      "name": "minion-cni-network",
+      "type": "multus",
+      "kubeconfig": "/etc/kubernetes/admin.conf",
+      "delegates": [{
+        "type": "flannel",
+        "masterplugin": true,
+        "delegate": {
+          "isDefaultGateway": true
+        }
+      }]
+    }
 
 command:
 
@@ -267,22 +278,24 @@ Configuring Pod with Control Plane and Data Plane
 In this case flannle-conf network object act as the primary network.
 
 ::
- apiVersion: v1
- kind: Pod
- metadata:
-   name: pod-sriov
-   annotations:
-     networks: '[
-         { "name": "flannel-conf" },
-         { "name": "sriov-conf" }
-     ]'
- spec:  # specification of the pod's contents
-   containers:
-   - name: pod-sriov
-     image: "busybox"
-     command: ["top"]
-     stdin: true
-     tty: true
+  .. code-block:: yaml
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: pod-sriov
+      annotations:
+        networks: '[
+            { "name": "flannel-conf" },
+            { "name": "sriov-conf" }
+        ]'
+    spec:  # specification of the pod's contents
+      containers:
+      - name: pod-sriov
+        image: "busybox"
+        command: ["top"]
+        stdin: true
+        tty: true
 
 2, Create Pod
 
@@ -301,25 +314,27 @@ Verifying Pod Network
 =====================
 
 ::
- # kubectl exec pod-sriov -- ip a
- 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host
-       valid_lft forever preferred_lft forever
- 3: eth0@if124: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1450 qdisc noqueue
-    link/ether 0a:58:0a:e9:40:2a brd ff:ff:ff:ff:ff:ff
-    inet 10.233.64.42/24 scope global eth0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::8e6:32ff:fed3:7645/64 scope link
-       valid_lft forever preferred_lft forever
- 4: net0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
-    link/ether 52:54:00:d4:d2:e5 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.123.2/24 scope global net0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::5054:ff:fed4:d2e5/64 scope link
-       valid_lft forever preferred_lft forever
+  .. code-block:: bash
+
+    # kubectl exec pod-sriov -- ip a
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+          valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host
+          valid_lft forever preferred_lft forever
+    3: eth0@if124: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1450 qdisc noqueue
+        link/ether 0a:58:0a:e9:40:2a brd ff:ff:ff:ff:ff:ff
+        inet 10.233.64.42/24 scope global eth0
+          valid_lft forever preferred_lft forever
+        inet6 fe80::8e6:32ff:fed3:7645/64 scope link
+          valid_lft forever preferred_lft forever
+    4: net0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
+        link/ether 52:54:00:d4:d2:e5 brd ff:ff:ff:ff:ff:ff
+        inet 192.168.123.2/24 scope global net0
+          valid_lft forever preferred_lft forever
+        inet6 fe80::5054:ff:fed4:d2e5/64 scope link
+          valid_lft forever preferred_lft forever
 
 Contacts
 ========
