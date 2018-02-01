@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_2541430b",
+        "filename": "docs/arm/multi_flannel_intfs_deployment.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-02-01T10:28:27Z",
+      "side": 1,
+      "message": "deleting the line right before the directive, makes sphinx confused. delete this line, then there should be no error.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "d4d53cfeebe973aa8848f4c6e966da390118f758",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
