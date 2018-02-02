@@ -1,0 +1,59 @@
+---
+project: 'Container4NFV'
+project_creation_date: 'Dec 13, 2016'
+project_category: 'Integration & Testing'
+lifecycle_state: 'Incubation'
+project_lead: &opnfv_container4nfv_ptl
+primary_contact: *opnfv_container4nfv_ptl
+issue_tracking:
+    type: 'jira'
+    url: 'https://jira.opnfv.org/projects/[container4nfv]'
+    key: '[container4nfv]'
+mailing_list:
+    type: 'mailman2'
+    url: 'opnfv-tech-discuss@lists.opnfv.org'
+    tag: '[container4nfv]'
+realtime_discussion:
+    type: irc
+    server: 'freenode.net'
+    channel: '#opnfv-container4nfv'
+meetings:
+    - type: 'gotomeeting+irc'
+      agenda:  # eg: 'https://wiki.opnfv.org/display/'
+      url:  # eg: 'https://global.gotomeeting.com/join/819733085'
+      server: 'freenode.net'
+      channel: '#opnfv-meeting'
+      repeats: 'weekly'
+      time:  # eg: '16:00 UTC'
+repositories:
+    - 'container4nfv'
+committers:
+    - <<: *opnfv_container4nfv_ptl
+    - name: 'Jack Chan'
+      email: 'chenjiankun1@huawei.com'
+      company: 'huawei.com'
+      id: 'chenjiankun'
+    - name: 'Gergely Csatari'
+      email: 'gergely.csatari@nokia.com'
+      company: 'nokia.com'
+      id: 'csatari'
+    - name: 'Jun Li'
+      email: 'lijun_1203@126.com'
+      company: '126.com'
+      id: 'MatthewLi'
+    - name: 'Ruijing Guo'
+      email: 'ruijing.guo@intel.com'
+      company: 'intel.com'
+      id: 'Ruijing'
+    - name: 'Xuan Jia'
+      email: 'jason.jiaxuan@gmail.com'
+      company: 'gmail.com'
+      id: 'xuanjia'
+    - name: 'peng yu'
+      email: 'yu.peng36@zte.com.cn'
+      company: 'zte.com.cn'
+      id: 'YuPengZTE'
+tsc:
+    # yamllint disable rule:line-length
+    approval: 'http//meetbot.opnfv.org/meetings/opnfv-meeting/2016/opnfv-meeting.2016-12-13-14.59.html'
+    # yamllint enable rule:line-length
