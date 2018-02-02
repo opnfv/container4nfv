@@ -17,12 +17,24 @@
 
 set -ex
 
-# Deploy istio 0.4.0
+# Get latest istio version, refer: https://git.io/getLatestIstio
+if [ "x${ISTIO_VERSION}" = "x" ] ; then
+  ISTIO_VERSION=$(curl -L -s https://api.github.com/repos/istio/istio/releases/latest | \
+                  grep tag_name | sed "s/ *\"tag_name\": *\"\(.*\)\",*/\1/")
+fi
+
+ISTIO_DIR_NAME="istio-$ISTIO_VERSION"
+
 cd /vagrant
 curl -L https://git.io/getLatestIstio | sh -
-mv istio-0.4.0 istio-source
+mv $ISTIO_DIR_NAME istio-source
 cd /vagrant/istio-source/
-export PATH=$PWD/bin:$PATH
+
+# Persistently append istioctl bin path to PATH env
+echo 'export PATH="$PATH:/vagrant/istio-source/bin"' >> ~/.bashrc
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+source ~/.bashrc
+
 kubectl apply -f install/kubernetes/istio.yaml
 
 # Validate the installation
