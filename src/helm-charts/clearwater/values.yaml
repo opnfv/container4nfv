@@ -1,0 +1,7 @@
+image:
+    path: enriquetaso
+    tag: latest
+config:
+    configmaps: env-vars
+    zone: default.svc.cluster.local
+    ip: None

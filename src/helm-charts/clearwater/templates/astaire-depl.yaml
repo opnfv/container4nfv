@@ -1,0 +1,53 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: astaire
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: astaire
+    spec:
+      terminationGracePeriodSeconds: 120
+      containers:
+      - image: "{{ .Values.image.path }}/astaire:{{ .Values.image.tag }}"
+        imagePullPolicy: Always
+        name: astaire
+        ports:
+        - containerPort: 22
+        - containerPort: 11211
+        - containerPort: 11311
+        envFrom:
+        - configMapRef:
+              name: {{ .Values.config.configmaps }}
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        livenessProbe:
+          tcpSocket:
+            port: 11311
+          periodSeconds: 10
+          failureThreshold: 9
+        readinessProbe:
+          tcpSocket:
+            port: 11311
+        volumeMounts:
+        - name: astairelogs
+          mountPath: /var/log/astaire
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/bash", "-c", "/usr/bin/pre-stop"]
+      - image: busybox
+        name: tailer
+        command: [ "tail", "-F", "/var/log/astaire/astaire_current.txt" ]
+        volumeMounts:
+        - name: astairelogs
+          mountPath: /var/log/astaire
+      volumes:
+      - name: astairelogs
+        emptyDir: {}
+      restartPolicy: Always
