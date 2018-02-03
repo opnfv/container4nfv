@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_1109dd2b",
+        "filename": "src/vagrant/kubeadm_clearwater/custom-bono-svc/bono-svc.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7105
+      },
+      "writtenOn": "2018-02-03T05:23:56Z",
+      "side": 1,
+      "message": "You\u0027re right.. Let me update the patch.",
+      "parentUuid": "9a3d3df0_db29548b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "85375b178b8354a76dda00c04156e0a472a98b3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_fb2258a1",
         "filename": "src/vagrant/kubeadm_clearwater/deploy.sh",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2018-02-02T06:41:36Z",
       "side": 1,
       "message": "What is this used for?\n\nIt seems you have removed \"helm-charts\" folder in this patch.",
+      "revId": "85375b178b8354a76dda00c04156e0a472a98b3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_f10b9921",
+        "filename": "src/vagrant/kubeadm_clearwater/deploy.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7105
+      },
+      "writtenOn": "2018-02-03T05:23:56Z",
+      "side": 1,
+      "message": "My mistake.",
+      "parentUuid": "9a3d3df0_fb2258a1",
       "revId": "85375b178b8354a76dda00c04156e0a472a98b3a",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
