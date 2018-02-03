@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_f6142f4e",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7105
+      },
+      "writtenOn": "2018-02-03T04:40:50Z",
+      "side": 1,
+      "message": "I Think the channel\u0027s name is #opnfv-container... We need someone to confirm.",
+      "revId": "4ec2df9bb17e812efaed813c152d8da2fc502ae3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
