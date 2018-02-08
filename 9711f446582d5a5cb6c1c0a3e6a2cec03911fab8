@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_278783b6",
+        "filename": "src/helm-charts/clearwater/Chart.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-02-08T07:17:01Z",
+      "side": 1,
+      "message": "You may put my corporation email zhang.yujunz@zte.com.cn instead since I do this project in working hours",
+      "revId": "9711f446582d5a5cb6c1c0a3e6a2cec03911fab8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_9dca1719",
+        "filename": "src/helm-charts/clearwater/templates/astaire-svc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-02-08T07:17:01Z",
+      "side": 1,
+      "message": "As discussed in last IRC meeting, the port name should be in format \u003cprotocol\u003e-suffix see https://istio.io/docs/setup/kubernetes/sidecar-injection.html",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "9711f446582d5a5cb6c1c0a3e6a2cec03911fab8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_678d0bd3",
+        "filename": "src/helm-charts/clearwater/templates/bono-svc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-02-08T07:17:01Z",
+      "side": 1,
+      "message": "Trailing space",
+      "range": {
+        "startLine": 6,
+        "startChar": 41,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "9711f446582d5a5cb6c1c0a3e6a2cec03911fab8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_c7bfb75f",
+        "filename": "src/helm-charts/clearwater/templates/env-vars-cm.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-02-08T07:17:01Z",
+      "side": 1,
+      "message": "Trailing space",
+      "range": {
+        "startLine": 5,
+        "startChar": 5,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "9711f446582d5a5cb6c1c0a3e6a2cec03911fab8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_a7c273e6",
+        "filename": "src/helm-charts/clearwater/templates/env-vars-cm.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-02-08T07:17:01Z",
+      "side": 1,
+      "message": "Trailing space",
+      "range": {
+        "startLine": 6,
+        "startChar": 33,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "9711f446582d5a5cb6c1c0a3e6a2cec03911fab8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
