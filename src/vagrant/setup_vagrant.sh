@@ -30,9 +30,9 @@ ${USER} ALL = (root) NOPASSWD:ALL
 EOF
     sudo apt-get update -y
     sudo apt-get install -y git unzip
-    wget https://releases.hashicorp.com/vagrant/1.8.7/vagrant_1.8.7_x86_64.deb
-    sudo dpkg -i vagrant_1.8.7_x86_64.deb
-    rm -rf vagrant_1.8.7_x86_64.deb
+    wget https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.deb
+    sudo dpkg -i vagrant_2.0.2_x86_64.deb
+    rm -rf vagrant_2.0.2_x86_64.deb
 
     sudo apt-get install -y virtualbox
 
@@ -41,7 +41,7 @@ EOF
     sudo apt-get update
     sudo apt-get build-dep vagrant ruby-libvirt -y
     sudo apt-get install -y bridge-utils qemu libvirt-bin ebtables dnsmasq
-    sudo apt-get install -y libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
+    sudo apt-get install -y libffi-dev libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
     vagrant plugin install vagrant-libvirt
     sudo adduser ${USER} libvirtd
     sudo service libvirtd restart
