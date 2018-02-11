@@ -39,4 +39,5 @@ echo "y\n" | plink -ssh -pw vagrant vagrant@worker1 "sudo rm -rf /dockerdata-nfs
 cd ~/oom/kubernetes/config && ./createConfig.sh -n onap
 while true; do sleep 30; kubectl get pods --all-namespaces | grep onap | wc -l | grep "^0$" && break; done
 source ~/oom/kubernetes/oneclick/setenv.bash
+sed -i "s/aaiServiceClusterIp:.*/aaiServiceClusterIp: 10.96.0.254/" ~/oom/kubernetes/aai/values.yaml
 cd ~/oom/kubernetes/oneclick && ./createAll.bash -n onap
