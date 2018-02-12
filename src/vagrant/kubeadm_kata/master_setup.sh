@@ -17,7 +17,7 @@
 
 set -ex
 
-sudo kubeadm init --apiserver-advertise-address=192.168.1.10  --service-cidr=10.96.0.0/16 --pod-network-cidr=10.32.0.0/12 --token 8c5adc.1cec8dbf339093f0
+sudo kubeadm init --skip-preflight-checks --apiserver-advertise-address=192.168.1.10  --service-cidr=10.96.0.0/16 --pod-network-cidr=10.32.0.0/12 --token 8c5adc.1cec8dbf339093f0
 mkdir ~/.kube
 sudo cp /etc/kubernetes/admin.conf .kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
