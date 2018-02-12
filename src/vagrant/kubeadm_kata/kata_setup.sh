@@ -17,33 +17,23 @@
 
 set -ex
 
-wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
-sudo tar -xvf go1.8.3.linux-amd64.tar.gz -C /usr/local/
-mkdir -p $HOME/go/src
-export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+cat << EOF | sudo tee /etc/apt/sources.list.d/cc-oci-runtime.list
+deb http://download.opensuse.org/repositories/home:/clearcontainers:/clear-containers-3/xUbuntu_16.04/ /
+EOF
+curl -fsSL http://download.opensuse.org/repositories/home:/clearcontainers:/clear-containers-3/xUbuntu_16.04/Release.key | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install -y cc-oci-runtime
 
-go get github.com/clearcontainers/tests
-cd $GOPATH/src/github.com/clearcontainers/tests/.ci
-
-echo "Install dependencies"
-bash -f ./setup_env_ubuntu.sh
-
-echo "Install shim"
-bash -f ./install_shim.sh
-
-echo "Install proxy"
-bash -f ./install_proxy.sh
-
-echo "Install runtime"
-bash -f ./install_runtime.sh
-
-echo "Install CRI-O"
-bash -f ./install_crio.sh
+echo | sudo add-apt-repository ppa:projectatomic/ppa
+sudo apt-get update
+sudo apt-get install -y cri-o
+sudo sed -i 's,runtime_untrusted_workload.*,runtime_untrusted_workload = "/usr/bin/cc-runtime",' /etc/crio/crio.conf
+sudo systemctl enable crio
+sudo systemctl restart crio
 
 sudo systemctl stop kubelet
 echo "Modify kubelet systemd configuration to use CRI-O"
 k8s_systemd_file="/etc/systemd/system/kubelet.service.d/10-kubeadm.conf"
-sudo sed -i '/KUBELET_AUTHZ_ARGS/a Environment="KUBELET_EXTRA_ARGS=--container-runtime=remote --container-runtime-endpoint=/var/run/crio.sock --runtime-request-timeout=30m"' "$k8s_systemd_file"
+sudo sed -i '/KUBELET_AUTHZ_ARGS/a Environment="KUBELET_EXTRA_ARGS=--container-runtime=remote --container-runtime-endpoint=/var/run/crio/crio.sock --runtime-request-timeout=30m"' "$k8s_systemd_file"
 sudo systemctl daemon-reload
 sudo systemctl start kubelet
