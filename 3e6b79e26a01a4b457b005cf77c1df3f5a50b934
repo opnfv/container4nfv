@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3f45e8_fff7a98a",
+        "filename": "src/helm-charts/clearwater/templates/astaire-svc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2018-02-23T06:26:53Z",
+      "side": 1,
+      "message": "Port name is specified for every service. Maybe we should update them all in another patch.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "3e6b79e26a01a4b457b005cf77c1df3f5a50b934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
