@@ -1,0 +1,19 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get {{ .Release.Name }}
+
+The deployment exposes:
+
+    - the Ellis web UI on {{ .Value.config.ip }}30080 for self-provisioning.
+    - STUN/TURN on port 3478 for media relay.
+    - SIP on port 5060 for service.
+    - SIP/WebSocket on port 5062 for service.
+
+SIP devices can register with bono.:5060 and the Ellis provisioning interface can be accessed at port 30080.
+
+Make a call: http://clearwater.readthedocs.io/en/stable/Making_your_first_call.html
