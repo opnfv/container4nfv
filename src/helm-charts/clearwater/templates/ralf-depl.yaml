@@ -12,6 +12,7 @@ spec:
       labels:
         service: ralf
         snmp: enabled
+        app: ralf
     spec:
       containers:
       - image: "{{ .Values.image.path }}/ralf:{{ .Values.image.tag }}"
