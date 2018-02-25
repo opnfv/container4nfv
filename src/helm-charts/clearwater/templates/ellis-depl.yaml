@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         service: ellis
+        app: ellis
     spec:
       containers:
       - image: "{{ .Values.image.path }}/ellis:{{ .Values.image.tag }}"

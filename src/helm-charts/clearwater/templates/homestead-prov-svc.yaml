@@ -4,7 +4,7 @@ metadata:
   name: homestead-prov
 spec:
   ports:
-  - name: "8889"
+  - name: "http-8889"
     port: 8889
   selector:
     service: homestead-prov

@@ -12,6 +12,7 @@ spec:
       labels:
         service: homestead-prov
         snmp: enabled
+        app: homestead-pro
     spec:
       containers:
       - image: "{{ .Values.image.path }}/homestead-prov:{{ .Values.image.tag }}"
