@@ -6,11 +6,11 @@ metadata:
     instance-type: etcd-pod
 spec:
   ports:
-  - name: "etcd-client"
+  - name: "http-etcd-client"
     port: 2379
-  - name: "etcd-server"
+  - name: "http-etcd-server"
     port: 2380
-  - name: "4001"
+  - name: "http-4001"
     port: 4001
   selector:
     instance-type: etcd-pod

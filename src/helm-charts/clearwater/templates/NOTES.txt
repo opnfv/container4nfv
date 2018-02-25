@@ -9,7 +9,7 @@ To learn more about the release, try:
 
 The deployment exposes:
 
-    - the Ellis web UI on {{ .Value.config.ip }}30080 for self-provisioning.
+    - the Ellis web UI on port 30080 for self-provisioning.
     - STUN/TURN on port 3478 for media relay.
     - SIP on port 5060 for service.
     - SIP/WebSocket on port 5062 for service.

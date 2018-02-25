@@ -12,6 +12,7 @@ spec:
       labels:
         service: sprout
         snmp: enabled
+        app: sprout
     spec:
       containers:
       - image: "{{ .Values.image.path }}/sprout:{{ .Values.image.tag }}"

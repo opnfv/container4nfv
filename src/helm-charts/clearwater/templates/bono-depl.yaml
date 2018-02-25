@@ -12,6 +12,7 @@ spec:
       labels:
         service: bono
         snmp: enabled
+        app: bono
     spec:
       containers:
       - image: "{{ .Values.image.path }}/bono:{{ .Values.image.tag }}"
