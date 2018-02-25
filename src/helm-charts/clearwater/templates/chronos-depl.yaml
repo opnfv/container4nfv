@@ -10,6 +10,7 @@ spec:
     metadata:
       labels:
         service: chronos
+        app: chronos
     spec:
       terminationGracePeriodSeconds: 120
       containers:

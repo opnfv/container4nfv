@@ -4,7 +4,7 @@ metadata:
   name: chronos
 spec:
   ports:
-  - name: "7253"
+  - name: "http-7253"
     port: 7253
   selector:
     service: chronos
