@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         service: cassandra
+        app: cassandra
     spec:
       containers:
       - image: "{{ .Values.image.path }}/cassandra:{{ .Values.image.tag }}"

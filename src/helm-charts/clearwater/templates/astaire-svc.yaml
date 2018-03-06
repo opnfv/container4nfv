@@ -4,7 +4,7 @@ metadata:
   name: astaire
 spec:
   ports:
-  - name: "snmp-astaire"
+  - name: "http-astaire"
     port: 11311
   selector:
     service: astaire

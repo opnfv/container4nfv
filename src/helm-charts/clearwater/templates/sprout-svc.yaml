@@ -4,9 +4,9 @@ metadata:
   name: sprout
 spec:
   ports:
-  - name: "5052"
+  - name: "http-5052"
     port: 5052
-  - name: "5054"
+  - name: "http-5054"
     port: 5054
   selector:
     service: sprout

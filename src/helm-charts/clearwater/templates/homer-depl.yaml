@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         service: homer
+        app: homer
     spec:
       containers:
       - image: "{{ .Values.image.path }}/homer:{{ .Values.image.tag }}"

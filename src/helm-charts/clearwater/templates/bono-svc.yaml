@@ -3,14 +3,25 @@ kind: Service
 metadata:
   name: bono
 spec:
+  externalIPs:
+  - {{ .Values.config.ip }}
   loadBalancerIP: {{ .Values.config.ip }}
-  type: LoadBalancer
   ports:
-  - name: "3478"
+  - name: "tcp-3478"
     port: 3478
-  - name: "5060"
+    protocol: TCP
+    targetPort: 3478
+  - name: "tcp-5060"
     port: 5060
-  - name: "5062"
+    protocol: TCP
+    targetPort: 5060
+  - name: "tcp-5062"
     port: 5062
+    protocol: TCP
+    targetPort: 5062
   selector:
     service: bono
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

@@ -4,7 +4,7 @@ metadata:
   name: ralf
 spec:
   ports:
-  - name: "10888"
+  - name: "http-10888"
     port: 10888
   selector:
     service: ralf

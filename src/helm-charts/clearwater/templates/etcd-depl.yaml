@@ -9,6 +9,7 @@ spec:
       creationTimestamp: null
       labels:
         instance-type: etcd-pod
+        app: etcd-pod
     spec:
       containers:
       - args:
