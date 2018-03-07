@@ -37,9 +37,24 @@ source ~/.bashrc
 
 kubectl apply -f install/kubernetes/istio.yaml
 
+# Install the sidecar injection configmap
+./install/kubernetes/webhook-create-signed-cert.sh \
+    --service istio-sidecar-injector \
+    --namespace istio-system \
+    --secret sidecar-injector-certs
+kubectl apply -f install/kubernetes/istio-sidecar-injector-configmap-release.yaml
+
+# Install the sidecar injector webhook
+cat install/kubernetes/istio-sidecar-injector.yaml | \
+     ./install/kubernetes/webhook-patch-ca-bundle.sh > \
+     install/kubernetes/istio-sidecar-injector-with-ca-bundle.yaml
+kubectl apply -f install/kubernetes/istio-sidecar-injector-with-ca-bundle.yaml
+kubectl -n istio-system get deployment -listio=sidecar-injector
+
 # Validate the installation
 kubectl get svc -n istio-system
 kubectl get pods -n istio-system
+kubectl get namespace -L istio-injection
 
 r="0"
 while [ $r -ne "4" ]
