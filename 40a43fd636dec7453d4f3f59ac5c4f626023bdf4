@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_7210d401",
+        "filename": "src/vagrant/kubeadm_istio/master_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 423
+      },
+      "writtenOn": "2018-03-07T08:56:44Z",
+      "side": 1,
+      "message": "ok, thanks.\nkube-apiserver will be auto restart by kubelet when its manifest file update.",
+      "parentUuid": "5a3f45e8_72429411",
+      "revId": "40a43fd636dec7453d4f3f59ac5c4f626023bdf4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_32380ca0",
         "filename": "src/vagrant/kubeadm_istio/master_setup.sh",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_5215d8ef",
+        "filename": "src/vagrant/kubeadm_istio/master_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 423
+      },
+      "writtenOn": "2018-03-07T08:56:44Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "5a3f45e8_32380ca0",
+      "revId": "40a43fd636dec7453d4f3f59ac5c4f626023bdf4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_123d1090",
         "filename": "src/vagrant/kubeadm_istio/master_setup.sh",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2018-03-07T08:31:07Z",
       "side": 1,
       "message": "remove export",
+      "revId": "40a43fd636dec7453d4f3f59ac5c4f626023bdf4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_b2f9bcca",
+        "filename": "src/vagrant/kubeadm_istio/master_setup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 423
+      },
+      "writtenOn": "2018-03-07T08:56:44Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "5a3f45e8_123d1090",
       "revId": "40a43fd636dec7453d4f3f59ac5c4f626023bdf4",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
