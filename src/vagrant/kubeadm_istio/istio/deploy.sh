@@ -59,8 +59,8 @@ kubectl get namespace -L istio-injection
 r="1"
 while [ $r -ne "0" ]
 do
+   sleep 30
    kubectl get pods -n istio-system
    r=$(kubectl get pods -n istio-system | egrep -v 'NAME|Running' | wc -l)
-   sleep 60
 done
 

@@ -30,9 +30,9 @@ kubectl get pods
 r="0"
 while [ $r -ne "6" ]
 do
+   sleep 30
    kubectl get pods
    r=$(kubectl get pods | grep Running | wc -l)
-   sleep 60
 done
 
 # Validate the bookinfo app
