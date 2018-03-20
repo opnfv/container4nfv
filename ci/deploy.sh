@@ -17,7 +17,20 @@
 
 set -ex
 
-../src/vagrant/kubeadm_basic/deploy.sh
-../src/vagrant/kubeadm_multus/deploy.sh
-../src/vagrant/kubeadm_virtlet/deploy.sh
-../src/vagrant/kubeadm_ovsdpdk/deploy.sh
+# Scenario sequence rules:
+#     - stable first
+#     - less time consuming first
+SCENARIOS="kubeadm_basic
+    kubeadm_multus
+    kubeadm_virtlet
+    kubeadm_ovsdpdk
+    kubeadm_istio
+"
+
+for SCENARIO in $SCENARIOS; do
+    START=$(date +%s)
+    ../src/vagrant/${SCENARIO}/deploy.sh
+    END=$(date +%s)
+    DIFF=$(( $END - $START ))
+    echo "Scenario $SCENARIO tooks $DIFF seconds."
+done
