@@ -21,7 +21,6 @@ set -ex
 #     - stable first
 #     - less time consuming first
 SCENARIOS="kubeadm_basic
-    kubeadm_multus
     kubeadm_virtlet
     kubeadm_ovsdpdk
     kubeadm_istio
