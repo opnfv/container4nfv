@@ -26,9 +26,11 @@ SCENARIOS="kubeadm_basic
     kubeadm_istio
 "
 
+DEFAULT_TIMEOUT=3600
+
 for SCENARIO in $SCENARIOS; do
     START=$(date +%s)
-    ../src/vagrant/${SCENARIO}/deploy.sh
+    timeout ${DEFAULT_TIMEOUT} ../src/vagrant/${SCENARIO}/deploy.sh
     END=$(date +%s)
     DIFF=$(( $END - $START ))
     echo "Scenario $SCENARIO tooks $DIFF seconds."
