@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: qi liang <liangqi1@huawei.com>
+Code-Review+2: Ruijing Guo <ruijing.guo@intel.com>
+Submitted-by: Ruijing Guo <ruijing.guo@intel.com>
+Submitted-at: Tue, 03 Apr 2018 02:39:57 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/54715
+Project: container4nfv
+Branch: refs/heads/master
