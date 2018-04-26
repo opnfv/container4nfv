@@ -9,3 +9,11 @@ Container4NFV E release Notes
 2. Container architecture options
 3. Joid could support Kubernetes
 4. Using vagrant tool to setup an env with DPDK enabled.
+
+==================================
+Container4NFV F release Notes
+==================================
+1. Enable Multus in Kubernetes
+2. Enable SR-IOV in Kubernetes
+3. Support ARM platform
+
