@@ -1,0 +1,24 @@
+#!/bin/sh
+
+nwfn='/etc/config/network'
+gwPost=".1"
+nwPost=".0"
+
+ethname='eth0'
+ipeth=$(ifconfig $ethname |grep "inet addr" | cut -d: -f2 | awk '{print $1}')
+dirtyIp=$(grep ipaddr $nwfn | grep -v "127.0.0.1" | awk '{print $3}' | sed "s/'//g" | awk 'NR==1')
+dirtyGw=$(grep gateway $nwfn | grep -v "127.0.0.1" | awk '{print $3}' | sed "s/'//g" | awk 'NR==1')
+expNetPrefix=$(echo $ipeth | cut -d. -f 1,2,3)
+expGw=$expNetPrefix$gwPost
+sed -i "s/$dirtyIp/$ipeth/g" $nwfn
+sed -i "s/$dirtyGw/$expGw/g" $nwfn
+
+
+ethname='net0'
+ipeth=$(ifconfig $ethname |grep "inet addr" | cut -d: -f2 | awk '{print $1}')
+dirtyIp=$(grep ipaddr $nwfn | grep -v "127.0.0.1" | awk '{print $3}' | sed "s/'//g" | awk 'NR==2')
+dirtyGw=$(grep gateway $nwfn | grep -v "127.0.0.1" | awk '{print $3}' | sed "s/'//g" | awk 'NR==2')
+expNetPrefix=$(echo $ipeth | cut -d. -f 1,2,3)
+expGw=$expNetPrefix$gwPost
+sed -i "s/$dirtyIp/$ipeth/g" $nwfn
+sed -i "s/$dirtyGw/$expGw/g" $nwfn

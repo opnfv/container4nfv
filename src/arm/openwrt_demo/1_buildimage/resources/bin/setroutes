@@ -1,0 +1,26 @@
+#!/bin/sh
+
+nwfn='/etc/config/network'
+gwPost=".1"
+nwPost=".0"
+maskPost="/16"
+defaultgw="0.0.0.0/0"
+
+ethname='eth0'
+ipeth=$(ifconfig $ethname |grep "inet addr" | cut -d: -f2 | awk '{print $1}')
+expGwPrefix=$(echo $ipeth | cut -d. -f 1,2,3)
+expGw=$expGwPrefix$gwPost
+expNetPrefix=$(echo $ipeth | cut -d. -f 1,2)
+expNet=$expNetPrefix$nwPost$nwPost$maskPost
+echo "$expNet, $expGw, $ethname"
+ip route add $expNet via $expGw dev $ethname
+
+
+ethname='net0'
+ipeth=$(ifconfig $ethname |grep "inet addr" | cut -d: -f2 | awk '{print $1}')
+expGwPrefix=$(echo $ipeth | cut -d. -f 1,2,3)
+expGw=$expGwPrefix$gwPost
+expNetPrefix=$(echo $ipeth | cut -d. -f 1,2)
+expNet=$expNetPrefix$nwPost$nwPost$maskPost
+ip route add $expNet via $expGw dev $ethname
+ip route add $defaultgw via $expGw
