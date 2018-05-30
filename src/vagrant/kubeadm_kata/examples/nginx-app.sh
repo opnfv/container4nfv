@@ -20,6 +20,11 @@ kubectl get nodes
 kubectl get services
 kubectl get pods
 kubectl get rc
-sleep 180
+r=0
+while [ "$r" -eq "0" ]
+do
+    sleep 30
+    r=$(kubectl get pods | grep Running | wc -l)
+done
 svcip=$(kubectl get services nginx  -o json | grep clusterIP | cut -f4 -d'"')
 wget http://$svcip
