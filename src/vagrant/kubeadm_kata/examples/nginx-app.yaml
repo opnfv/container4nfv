@@ -23,6 +23,8 @@ spec:
     metadata:
       labels:
         app: nginx
+      annotations:
+        io.kubernetes.cri.untrusted-workload: "true"
     spec:
       containers:
       - name: nginx
