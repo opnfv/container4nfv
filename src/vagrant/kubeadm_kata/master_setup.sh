@@ -17,18 +17,16 @@
 
 set -ex
 
-sudo kubeadm init --skip-preflight-checks --apiserver-advertise-address=192.168.1.10  --service-cidr=10.96.0.0/16 --pod-network-cidr=10.32.0.0/12 --token 8c5adc.1cec8dbf339093f0
+sudo kubeadm init --skip-preflight-checks --apiserver-advertise-address=192.168.1.10  --service-cidr=10.96.0.0/16 --pod-network-cidr=10.244.0.0/16 --token 8c5adc.1cec8dbf339093f0
 mkdir ~/.kube
 sudo cp /etc/kubernetes/admin.conf .kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
 
-kubectl apply -f http://git.io/weave-kube-1.6
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
-r=1
-while [ "$r" -ne "0" ]
+r=0
+while [ "$r" -ne "1" ]
 do
     sleep 30
-    r=$(kubectl get pods -n kube-system | grep weave-net | grep -v Run | wc -l)
+    r=$(kubectl get pods -n kube-system | grep -v Running | wc -l)
 done
-
-sudo systemctl restart crio

@@ -24,6 +24,7 @@ SCENARIOS="kubeadm_basic
     kubeadm_virtlet
     kubeadm_ovsdpdk
     kubeadm_istio
+    kubeadm_kata
 "
 
 DEFAULT_TIMEOUT=3600
