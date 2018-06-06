@@ -23,6 +23,9 @@ export PATH=$PWD/bin:$PATH
 # Run the test application: bookinfo
 kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/kube/bookinfo.yaml)
 
+# Define the ingress gateway for the application
+istioctl create -f samples/bookinfo/routing/bookinfo-gateway.yaml
+
 # Wait for bookinfo deployed
 kubectl get services
 kubectl get pods
@@ -36,6 +39,6 @@ do
 done
 
 # Validate the bookinfo app
-export GATEWAY_URL=$(kubectl get po -l istio=ingress -n istio-system -o 'jsonpath={.items[0].status.hostIP}'):$(kubectl get svc istio-ingress -n istio-system -o 'jsonpath={.spec.ports[0].nodePort}')
+export GATEWAY_URL=$(kubectl get po -l istio=ingressgateway -n istio-system -o 'jsonpath={.items[0].status.hostIP}'):$(kubectl get svc istio-ingressgateway -n istio-system -o 'jsonpath={.spec.ports[0].nodePort}')
 curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
 
