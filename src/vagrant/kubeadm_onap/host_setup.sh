@@ -4,36 +4,46 @@ set -ex
 
 cat << EOF | sudo tee /etc/hosts
 127.0.0.1    localhost
-192.168.0.5  onap
 192.168.0.10 master
 192.168.0.21 worker1
 192.168.0.22 worker2
 192.168.0.23 worker3
 EOF
 
-sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-sudo apt-key adv -k 58118E89F3A912897C070ADBF76221572C52609D
-cat << EOF | sudo tee /etc/apt/sources.list.d/docker.list
-deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-xenial main
+cat << EOF | sudo tee /etc/resolv.conf
+search svc.cluster.local cluster.local
+nameserver 10.96.0.10
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+options ndots:5 timeout:1 attempts:1
 EOF
+
+
+sudo apt-get update
+sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce
 
 curl -s http://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
+
 sudo apt-get update
-sudo apt-get install -y --allow-unauthenticated --allow-downgrades docker-engine=1.12.6-0~ubuntu-xenial kubelet=1.7.0-00 kubeadm=1.7.0-00 kubectl=1.7.0-00 kubernetes-cni=0.5.1-00
+sudo apt-get install -y --allow-unauthenticated --allow-downgrades kubelet=1.8.2-00 kubeadm=1.8.2-00 kubectl=1.8.2-00 kubernetes-cni=0.5.1-00
 
-sudo systemctl stop docker
-cat << EOF | sudo tee /etc/docker/daemon.json
-{
-  "storage-driver": "overlay"
-}
-EOF
+sudo swapoff -a
 sudo systemctl daemon-reload
-sudo systemctl start docker
-
 sudo systemctl stop kubelet
-sudo rm -rf /var/lib/kubelet
-sudo systemctl daemon-reload
 sudo systemctl start kubelet
