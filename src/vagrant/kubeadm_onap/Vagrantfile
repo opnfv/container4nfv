@@ -1,9 +1,9 @@
-$num_workers=1
+$num_workers=2
 
 Vagrant.require_version ">= 1.8.6"
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "yk0/ubuntu-xenial"
+  config.vm.box = "ceph/ubuntu-xenial"
   config.vm.provision "shell", path: "host_setup.sh", privileged: false
 
   config.vm.define "master" do |config|
@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", path: "master_setup.sh", privileged: false
     config.vm.network :private_network, ip: "192.168.0.10"
     config.vm.provider :libvirt do |libvirt|
-      libvirt.memory = 4096
+      libvirt.memory = 8192
       libvirt.cpus = 4
     end
   end
@@ -22,19 +22,9 @@ Vagrant.configure("2") do |config|
       config.vm.provision "shell", path: "worker_setup.sh", privileged: false
       config.vm.network :private_network, ip: "192.168.0.#{i+20}"
       config.vm.provider :libvirt do |libvirt|
-        libvirt.memory = 81920
-        libvirt.cpus = 32
+        libvirt.memory = 40960
+        libvirt.cpus = 16
       end
-    end
-  end
-
-  config.vm.define "onap" do |config|
-    config.vm.hostname = "onap"
-    config.vm.provision "shell", path: "onap_setup.sh", privileged: false
-    config.vm.network :private_network, ip: "192.168.0.5"
-    config.vm.provider :libvirt do |libvirt|
-      libvirt.memory = 2048
-      libvirt.cpus = 1
     end
   end
 
