@@ -1,11 +1,9 @@
 #!/bin/bash
-
 set -ex
 
-sudo mkdir /dockerdata-nfs
-sudo chmod 755 /dockerdata-nfs
-sudo kubeadm join --token 8c5adc.1cec8dbf339093f0 192.168.0.10:6443 || true
+sudo kubeadm join --discovery-token-unsafe-skip-ca-verification --token 8c5adc.1cec8dbf339093f0 192.168.0.10:6443 || true
 
-sudo apt-get install -y putty-tools
-mkdir ~/.kube
-echo "y\n" | plink -ssh -pw vagrant vagrant@master "cat ~/.kube/config" > ~/.kube/config
+sudo apt-get install nfs-common -y
+sudo mkdir /dockerdata-nfs
+sudo chmod 777 /dockerdata-nfs
+sudo mount master:/dockerdata-nfs /dockerdata-nfs
