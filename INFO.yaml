@@ -4,6 +4,11 @@ project_creation_date: 'Dec 13, 2016'
 project_category: 'Integration & Testing'
 lifecycle_state: 'Incubation'
 project_lead: &opnfv_container4nfv_ptl
+    name: 'Xuan Jia'
+    email: 'jason.jiaxuan@gmail.com'
+    company: 'gmail'
+    id: 'xuanjia'
+    timezone: ''
 primary_contact: *opnfv_container4nfv_ptl
 issue_tracking:
     type: 'jira'
