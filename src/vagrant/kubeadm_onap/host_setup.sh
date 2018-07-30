@@ -18,6 +18,8 @@ nameserver 8.8.4.4
 options ndots:5 timeout:1 attempts:1
 EOF
 
+sudo ifconfig eth1 mtu 1400
+
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 sudo apt-key adv -k 58118E89F3A912897C070ADBF76221572C52609D
 cat << EOF | sudo tee /etc/apt/sources.list.d/docker.list
