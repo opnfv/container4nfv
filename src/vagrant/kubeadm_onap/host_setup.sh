@@ -8,15 +8,10 @@ cat << EOF | sudo tee /etc/hosts
 192.168.0.21 worker1
 192.168.0.22 worker2
 192.168.0.23 worker3
+192.168.0.24 worker4
 EOF
 
-cat << EOF | sudo tee /etc/resolv.conf
-search svc.cluster.local cluster.local
-nameserver 10.96.0.10
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-options ndots:5 timeout:1 attempts:1
-EOF
+sudo ifconfig eth1 mtu 1400
 
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 sudo apt-key adv -k 58118E89F3A912897C070ADBF76221572C52609D
