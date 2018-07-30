@@ -1,6 +1,12 @@
 #!/bin/bash
-
 set -ex
+
+sudo apt-get -y install ntp
+cat << EOF | sudo tee /etc/ntp.conf
+server 127.127.1.0
+fudge  127.127.1.0 stratum 10
+EOF
+sudo service ntp restart
 
 sudo apt install nfs-kernel-server -y
 sudo mkdir /dockerdata-nfs
