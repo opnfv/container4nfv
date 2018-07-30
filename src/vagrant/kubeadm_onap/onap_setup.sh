@@ -11,7 +11,7 @@ helm serve &
 helm repo remove stable
 helm repo add local http://127.0.0.1:8879
 
-git clone http://gerrit.onap.org/r/oom
+git clone -b beijing http://gerrit.onap.org/r/oom
 cd oom/kubernetes
 cp /vagrant/values.yaml onap
 
