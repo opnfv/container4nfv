@@ -1,0 +1,47 @@
+---
+- name: Create dest directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /tmp/vpp1710/
+    - /var/lib/cni/vhostuser/
+    - /etc/vpp/
+
+- name: Copy VPP files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - {src: "Dockerfile.vpp1710-dpdk1708", dest: "/tmp/vpp1710/Dockerfile"}
+    - {src: "0001-net-virtio-ethdev.patch", dest: "/tmp/vpp1710/0001-net-virtio-ethdev.patch"}
+    - {src: "setvpp.sh", dest: "/var/lib/cni/vhostuser/setvpp.sh"}
+    - {src: "startup.conf", dest: "/etc/vpp/startup.conf"}
+
+- name: Check if VPP image exists
+  shell: docker inspect --type=image vpp-1710:virtio-patched > /dev/null 2>&1
+  ignore_errors: "yes"
+  register: check_vpp
+
+- name: Building VPP container. Be patient...
+  shell: docker build -t vpp-1710:virtio-patched --network host .
+  args:
+    chdir: /tmp/vpp1710/
+  when: check_vpp is failed
+
+- name: Copy VPP binaries to host
+  shell: >
+    docker run --rm -v /root/vpp-1710/build-root:/root/vpp-host vpp-1710:virtio-patched
+    /bin/cp -a /root/vpp-1710/build-root/install-vpp_debug-native /root/vpp-host
+    && /bin/cp /root/vpp-1710/build-root/install-vpp_debug-native/vpp/bin/* /usr/bin
+    && /bin/rm -rf /usr/lib/vpp_plugins
+    && ln -s /root/vpp-1710/build-root/install-vpp_debug-native/vpp/lib64/vpp_plugins /usr/lib/vpp_plugins
+    && (groupadd vpp || true)
+
+- name: Copy libcrypto.so.1.0.0 for CentOS
+  shell: >
+    docker run --rm -v /usr/lib64:/root/lib64-centos vpp-1710:virtio-patched
+    /bin/cp /lib/aarch64-linux-gnu/libcrypto.so.1.0.0 /root/lib64-centos/
+  args:
+    creates: /usr/lib64/libcrypto.so.1.0.0
+  when: ansible_os_family == "RedHat"

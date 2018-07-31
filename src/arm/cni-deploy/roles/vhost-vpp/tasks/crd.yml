@@ -1,0 +1,13 @@
+---
+- name: Copy Vhostuser yaml
+  copy:
+    src: vhostuser-obj.yml
+    dest: /tmp/vhostuser-obj.yml
+
+- name: Copy VPP testpod template
+  template:
+    src: vpp-testpod.yml.j2
+    dest: /root/vpp-testpod.yml
+
+- name: Create Vhostuser network object
+  shell: kubectl apply -f /tmp/vhostuser-obj.yml

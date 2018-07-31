@@ -1,0 +1,13 @@
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: flannel-networkobj
+plugin: flannel
+args: '[
+  {
+    "delegate": {
+      "isDefaultGateway": true
+    }
+  }
+]'

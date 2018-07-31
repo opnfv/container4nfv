@@ -1,0 +1,20 @@
+multus_repo: https://github.com/Intel-Corp/multus-cni
+multus_commit: 61959e04
+
+sriov_repo: https://github.com/hustcat/sriov-cni
+sriov_commit: 8b7ed984
+
+vhostuser_repo: https://github.com/yibo-cai/vhost-user-net-plugin
+vhostuser_commit: e8dc9d8e
+
+macvlan_master: eth2
+macvlan_subnet: 192.168.166.0/24
+macvlan_range_start: 192.168.166.11
+macvlan_range_end: 192.168.166.30
+macvlan_gateway: 192.168.166.1
+
+sriov_master: eth2
+sriov_subnet: 192.168.166.0/24
+sriov_range_start: 192.168.166.31
+sriov_range_end: 192.168.166.50
+sriov_gateway: 192.168.166.1

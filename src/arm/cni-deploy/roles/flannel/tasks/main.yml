@@ -1,0 +1,12 @@
+---
+- name: Copy flannel daemonset file
+  copy:
+    src: cni-flannel-ds.yml
+    dest: /tmp/cni-flannel-ds.yml
+
+- name: Apply flannel daemonset
+  shell: kubectl apply -f /tmp/cni-flannel-ds.yml
+  ignore_errors: "yes"
+
+- name: Sleep 10 seconds
+  wait_for: timeout=10

@@ -1,0 +1,13 @@
+---
+- name: Copy SRIOV template
+  template:
+    src: sriov-obj.yml.j2
+    dest: /tmp/sriov-obj.yml
+
+- name: Copy SRIOV testpod template
+  template:
+    src: sriov-testpod.yml.j2
+    dest: /root/sriov-testpod.yml
+
+- name: Create SRIOV network object
+  shell: kubectl apply -f /tmp/sriov-obj.yml

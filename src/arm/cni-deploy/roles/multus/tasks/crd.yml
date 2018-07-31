@@ -1,0 +1,44 @@
+---
+- name: Copy yaml files
+  copy:
+    src: "{{ item }}"
+    dest: "/tmp/{{ item }}"
+  with_items:
+    - clusterrole.yml
+    - crdnetwork.yml
+    - flannel-obj.yml
+
+- name: Copy macvlan template
+  template:
+    src: macvlan-obj.yml.j2
+    dest: /tmp/macvlan-obj.yml
+
+- name: Copy Multus testpod template
+  template:
+    src: multus-testpod.yml.j2
+    dest: /root/multus-testpod.yml
+
+- name: Create cluster role
+  shell: kubectl apply -f /tmp/clusterrole.yml
+
+- name: Check if role binding is created
+  shell: kubectl get clusterrolebinding multus-node-{{ item }}
+  register: check_rb
+  ignore_errors: "yes"
+  with_items: "{{ groups['all'] }}"
+
+- name: Create role binding
+  shell: >
+    kubectl create clusterrolebinding multus-node-{{ item }}
+    --clusterrole=multus-crd-overpowered
+    --user=system:node:{{ item }}
+  when: check_rb is failed
+  with_items: "{{ groups['all'] }}"
+
+- name: Create network CRD
+  shell: kubectl apply -f /tmp/crdnetwork.yml
+
+- name: Create flannel and macvlan network objects
+  shell: >
+    kubectl apply -f /tmp/flannel-obj.yml &&
+    kubectl apply -f /tmp/macvlan-obj.yml

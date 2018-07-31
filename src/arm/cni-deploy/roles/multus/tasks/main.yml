@@ -1,0 +1,24 @@
+---
+- name: Build Multus CNI
+  shell: >
+    docker run --rm --network host -v /opt/cni/bin:/opt/cni/bin golang:1.9
+    bash -c "git clone {{ multus_repo }} multus_cni && cd multus_cni &&
+    git checkout {{ multus_commit }} && ./build && cp bin/multus /opt/cni/bin/"
+  args:
+    creates: /opt/cni/bin/multus
+
+- name: Remove default CNI configuration
+  shell: rm -f /etc/cni/net.d/*
+  args:
+    warn: "no"
+
+- name: Set Multus as default CNI
+  copy:
+    src: 10-multus.conf
+    dest: /etc/cni/net.d/
+  notify:
+    - Restart kubelet
+
+- name: Import CRD task
+  import_tasks: crd.yml
+  when: inventory_hostname == groups["kube-master"][0]

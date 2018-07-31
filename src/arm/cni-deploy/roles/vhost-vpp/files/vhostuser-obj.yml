@@ -1,0 +1,28 @@
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: vhostuser-networkobj
+plugin: vhostuser
+args: '[
+  {
+    "type": "vhostuser",
+    "name": "vhostuser-network",
+    "if0name": "net1",
+    "vhost": {
+      "vhost_tool": "/opt/cni/bin/vpp-config.py"
+    },
+    "ipam": {
+      "type": "host-local",
+      "subnet": "10.56.217.0/24",
+      "rangeStart": "10.56.217.131",
+      "rangeEnd": "10.56.217.190",
+      "routes": [
+        {
+          "dst": "0.0.0.0/0"
+        }
+      ],
+      "gateway": "10.56.217.1"
+    }
+  }
+]'

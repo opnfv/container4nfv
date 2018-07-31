@@ -1,0 +1,22 @@
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: macvlan-networkobj
+plugin: macvlan
+args: '[
+  {
+    "master": "{{ macvlan_master }}",
+    "mode": "vepa",
+    "ipam": {
+      "type": "host-local",
+      "subnet": "{{ macvlan_subnet }}",
+      "rangeStart": "{{ macvlan_range_start }}",
+      "rangeEnd": "{{ macvlan_range_end }}",
+      "routes": [
+        { "dst": "0.0.0.0/0" }
+      ],
+      "gateway": "{{ macvlan_gateway }}"
+    }
+  }
+]'

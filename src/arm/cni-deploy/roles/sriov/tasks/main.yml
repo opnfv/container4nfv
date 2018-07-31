@@ -1,0 +1,12 @@
+---
+- name: Build SRIOV CNI
+  shell: >
+    docker run --rm --network host -v /opt/cni/bin:/opt/cni/bin golang:1.9
+    bash -c "git clone {{ sriov_repo }} sriov_cni && cd sriov_cni &&
+    git checkout {{ sriov_commit }} && ./build && cp bin/sriov /opt/cni/bin/"
+  args:
+    creates: /opt/cni/bin/sriov
+
+- name: Import CRD task
+  import_tasks: crd.yml
+  when: inventory_hostname == groups["kube-master"][0]

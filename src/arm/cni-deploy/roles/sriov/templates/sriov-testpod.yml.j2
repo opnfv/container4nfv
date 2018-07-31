@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sriov-test
+  annotations:
+    networks: '[
+      { "name": "flannel-networkobj" },
+      { "name": "sriov-networkobj" }
+    ]'
+spec:
+  containers:
+    - name: sriov-test
+      image: "busybox"
+      command: ["sleep", "100d"]
+      stdin: true
+      tty: true
+  nodeSelector:
+    kubernetes.io/hostname: "{{ groups['kube-node'][0] }}"

@@ -1,0 +1,68 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vpp-test1
+  annotations:
+    networks: '[
+        { "name": "flannel-networkobj" },
+        { "name": "vhostuser-networkobj" }
+    ]'
+spec:
+  containers:
+    - name: vpp-test1
+      image: vpp-1710:virtio-patched
+      imagePullPolicy: "Never"
+      stdin: true
+      terminationMessagePath: /dev/termination-log
+      tty: true
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - mountPath: /vhost-user-net-plugin
+          name: vhost-user-net-plugin
+        - mountPath: /mnt/huge
+          name: huge
+  nodeSelector:
+    kubernetes.io/hostname: "{{ groups['kube-node'][0] }}"
+  volumes:
+    - name: vhost-user-net-plugin
+      hostPath:
+        path: /var/lib/cni/vhostuser
+    - name: huge
+      hostPath:
+        path: /mnt/huge
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vpp-test2
+  annotations:
+    networks: '[
+        { "name": "flannel-networkobj" },
+        { "name": "vhostuser-networkobj" }
+    ]'
+spec:
+  containers:
+    - name: vpp-test2
+      image: vpp-1710:virtio-patched
+      imagePullPolicy: "Never"
+      stdin: true
+      terminationMessagePath: /dev/termination-log
+      tty: true
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - mountPath: /vhost-user-net-plugin
+          name: vhost-user-net-plugin
+        - mountPath: /mnt/huge
+          name: huge
+  nodeSelector:
+    kubernetes.io/hostname: "{{ groups['kube-node'][0] }}"
+  volumes:
+    - name: vhost-user-net-plugin
+      hostPath:
+        path: /var/lib/cni/vhostuser
+    - name: huge
+      hostPath:
+        path: /mnt/huge

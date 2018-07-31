@@ -1,0 +1,18 @@
+---
+- name: Build Vhostuser CNI
+  shell: >
+    docker run --rm --network host -v /opt/cni/bin:/opt/cni/bin golang:1.9
+    bash -c "git clone {{ vhostuser_repo }} vhostuser_cni && cd vhostuser_cni
+    && git checkout {{ vhostuser_commit }} && ./build
+    && cp bin/vhostuser /opt/cni/bin/
+    && cp tests/vpp-config-debug.py /opt/cni/bin/vpp-config.py"
+  args:
+    creates: /opt/cni/bin/vhostuser
+
+- name: Import CRD task
+  import_tasks: crd.yml
+  when: inventory_hostname == groups["kube-master"][0]
+
+- name: Import VPP task
+  import_tasks: vpp.yml
+  when: inventory_hostname in groups["kube-node"]

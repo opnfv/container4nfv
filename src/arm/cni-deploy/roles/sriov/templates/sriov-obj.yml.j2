@@ -1,0 +1,25 @@
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: sriov-networkobj
+plugin: sriov
+args: '[
+  {
+    "master": "{{ sriov_master }}",
+    "pfOnly": true,
+    "if0name": "net0",
+    "ipam": {
+      "type": "host-local",
+      "subnet": "{{ sriov_subnet }}",
+      "rangeStart": "{{ sriov_range_start }}",
+      "rangeEnd": "{{ sriov_range_end }}",
+      "routes": [
+        {
+          "dst": "0.0.0.0/0"
+        }
+      ],
+      "gateway": "{{ sriov_gateway }}"
+    }
+  }
+]'

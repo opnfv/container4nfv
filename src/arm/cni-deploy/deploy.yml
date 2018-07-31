@@ -1,0 +1,32 @@
+---
+- name: Fixup default flannel
+  hosts: kube-master
+  gather_facts: "no"
+  vars_files:
+    - "vars/global"
+  roles:
+    - {role: flannel, tags: [flannel]}
+
+- name: Deploy Multus CNI
+  hosts: all
+  gather_facts: "no"
+  vars_files:
+    - "vars/global"
+  roles:
+    - {role: multus, tags: [multus]}
+
+- name: Deploy SRIOV CNI
+  hosts: all
+  gather_facts: "no"
+  vars_files:
+    - "vars/global"
+  roles:
+    - {role: sriov, tags: [sriov]}
+
+- name: Deploy Vhostuser CNI and VPP
+  hosts: all
+  gather_facts: "yes"
+  vars_files:
+    - "vars/global"
+  roles:
+    - {role: vhost-vpp, tags: [vhost-vpp]}
