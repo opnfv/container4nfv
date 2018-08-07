@@ -1,6 +1,12 @@
 #!/bin/bash
-
 set -ex
+
+sudo apt-get -y install ntp
+cat << EOF | sudo tee /etc/ntp.conf
+server 127.127.1.0
+fudge  127.127.1.0 stratum 10
+EOF
+sudo service ntp restart
 
 sudo apt install nfs-kernel-server -y
 sudo mkdir /dockerdata-nfs
@@ -15,6 +21,8 @@ mkdir ~/.kube
 sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+sed -i "s/kube-subnet-mgr/kube-subnet-mgr\n        - --iface=eth1/" kube-flannel.yml
+kubectl apply -f kube-flannel.yml
 
 /vagrant/onap_setup.sh
