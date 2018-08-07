@@ -17,16 +17,11 @@
 
 set -ex
 
-sudo kubeadm init --skip-preflight-checks --apiserver-advertise-address=192.168.1.10  --service-cidr=10.96.0.0/16 --pod-network-cidr=10.244.0.0/16 --token 8c5adc.1cec8dbf339093f0
+sudo kubeadm init --skip-preflight-checks --apiserver-advertise-address=192.168.1.10  --service-cidr=10.96.0.0/16 --pod-network-cidr=10.32.0.0/12 --token 8c5adc.1cec8dbf339093f0
 mkdir ~/.kube
 sudo cp /etc/kubernetes/admin.conf .kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
 
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+nohup /usr/bin/kubectl proxy --address=0.0.0.0 --accept-hosts=.* --port=8080 & sleep 1
 
-r=0
-while [ "$r" -ne "1" ]
-do
-    sleep 30
-    r=$(kubectl get pods -n kube-system | grep -v Running | wc -l)
-done
+sudo ovnkube -k8s-kubeconfig /home/vagrant/.kube/config -net-controller -loglevel=4 -k8s-apiserver=http://192.168.1.10:8080 -logfile=/var/log/openvswitch/ovnkube.log -init-master=master -cluster-subnet=10.32.0.0/12 -service-cluster-ip-range=10.96.0.0/16 -nodeport -nb-address=tcp://192.168.1.10:6631 -sb-address=tcp://192.168.1.10:6632 &
