@@ -20,18 +20,15 @@ set -ex
 # Scenario sequence rules:
 #     - stable first
 #     - less time consuming first
-SCENARIOS="kubeadm_basic
+SCENARIOS="
     kubeadm_virtlet
     kubeadm_ovsdpdk
-    kubeadm_istio
     kubeadm_kata
 "
 
-DEFAULT_TIMEOUT=3600
-
 for SCENARIO in $SCENARIOS; do
     START=$(date +%s)
-    timeout ${DEFAULT_TIMEOUT} ../src/vagrant/${SCENARIO}/deploy.sh
+    ../src/vagrant/${SCENARIO}/deploy.sh
     END=$(date +%s)
     DIFF=$(( $END - $START ))
     echo "Scenario $SCENARIO tooks $DIFF seconds."
