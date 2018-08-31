@@ -3,13 +3,13 @@
 .. (c) Xuan Jia (China Mobile)
 
 ==========================
-OpenRetriever Gap Analysis
+Container4NFV Gap Analysis
 ==========================
 
-:Project: OpenRetriever, https://wiki.opnfv.org/display/openretriever
+:Project: Container4NFV, https://wiki.opnfv.org/display/OpenRetriever/Container4NFV
 
-:Editors: Xuan Jia (China Mobile)
-:Authors: Xuan Jia (China Mobile)
+:Editors: Xuan Jia (China Mobile), Gergely Csatari (Nokia)
+:Authors: Container4NFV team
 
 :Abstract: This document provides the users with top-down gap analysis regarding
            OpenRetriever feature requirements with OPNFV Installer, OpenStack

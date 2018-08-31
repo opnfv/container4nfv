@@ -114,33 +114,35 @@ Configuring Pod with Control Plane and Data Plane with DPDK Acceration
 1, Save the below following YAML to dpdk.yaml.
 
 ::
- apiVersion: v1
- kind: Pod
- metadata:
-   name: dpdk
- spec:
-   nodeSelector:
-     beta.kubernetes.io/arch: arm64
-   containers:
-   - name: dpdk
-     image: younglook/dpdk:arm64
-     command: [ "bash", "-c", "/usr/bin/l2fwd --huge-unlink -l 6-7 -n 4 --file-prefix=container -- -p 3" ]
-     stdin: true
-     tty: true
-     securityContext:
-       privileged: true
-     volumeMounts:
-     - mountPath: /dev/vfio
-       name: vfio
-     - mountPath: /mnt/huge
-       name: huge
-   volumes:
-   - name: vfio
-     hostPath:
-       path: /dev/vfio
-   - name: huge
-     hostPath:
-       path: /mnt/huge
+  .. code-block:: yaml
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: dpdk
+    spec:
+      nodeSelector:
+        beta.kubernetes.io/arch: arm64
+      containers:
+      - name: dpdk
+        image: younglook/dpdk:arm64
+        command: [ "bash", "-c", "/usr/bin/l2fwd --huge-unlink -l 6-7 -n 4 --file-prefix=container -- -p 3" ]
+        stdin: true
+        tty: true
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /dev/vfio
+          name: vfio
+        - mountPath: /mnt/huge
+          name: huge
+      volumes:
+      - name: vfio
+        hostPath:
+          path: /dev/vfio
+      - name: huge
+        hostPath:
+          path: /mnt/huge
 
 2, Create Pod
 

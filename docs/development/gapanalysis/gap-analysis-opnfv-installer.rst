@@ -3,9 +3,9 @@
 .. (c) Xuan Jia (China Mobile)
 
 ===============================================
-OpenRetriever Gap Analysis with OPNFV Installer
+Container4NFV Gap Analysis with OPNFV Installer
 ===============================================
-This section provides users with OpenRetriever gap analysis regarding feature
+This section provides users with Container4NFV gap analysis regarding feature
 requirement with OPNFV Installer in Danube Official Release. The following
 table lists the use cases / feature requirements of container integrated
 functionality, and its gap analysis with OPNFV Installer in Danube Official

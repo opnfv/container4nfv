@@ -3,9 +3,9 @@
 .. (c) Xuan Jia (China Mobile), Gergely Csatari (Nokia)
 
 =========================================
-OpenRetriever Gap Analysis with OpenStack
+Container4NFV Gap Analysis with OpenStack
 =========================================
-This section provides a gap analyzis between the targets of OpenRetriever for
+This section provides a gap analyzis between the targets of Container4NFV for
 release Euphrates (E) or later and the features provided by OpenStack in release
 Ocata. As the OPNFV and OpenStack releases tend to change over time this
 analyzis is planned to be countinously updated.
@@ -47,7 +47,7 @@ integrated functionality, and its gap analysis with OpenStack.
   |Kuryr_ needs to support MACVLAN and IPVLAN                 |Kuryr_             |Using MACVLAN or IPVLAN could provide better network performance.   |Open            |
   |                                                           |                   |It is planned for Ocata.                                            |                |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+----------------+
-  |Kuryr_ Kubernetes_ integration is needed                   |Kuryr_             |It is done in the frame of OpenRetriever.                           |Targeted to     |
+  |Kuryr_ Kubernetes_ integration is needed                   |Kuryr_             |It is done in the frame of Container4NFV.                           |Targeted to     |
   |                                                           |                   |                                                                    |OPNFV release E |
   |                                                           |                   |                                                                    |/OpenStack Ocata|
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+----------------+
