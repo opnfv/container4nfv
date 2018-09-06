@@ -1,1 +1,3 @@
 .vagrant/
+.tox/
+docs/_build/*
