@@ -242,7 +242,8 @@ Functest
 --------
 
 .. _functest: https://wiki.opnfv.org/display/functest/Opnfv+Functional+Testing
-.. _Danube: http://docs.opnfv.org/en/stable-danube/submodules/functest/docs/testing/user/userguide/index.html
+.. _Danube: :doc:`<functest:testing/user/userguide>`
+
 
 The  Functest project provides comprehensive testing methodology, test suites and test cases to test and verify OPNFV Platform functionality
 that covers the VIM and NFVI components.
