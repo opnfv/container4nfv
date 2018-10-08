@@ -251,8 +251,17 @@ Functest for Container4NFV could used to verify the basic VIM functionality to s
 the Danube_ release,  there are 4 domains(VIM, Controllers, Features, VNF) and 5 tiers(healthcheck, smoke, features, components, vnf) and more
 than 20 test cases.
 
-But now the Functest has not been extended to support Kubernetes, which is still under developing.
+Functest-kubernetes
+--------
 
+.. _Functest-kubernetes: https://wiki.opnfv.org/display/functest/Opnfv+Functional+Testing
+
+Functest-kubernetes_ is part of Functest. Compared with the functest, it pays more attention to verifying the kubernetes environments
+functionality, but not the OPNFV platform functionality. The latest functest-kubernetes has been enabled on arm64 platform.
+
+In functest-kubernetes tests, there are 3 different types of cases. One is health-check case which is used for checking the kubernetes cluster
+minimal functional requirements. One is smoke case which is used for checking the kubernetes conformance. The last type is feature
+test case which depends on different scenarios.
 
 Current Status and Future Plan
 ==============================
