@@ -35,6 +35,9 @@ echo 'export PATH="$PATH:/vagrant/istio-source/bin"' >> ~/.bashrc
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 source ~/.bashrc
 
+# Install Istio’s Custom Resource Definitions first
+kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
+
 kubectl apply -f install/kubernetes/istio-demo.yaml
 
 # Validate the installation
