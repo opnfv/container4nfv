@@ -21,7 +21,9 @@ cd /vagrant/istio-source/
 export PATH=$PWD/bin:$PATH
 
 # Clean up bookinfo
-echo "" | samples/bookinfo/kube/cleanup.sh
+echo "" | samples/bookinfo/platform/kube/cleanup.sh
 
-istioctl get routerules
+kubectl get virtualservices
+kubectl get destinationrules
+kubectl get gateway
 kubectl get pods
