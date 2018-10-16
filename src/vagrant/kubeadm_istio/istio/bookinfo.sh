@@ -21,10 +21,10 @@ cd /vagrant/istio-source/
 export PATH=$PWD/bin:$PATH
 
 # Run the test application: bookinfo
-kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/kube/bookinfo.yaml)
+kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
 
 # Define the ingress gateway for the application
-istioctl create -f samples/bookinfo/routing/bookinfo-gateway.yaml
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 
 # Wait for bookinfo deployed
 kubectl get services
