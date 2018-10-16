@@ -38,6 +38,9 @@ source ~/.bashrc
 # Install Istio’s Custom Resource Definitions first
 kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
 
+# Wait 30s for Kubernetes to register the Istio CRDs
+sleep 30
+
 kubectl apply -f install/kubernetes/istio-demo.yaml
 
 # Validate the installation
