@@ -58,7 +58,17 @@ committers:
       email: 'yu.peng36@zte.com.cn'
       company: 'zte.com.cn'
       id: 'YuPengZTE'
+    - name: 'Zijin Tao'
+      email: 'Trevor.Tao@arm.com'
+      company: 'arm.com'
+      id: 'Trevor Tao'
+    - name: 'Lu Bin'
+      email: 'Bin.Lu@arm.com'
+      company: 'arm.com'
+      id: 'BinLu'
 tsc:
     # yamllint disable rule:line-length
     approval: 'http//meetbot.opnfv.org/meetings/opnfv-meeting/2016/opnfv-meeting.2016-12-13-14.59.html'
+    approval: 'https://lists.opnfv.org/pipermail/opnfv-tech-discuss/2018-February/020156.html'
+    approval: 'https://lists.opnfv.org/g/opnfv-tech-discuss/topic/nominate_lubin_as_a_committer/27367271?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,27367271'
     # yamllint enable rule:line-length
