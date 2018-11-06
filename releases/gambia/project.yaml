@@ -1,0 +1,8 @@
+project: container4nfv
+project-type: feature
+release-model: stable
+ 
+branches:
+  - name: stable/gambia
+    location:
+      container4nfv:1fa07ef952a6b0e12487901919cec52b9d9b9739
