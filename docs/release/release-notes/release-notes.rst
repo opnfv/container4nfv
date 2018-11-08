@@ -17,3 +17,11 @@ Container4NFV F release Notes
 2. Enable SR-IOV in Kubernetes
 3. Support ARM platform
 
+
+==================================
+Container4NFV G release Notes
+==================================
+1. Enable Virtlet in Kubernetes
+2. Enable Kata in Kubernetes
+3. Enable VPP in Kubernetes
+4. Enable Vagrant tools.
