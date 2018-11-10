@@ -3,8 +3,7 @@
 set -ex
 sudo kubeadm join --token 8c5adc.1cec8dbf339093f0 192.168.1.10:6443 || true
 
-sudo docker pull openretriever/virtlet
-sudo docker run --rm openretriever/virtlet tar -c /criproxy | sudo tar -C /usr/local/bin -xv
+sudo docker run --rm mirantis/virtlet:v1.4.1 tar -c /criproxy | sudo tar -C /usr/local/bin -xv
 sudo ln -s /usr/local/bin/criproxy /usr/local/bin/dockershim
 
 sudo mkdir /etc/criproxy

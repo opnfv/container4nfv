@@ -8,3 +8,4 @@ sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl apply -f http://git.io/weave-kube-1.6
+kubectl apply -f /vagrant/multus/cni_multus.yml
