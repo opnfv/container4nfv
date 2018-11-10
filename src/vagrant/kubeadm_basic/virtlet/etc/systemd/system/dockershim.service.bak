@@ -1,0 +1,15 @@
+[Unit]
+Description=dockershim for criproxy
+
+[Service]
+ExecStart=/usr/bin/kubelet --experimental-dockershim --port 11250 --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --config=/var/lib/kubelet/config.yaml --cgroup-driver=cgroupfs --cni-bin-dir=/opt/cni/bin --cni-conf-dir=/etc/cni/net.d --network-plugin=cni --container-runtime=remote \
+--container-runtime-endpoint=unix:///run/criproxy.sock \
+--image-service-endpoint=unix:///run/criproxy.sock \
+--enable-controller-attach-detach=false
+
+Restart=always
+StartLimitInterval=0
+RestartSec=10
+
+[Install]
+RequiredBy=criproxy.service

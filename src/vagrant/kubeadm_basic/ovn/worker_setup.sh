@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 Intel Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+set -ex
+
+CENTRAL_IP=192.168.1.10
+NODE_NAME=$(hostname)
+TOKEN="8c5adc.1cec8dbf339093f0"
+
+sudo ovnkube -k8s-kubeconfig /home/vagrant/.kube/config -loglevel=4 \
+    -logfile="/var/log/openvswitch/ovnkube.log" \
+    -k8s-apiserver="http://$CENTRAL_IP:8080" \
+    -init-node="$NODE_NAME"  \
+    -nodeport \
+    -nb-address="tcp://$CENTRAL_IP:6631" \
+    -sb-address="tcp://$CENTRAL_IP:6632" -k8s-token="$TOKEN" \
+    -init-gateways \
+    -service-cluster-ip-range=10.96.0.0/16 \
+    -cluster-subnet=10.32.0.0/12 &
