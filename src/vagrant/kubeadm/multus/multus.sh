@@ -24,7 +24,7 @@ do
 done
 
 kubectl delete rc --all
-kubectl apply -f /vagrant/examples/busybox.yaml
+kubectl apply -f /vagrant/multus/busybox.yaml
 r="0"
 while [ $r -ne "2" ]
 do
