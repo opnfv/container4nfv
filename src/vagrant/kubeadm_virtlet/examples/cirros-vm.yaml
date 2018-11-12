@@ -4,21 +4,14 @@ metadata:
   name: cirros-vm
   annotations:
     # This tells CRI Proxy that this pod belongs to Virtlet runtime
-    kubernetes.io/target-runtime: virtlet
-    # An optional annotation specifying the count of virtual CPUs.
-    # Note that annotation values must always be strings,
-    # thus numeric values need to be quoted.
-    # Defaults to "1".
-    VirtletVCPUCount: "1"
+    kubernetes.io/target-runtime: virtlet.cloud
     # CirrOS doesn't load nocloud data from SCSI CD-ROM for some reason
     VirtletDiskDriver: virtio
     # inject ssh keys via cloud-init
     VirtletSSHKeys: |
       ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCaJEcFDXEK2ZbX0ZLS1EIYFZRbDAcRfuVjpstSc0De8+sV1aiu+dePxdkuDRwqFtCyk6dEZkssjOkBXtri00MECLkir6FcH3kKOJtbJ6vy3uaJc9w1ERo+wyl6SkAh/+JTJkp7QRXj8oylW5E20LsbnA/dIwWzAF51PPwF7A7FtNg9DnwPqMkxFo1Th/buOMKbP5ZA1mmNNtmzbMpMfJATvVyiv3ccsSJKOiyQr6UG+j7sc/7jMVz5Xk34Vd0l8GwcB0334MchHckmqDB142h/NCWTr8oLakDNvkfC1YneAfAO41hDkUbxPtVBG5M/o7P4fxoqiHEX+ZLfRxDtHB53 me@localhost
-    # cloud-init user data
-    VirtletCloudInitUserDataScript: |
-      #!/bin/sh
-      echo "Hi there"
+    # set root volume size
+    VirtletRootVolumeSize: 1Gi
 spec:
   # This nodeAffinity specification tells Kubernetes to run this
   # pod only on the nodes that have extraRuntime=virtlet label.
@@ -36,17 +29,9 @@ spec:
   containers:
   - name: cirros-vm
     # This specifies the image to use.
-    # virtlet/ prefix is used by CRI proxy, the remaining part
+    # virtlet.cloud/ prefix is used by CRI proxy, the remaining part
     # of the image name is prepended with https:// and used to download the image
-    image: virtlet/cirros
-    # Virtlet currently ignores image tags, but their meaning may change
-    # in future, so it’s better not to set them for VM pods. If there’s no tag
-    # provided in the image specification kubelet defaults to
-    # imagePullPolicy: Always, which means that the image is always
-    # redownloaded when the pod is created. In order to make pod creation
-    # faster and more reliable, we set imagePullPolicy to IfNotPresent here
-    # so a previously downloaded image is reused if there is one
-    # in Virtlet’s image store
+    image: virtlet.cloud/cirros
     imagePullPolicy: IfNotPresent
     # tty and stdin required for `kubectl attach -t` to work
     tty: true
