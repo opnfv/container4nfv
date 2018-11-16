@@ -11,4 +11,7 @@ Container4NFV
 .. toctree::
    :maxdepth: 1
 
-   release/index
+   development/gapanalysis/index
+   development/nvgsrequirements/index
+   release/release-notes/index
+   release/userguide/index
