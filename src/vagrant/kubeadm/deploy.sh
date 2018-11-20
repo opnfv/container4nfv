@@ -7,3 +7,4 @@ cd $DIR
 ../cleanup.sh
 vagrant up
 vagrant ssh master -c "/vagrant/multus/multus.sh"
+vagrant ssh master -c "/vagrant/istio/istio.sh"

@@ -53,6 +53,6 @@ while [ $r -ne "0" ]
 do
    sleep 30
    kubectl get pods -n istio-system
-   r=$(kubectl get pods -n istio-system | egrep -v 'NAME|Running' | wc -l)
+   r=$(kubectl get pods -n istio-system | egrep -v 'NAME|Running|Completed' | wc -l)
 done
 

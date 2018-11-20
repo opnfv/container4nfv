@@ -24,6 +24,7 @@ SCENARIOS="
     kubeadm_virtlet
     kubeadm_ovsdpdk
     kubeadm_kata
+    kubeadm
 "
 
 for SCENARIO in $SCENARIOS; do
