@@ -2,14 +2,11 @@
 .. License. http://creativecommons.org/licenses/by/4.0
 .. (c) Xuan Jia (China Mobile)
 
-==========================
+.. _container4nfv-userguide:
+
+========================
 Container4NFV User Guide
-==========================
-
-:Project: Container4NFV, https://wiki.opnfv.org/display/openretriever
-
-:Editors: Xuan Jia (China Mobile)
-:Authors: Xuan Jia (China Mobile)
+========================
 
 .. toctree::
    :maxdepth: 3
