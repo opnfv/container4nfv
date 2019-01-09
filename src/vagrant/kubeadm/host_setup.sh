@@ -4,7 +4,7 @@ set -ex
 
 cat << EOF | sudo tee /etc/hosts
 127.0.0.1    localhost
-192.168.1.05 registry
+192.168.1.5 registry
 192.168.1.10 master
 192.168.1.21 worker1
 192.168.1.22 worker2
