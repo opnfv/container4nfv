@@ -26,8 +26,8 @@ sudo -E apt-get -y install libseccomp2
 wget https://github.com/opencontainers/runc/releases/download/v1.0.0-rc6/runc.amd64
 sudo cp runc.amd64 /usr/sbin/runc
 sudo chmod 755 /usr/sbin/runc
-wget http://github.com/containerd/containerd/releases/download/v1.2.1/containerd-1.2.1.linux-amd64.tar.gz >& /dev/null
-sudo tar -C /usr/local -xzf containerd-1.2.1.linux-amd64.tar.gz
+wget http://github.com/containerd/containerd/releases/download/v1.2.2/containerd-1.2.2.linux-amd64.tar.gz >& /dev/null
+sudo tar -C /usr/local -xzf containerd-1.2.2.linux-amd64.tar.gz
 wget https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.13.0/crictl-v1.13.0-linux-amd64.tar.gz >& /dev/null
 sudo tar -C /usr/local/bin -xzf crictl-v1.13.0-linux-amd64.tar.gz
 echo "runtime-endpoint: unix:///run/containerd/containerd.sock" | sudo tee /etc/crictl.yaml
@@ -39,6 +39,7 @@ sudo mkdir -p /opt/cni/bin
 sudo mkdir -p /etc/cni/net.d
 sudo mkdir -p /etc/containerd
 containerd config default | sudo tee  /etc/containerd/config.toml
+sudo sed -i "s,\[plugins.cri.registry.mirrors\],\[plugins.cri.registry.mirrors\]\n        \[plugins.cri.registry.mirrors.\"registry:5000\"\]\n          endpoint = \[\"http://registry:5000\"\]," /etc/containerd/config.toml
 sudo sed -i "/.*untrusted_workload_runtime.*/,+5s/runtime_type.*/runtime_type=\"io.containerd.runtime.v1.linux\"/" /etc/containerd/config.toml
 sudo sed -i "/.*untrusted_workload_runtime.*/,+5s/runtime_engine.*/runtime_engine=\"kata-runtime\"/" /etc/containerd/config.toml
 sudo systemctl restart containerd
