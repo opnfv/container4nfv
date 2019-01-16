@@ -67,7 +67,7 @@ spec:
       serviceAccountName: cnimultus
       containers:
       - name: run-cni
-        image: registry:5000/multus-cni
+        image: registry:5000/multus-cni:latest
         command: ['sh', '-c', 'cp /multus/cni-conf.json /etc/cni/net.d/05-multus.conf; cp /root/multus /opt/cni/bin; while true; do sleep 10000; done' ]
         volumeMounts:
         - name: cni-bin
