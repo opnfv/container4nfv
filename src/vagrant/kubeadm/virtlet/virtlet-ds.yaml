@@ -1,0 +1,521 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  creationTimestamp: null
+  name: virtlet
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      runtime: virtlet
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        runtime: virtlet
+      name: virtlet
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: extraRuntime
+                operator: In
+                values:
+                - virtlet
+      containers:
+      - command:
+        - /libvirt.sh
+        image: mirantis/virtlet:v1.4.1
+        imagePullPolicy: IfNotPresent
+        name: libvirt
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - socat - UNIX:/var/run/libvirt/libvirt-sock-ro </dev/null
+        resources: {}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /sys/fs/cgroup
+          name: cgroup
+        - mountPath: /lib/modules
+          name: modules
+          readOnly: true
+        - mountPath: /boot
+          name: boot
+          readOnly: true
+        - mountPath: /run
+          name: run
+        - mountPath: /var/lib/virtlet
+          name: virtlet
+        - mountPath: /var/lib/libvirt
+          name: libvirt
+        - mountPath: /var/run/libvirt
+          name: libvirt-sockets
+        - mountPath: /var/log/vms
+          name: vms-log
+        - mountPath: /var/log/libvirt
+          name: libvirt-log
+        - mountPath: /dev
+          name: dev
+      - image: mirantis/virtlet:v1.4.1
+        imagePullPolicy: IfNotPresent
+        name: virtlet
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - socat - UNIX:/run/virtlet.sock </dev/null
+        resources: {}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /run
+          name: run
+        - mountPath: /lib/modules
+          name: modules
+          readOnly: true
+        - mountPath: /boot
+          name: boot
+          readOnly: true
+        - mountPath: /dev
+          name: dev
+        - mountPath: /var/lib/virtlet
+          mountPropagation: Bidirectional
+          name: virtlet
+        - mountPath: /var/lib/libvirt
+          name: libvirt
+        - mountPath: /var/run/libvirt
+          name: libvirt-sockets
+        - mountPath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+          name: k8s-flexvolume-plugins-dir
+        - mountPath: /var/lib/kubelet/pods
+          mountPropagation: Bidirectional
+          name: k8s-pods-dir
+        - mountPath: /var/log/vms
+          name: vms-log
+        - mountPath: /etc/virtlet/images
+          name: image-name-translations
+        - mountPath: /var/log/pods
+          name: pods-log
+        - mountPath: /var/log/libvirt
+          name: libvirt-log
+        - mountPath: /var/run/netns
+          mountPropagation: Bidirectional
+          name: netns-dir
+      - command:
+        - /vms.sh
+        image: mirantis/virtlet:v1.4.1
+        imagePullPolicy: IfNotPresent
+        name: vms
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/virtlet
+          mountPropagation: HostToContainer
+          name: virtlet
+        - mountPath: /var/lib/libvirt
+          name: libvirt
+        - mountPath: /var/log/vms
+          name: vms-log
+        - mountPath: /var/lib/kubelet/pods
+          mountPropagation: HostToContainer
+          name: k8s-pods-dir
+        - mountPath: /dev
+          name: dev
+        - mountPath: /lib/modules
+          name: modules
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      hostPID: true
+      initContainers:
+      - command:
+        - /prepare-node.sh
+        env:
+        - name: KUBE_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: VIRTLET_DISABLE_KVM
+          valueFrom:
+            configMapKeyRef:
+              key: disable_kvm
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_SRIOV_SUPPORT
+          valueFrom:
+            configMapKeyRef:
+              key: sriov_support
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_DOWNLOAD_PROTOCOL
+          valueFrom:
+            configMapKeyRef:
+              key: download_protocol
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_LOGLEVEL
+          valueFrom:
+            configMapKeyRef:
+              key: loglevel
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_CALICO_SUBNET
+          valueFrom:
+            configMapKeyRef:
+              key: calico-subnet
+              name: virtlet-config
+              optional: true
+        - name: IMAGE_REGEXP_TRANSLATION
+          valueFrom:
+            configMapKeyRef:
+              key: image_regexp_translation
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_RAW_DEVICES
+          valueFrom:
+            configMapKeyRef:
+              key: raw_devices
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_DISABLE_LOGGING
+          valueFrom:
+            configMapKeyRef:
+              key: disable_logging
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_CPU_MODEL
+          valueFrom:
+            configMapKeyRef:
+              key: cpu-model
+              name: virtlet-config
+              optional: true
+        - name: KUBELET_ROOT_DIR
+          valueFrom:
+            configMapKeyRef:
+              key: kubelet_root_dir
+              name: virtlet-config
+              optional: true
+        - name: VIRTLET_IMAGE_TRANSLATIONS_DIR
+          value: /etc/virtlet/images
+        image: mirantis/virtlet:v1.4.1
+        imagePullPolicy: IfNotPresent
+        name: prepare-node
+        resources: {}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /kubelet-volume-plugins
+          name: k8s-flexvolume-plugins-dir
+        - mountPath: /run
+          name: run
+        - mountPath: /var/run/docker.sock
+          name: dockersock
+        - mountPath: /hostlog
+          name: log
+        - mountPath: /host-var-lib
+          name: var-lib
+        - mountPath: /dev
+          name: dev
+        - mountPath: /var/lib/virtlet
+          name: virtlet
+      serviceAccountName: virtlet
+      volumes:
+      - hostPath:
+          path: /dev
+        name: dev
+      - hostPath:
+          path: /sys/fs/cgroup
+        name: cgroup
+      - hostPath:
+          path: /lib/modules
+        name: modules
+      - hostPath:
+          path: /boot
+        name: boot
+      - hostPath:
+          path: /run
+        name: run
+      - hostPath:
+          path: /var/run/docker.sock
+        name: dockersock
+      - hostPath:
+          path: /var/lib/virtlet
+        name: virtlet
+      - hostPath:
+          path: /var/lib/libvirt
+        name: libvirt
+      - hostPath:
+          path: /var/log
+        name: log
+      - hostPath:
+          path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+        name: k8s-flexvolume-plugins-dir
+      - hostPath:
+          path: /var/lib/kubelet/pods
+        name: k8s-pods-dir
+      - hostPath:
+          path: /var/lib
+        name: var-lib
+      - hostPath:
+          path: /var/log/virtlet/vms
+        name: vms-log
+      - hostPath:
+          path: /var/log/libvirt
+        name: libvirt-log
+      - hostPath:
+          path: /var/run/libvirt
+        name: libvirt-sockets
+      - hostPath:
+          path: /var/log/pods
+        name: pods-log
+      - hostPath:
+          path: /var/run/netns
+        name: netns-dir
+      - configMap:
+          name: virtlet-image-translations
+        name: image-name-translations
+  updateStrategy: {}
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: virtlet
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: virtlet
+subjects:
+- kind: ServiceAccount
+  name: virtlet
+  namespace: kube-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: virtlet
+  namespace: kube-system
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - nodes
+  verbs:
+  - create
+  - get
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: configmap-reader
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: virtlet-userdata-reader
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - secrets
+  verbs:
+  - get
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: kubelet-node-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: configmap-reader
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:nodes
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: vm-userdata-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: virtlet-userdata-reader
+subjects:
+- kind: ServiceAccount
+  name: virtlet
+  namespace: kube-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: virtlet-crd
+rules:
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - create
+- apiGroups:
+  - virtlet.k8s
+  resources:
+  - virtletimagemappings
+  - virtletconfigmappings
+  verbs:
+  - list
+  - get
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: virtlet-crd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: virtlet-crd
+subjects:
+- kind: ServiceAccount
+  name: virtlet
+  namespace: kube-system
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  name: virtlet
+  namespace: kube-system
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    virtlet.cloud: ""
+  name: virtletimagemappings.virtlet.k8s
+spec:
+  group: virtlet.k8s
+  names:
+    kind: VirtletImageMapping
+    plural: virtletimagemappings
+    shortNames:
+    - vim
+    singular: virtletimagemapping
+  scope: Namespaced
+  version: v1
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    virtlet.cloud: ""
+  name: virtletconfigmappings.virtlet.k8s
+spec:
+  group: virtlet.k8s
+  names:
+    kind: VirtletConfigMapping
+    plural: virtletconfigmappings
+    shortNames:
+    - vcm
+    singular: virtletconfigmapping
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          properties:
+            config:
+              properties:
+                calicoSubnetSize:
+                  maximum: 32
+                  minimum: 0
+                  type: integer
+                cniConfigDir:
+                  type: string
+                cniPluginDir:
+                  type: string
+                cpuModel:
+                  type: string
+                criSocketPath:
+                  type: string
+                databasePath:
+                  type: string
+                disableKVM:
+                  type: boolean
+                disableLogging:
+                  type: boolean
+                downloadProtocol:
+                  pattern: ^https?$
+                  type: string
+                enableRegexpImageTranslation:
+                  type: boolean
+                enableSriov:
+                  type: boolean
+                fdServerSocketPath:
+                  type: string
+                imageDir:
+                  type: string
+                imageTranslationConfigsDir:
+                  type: string
+                kubeletRootDir:
+                  type: string
+                libvirtURI:
+                  type: string
+                logLevel:
+                  maximum: 2147483647
+                  minimum: 0
+                  type: integer
+                rawDevices:
+                  type: string
+                skipImageTranslation:
+                  type: boolean
+                streamPort:
+                  maximum: 65535
+                  minimum: 1
+                  type: integer
+            nodeName:
+              type: string
+            nodeSelector:
+              type: object
+            priority:
+              type: integer
+  version: v1
+
