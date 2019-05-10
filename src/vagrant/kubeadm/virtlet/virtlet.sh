@@ -13,9 +13,9 @@ kubectl create -f /vagrant/virtlet/cirros-vm.yaml
 r="0"
 while [ $r -ne "1" ]
 do
-   r=$(kubectl get pods | grep Running | wc -l)
+   r=$(kubectl get pods cirros-vm | grep Running | wc -l)
    sleep 60
 done
-sleep 60
-kubectl get pods -o json | grep podIP | cut -f4 -d'"' | xargs ping -c 4
+sleep 360
+kubectl get pods cirros-vm -o custom-columns=:.status.podIP | xargs ping -c 4
 echo 'login by user:cirros & password:gocubsgo'

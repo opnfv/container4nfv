@@ -8,4 +8,3 @@ cd $DIR
 vagrant up
 vagrant ssh master -c "/vagrant/kata/nginx-app.sh"
 vagrant ssh master -c "/vagrant/virtlet/virtlet.sh"
-vagrant ssh master -c "/vagrant/istio/istio.sh"
