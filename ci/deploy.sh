@@ -21,8 +21,6 @@ set -ex
 #     - stable first
 #     - less time consuming first
 SCENARIOS="
-    kubeadm_ovsdpdk
-    kubeadm_kata
     kubeadm
 "
 
