@@ -17,6 +17,14 @@
 
 set -ex
 
+wget https://storage.googleapis.com/kubernetes-helm/helm-v2.14.0-linux-amd64.tar.gz
+tar xzvf helm-v2.14.0-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/
+helm init
+helm serve &
+helm repo remove stable
+helm repo add local http://127.0.0.1:8879
+
 # Get latest istio version, refer: https://git.io/getLatestIstio
 if [ "x${ISTIO_VERSION}" = "x" ] ; then
   ISTIO_VERSION=$(curl -L -s https://api.github.com/repos/istio/istio/releases/latest | \
@@ -35,13 +43,10 @@ echo 'export PATH="$PATH:/vagrant/istio-source/bin"' >> ~/.bashrc
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 source ~/.bashrc
 
-# Install Istio’s Custom Resource Definitions first
-kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
-
-# Wait 30s for Kubernetes to register the Istio CRDs
-sleep 30
-
-kubectl apply -f install/kubernetes/istio-demo.yaml
+kubectl create namespace istio-system
+helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+kubectl get crds | grep 'istio.io\|certmanager.k8s.io' | wc -l
+helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
 
 # Validate the installation
 kubectl get svc -n istio-system
@@ -55,4 +60,3 @@ do
    kubectl get pods -n istio-system
    r=$(kubectl get pods -n istio-system | egrep -v 'NAME|Running|Completed' | wc -l)
 done
-

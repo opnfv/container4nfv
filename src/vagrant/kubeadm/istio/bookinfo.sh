@@ -20,6 +20,9 @@ set -ex
 cd /vagrant/istio-source/
 export PATH=$PWD/bin:$PATH
 
+kubectl delete services --all
+kubectl delete rc --all
+kubectl delete pods --all
 # Run the test application: bookinfo
 kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
 
