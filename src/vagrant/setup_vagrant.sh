@@ -42,6 +42,7 @@ EOF
     sudo apt-get install -y bridge-utils qemu libvirt-bin ebtables dnsmasq
     sudo apt-get install -y libffi-dev libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
     vagrant plugin install vagrant-libvirt
+    sudo addgroup libvirtd
     sudo adduser ${USER} libvirtd
     sudo service libvirtd restart
 }
