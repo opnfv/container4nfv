@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y git make openssl libcrypto++-dev libnuma-dev && \
     apt-get autoclean
 
-RUN git clone https://gerrit.fd.io/r/vpp -b stable/1710 /root/vpp-1710
+RUN git clone --depth 1 https://gerrit.fd.io/r/vpp -b stable/1710 /root/vpp-1710
 
 WORKDIR /root/vpp-1710
 COPY ./0001-net-virtio-ethdev.patch dpdk/dpdk-17.08_patches/0001-net-virtio-ethdev.patch
